@@ -1,0 +1,34 @@
+模型日报/GLM-5.2_w4a8_16p_gpqa_运行时长分析.md
+  s_22777d79bca838::t_32145d38faab46 1-80
+模型日报/Kimi-K3_w4a8_32p_gpqa_运行时长分析.md
+  s_22777d79bca838::t_dbea154f737d8a 1-83
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "6472f962af9057093905ddc6c105651dd879e438",
+  "prompts": {},
+  "sessions": {
+    "s_22777d79bca838": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a9b790823ad8eeeb1c1095f",
+        "model": "DeepSeek-V4-Pro-Official"
+      },
+      "human_author": "unknown",
+      "custom_attributes": {
+        "dedupe_key": "6a9b790823ad8eeeb1c1095f:6a9b886923ad8eeeb1c10a31:afterEdit:60b80e60",
+        "source_scene": "agent",
+        "external_session_id": "6a9b790823ad8eeeb1c1095f",
+        "client_type": "ide",
+        "tool_use_id": "6a9b886923ad8eeeb1c10a31",
+        "tool_type": "builtin",
+        "edit_kind": "file_edit",
+        "tool_id": "icube:applyChatSnapshotPatch",
+        "session_id": "6a9b790823ad8eeeb1c1095f",
+        "runtime_client": "trae-tob-git-ai",
+        "operation_id": "6a9b886923ad8eeeb1c10a31"
+      }
+    }
+  }
+}

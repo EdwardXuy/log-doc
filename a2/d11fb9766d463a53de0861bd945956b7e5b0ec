@@ -1,0 +1,38 @@
+模型日报/GLM-5.2_w4a8_16p_gpqa_运行时长分析.md
+  s_22777d79bca838::t_d3bcda5a43afec 77-78
+  s_22777d79bca838::t_5b29c962519ae6 58-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "a2d11fb9766d463a53de0861bd945956b7e5b0ec",
+  "prompts": {},
+  "humans": {
+    "h_b23a6a8439c0dd": {
+      "author": "unknown"
+    }
+  },
+  "sessions": {
+    "s_22777d79bca838": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a9b790823ad8eeeb1c1095f",
+        "model": "DeepSeek-V4-Pro-Official"
+      },
+      "human_author": "unknown",
+      "custom_attributes": {
+        "session_id": "6a9b790823ad8eeeb1c1095f",
+        "client_type": "ide",
+        "tool_type": "builtin",
+        "dedupe_key": "6a9b790823ad8eeeb1c1095f:6a9b8d2c23ad8eeeb1c10a54:afterEdit:b92a85e5",
+        "tool_use_id": "6a9b8d2c23ad8eeeb1c10a54",
+        "runtime_client": "trae-tob-git-ai",
+        "operation_id": "6a9b8d2c23ad8eeeb1c10a54",
+        "source_scene": "agent",
+        "edit_kind": "file_edit",
+        "external_session_id": "6a9b790823ad8eeeb1c1095f",
+        "tool_id": "icube:applyChatSnapshotPatch"
+      }
+    }
+  }
+}
