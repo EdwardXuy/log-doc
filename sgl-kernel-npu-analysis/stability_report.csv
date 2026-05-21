@@ -1,0 +1,4 @@
+﻿"WorkflowName","TotalRuns","TotalTestCases","PassedCases","FailedCases","ProductIssueCases","StabilityRate","MeetsTarget"
+"pr-test-npu","10","782","692","90","44","93.77%","No"
+"daily-build-test","10","0","0","0","0","0%","No"
+"overall","30","784","692","92","46","93.77%","No"
