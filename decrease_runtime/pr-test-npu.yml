@@ -81,6 +81,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -305,6 +306,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -475,6 +477,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -537,6 +540,7 @@ jobs:
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --hidden=4096
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --hidden=6144
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --hidden=7168
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --hidden=8192
 
       - name: Run test topk num intranode
         timeout-minutes: 10
@@ -553,6 +557,7 @@ jobs:
         run: |
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --num-processes=2 --num-topk=1 --num-experts=2
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --num-experts=512 --num-processes=8
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_intranode.py --num-experts=1024 --num-processes=16
 
       - name: Run test intranode for active ranks
         timeout-minutes: 10
@@ -617,12 +622,13 @@ jobs:
       - name: Run test low latency for hidden
         timeout-minutes: 10
         env:
-          HCCL_BUFFSIZE: 1913
+          HCCL_BUFFSIZE: 2200
         run: |
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_low_latency.py --hidden=2048
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_low_latency.py --hidden=4096
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_low_latency.py --hidden=6144
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_low_latency.py --hidden=7168
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_low_latency.py --hidden=8192
 
       - name: Run test low latency for topk
         timeout-minutes: 10
@@ -699,6 +705,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -809,35 +816,37 @@ jobs:
       - name: Run test mixed running for hidden
         timeout-minutes: 10
         env:
-          HCCL_BUFFSIZE: 2241
+          HCCL_BUFFSIZE: 2300
         run: |
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --hidden=2048 --test-loop=100
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --hidden=4096 --test-loop=100
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --hidden=6144 --test-loop=100
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --hidden=7168 --test-loop=100
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --hidden=8192 --test-loop=100
 
       - name: Run test mixed running for experts
         timeout-minutes: 10
         env:
-          HCCL_BUFFSIZE: 3769
+          HCCL_BUFFSIZE: 7500
         run: |
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-processes=2 --num-topk=1 --num-experts=2 --test-loop=100
           python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-experts=512 --test-loop=100 --num-processes=8
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-experts=1024 --test-loop=100 --num-processes=16
 
       - name: Run test mixed running for topk
         timeout-minutes: 10
         env:
           HCCL_BUFFSIZE: 4065
         run: |
-          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-topk=1 --test-loop=100 --num-processes=8
-          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-topk=16 --test-loop=100 --num-processes=8
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-topk=1 --test-loop=100
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --num-topk=16 --test-loop=100
 
       - name: Run test mixed running for dynamic tokens
         timeout-minutes: 10
         env:
           HCCL_BUFFSIZE: 3769
         run: |
-          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --test-loop=100 --enable-dynamic-tokens --num-processes=8
+          python3 $GITHUB_WORKSPACE/tests/python/deepep/test_normal_and_low_latency.py --test-loop=100 --enable-dynamic-tokens
 
       - name: Run test fused deep moe for fuse_mode.DISPATCH_FFN_COMBINE
         timeout-minutes: 10
@@ -875,6 +884,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           clean: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
