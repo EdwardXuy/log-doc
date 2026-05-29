@@ -14,10 +14,10 @@
 | 1 | test_add_rmsnorm_bias.py | Norm | Python 接口参数变化 | 否 | 是 |
 | 2 | test_decode_attention.py | Attention | 算子未导出/已移除 | 否 | 是 |
 | 3 | test_split_qkv_rmsnorm_rope.py | Attention | Python 接口参数变化 | 否 | 是 |
-| 4 | test_split_qkv_rmsnorm_rope_pos_cache_half_npu.py | Attention | 缺少 sglang 依赖 | 是（已添加） | 否 |
+| 4 | test_split_qkv_rmsnorm_rope_pos_cache_half_npu.py | Attention | 缺少 sglang 依赖 | 是（已添加）未解决 | 是 |
 | 5 | test_conv1d_prefill.py | Mamba | 负向测试逻辑过时 | 否 | 是 |
 | 6 | test_swiglu_quant.py | Fused | 精度阈值过严 | 否 | 是 |
-| 7 | test_catlass_matmul_basic.py | Fused | 编译选项未开启 | 是（已添加） | 否 |
+| 7 | test_catlass_matmul_basic.py | Fused | 编译选项未开启 | 是（已添加）未解决 | 是 |
 
 ---
 
