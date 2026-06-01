@@ -3,8 +3,19 @@ param(
     [string]$Token,
     [string]$Repo = "sgl-project/sgl-kernel-npu",
     [string]$OutputDir = ".\analysis",
-    [int]$MaxPages = 5
+    [int]$MaxPages = 10,
+    [string]$SinceDate = "",   # e.g. "2026-05-30"
+    [string]$UntilDate = "",   # e.g. "2026-06-01"
+    [switch]$ForceFullFetch    # Force full fetch, ignore incremental state
 )
+
+# Resolve OutputDir to absolute path to avoid path issues
+$resolved = (Resolve-Path $OutputDir -ErrorAction SilentlyContinue)
+if ($resolved) {
+    $OutputDir = $resolved.Path
+} else {
+    $OutputDir = (Join-Path (Get-Location) $OutputDir)
+}
 
 $headers = @{
     "Authorization" = "token $Token"
@@ -14,8 +25,8 @@ $headers = @{
 
 $apiBase = "https://api.github.com/repos/$Repo"
 
+# Only analyze daily-build-test and pr-test-npu
 $workflowDefs = @(
-    @{ Id = 213514694; Name = "build_and_release" },
     @{ Id = 204375811; Name = "daily-build-test" },
     @{ Id = 179736185; Name = "pr-test-npu" }
 )
@@ -26,6 +37,28 @@ $reportsDir = Join-Path $OutputDir "reports\$ts"
 New-Item -ItemType Directory -Force -Path $logsDir | Out-Null
 New-Item -ItemType Directory -Force -Path $reportsDir | Out-Null
 
+Write-Host "Output directory: $OutputDir" -ForegroundColor Cyan
+Write-Host "Logs directory: $logsDir" -ForegroundColor Cyan
+Write-Host "Reports directory: $reportsDir" -ForegroundColor Cyan
+
+# Parse date filters
+$sinceDateTime = $null
+$untilDateTime = $null
+if ($SinceDate -ne "") { $sinceDateTime = [DateTime]$SinceDate }
+if ($UntilDate -ne "") { $untilDateTime = [DateTime]$UntilDate }
+
+# Load previous analysis state for incremental analysis
+$stateFile = Join-Path $OutputDir "analysis_state.json"
+$previousState = $null
+if (Test-Path $stateFile) {
+    try {
+        $previousState = Get-Content $stateFile -Raw | ConvertFrom-Json
+        Write-Host "Loaded previous analysis state from $stateFile" -ForegroundColor Cyan
+    } catch {
+        Write-Host "Warning: Could not parse analysis_state.json, will perform full fetch" -ForegroundColor Yellow
+    }
+}
+
 $allRuns = @()
 $allJobs = @()
 
@@ -34,15 +67,43 @@ foreach ($wf in $workflowDefs) {
     $validRuns = @(); $page = 1
     while ($page -le $MaxPages) {
         try {
-            $resp = Invoke-RestMethod -Uri "$apiBase/actions/workflows/$($wf.Id)/runs?per_page=30&page=$page&status=completed" -Headers $headers
-        } catch { break }
+            $uri = "$apiBase/actions/workflows/$($wf.Id)/runs?per_page=30&page=$page&status=completed"
+            $resp = Invoke-RestMethod -Uri $uri -Headers $headers
+        } catch { Write-Host "  Error fetching page $page`: $_" -ForegroundColor Red; break }
         foreach ($r in $resp.workflow_runs) {
+            $runCreated = [DateTime]$r.created_at
+            # Date filter (client-side)
+            if ($sinceDateTime -and $runCreated -lt $sinceDateTime) { continue }
+            if ($untilDateTime -and $runCreated -gt $untilDateTime.AddDays(1)) { continue }
+            # Incremental filter: skip runs already analyzed (if no explicit date range and not forced full fetch)
+            if (-not $ForceFullFetch -and $SinceDate -eq "" -and $previousState -and $previousState.workflows.$($wf.Name)) {
+                $prevLatest = $previousState.workflows.$($wf.Name).latest_run_id
+                if ($r.id -le $prevLatest) { continue }
+            }
             if ($r.conclusion -in @("success","failure")) { $validRuns += $r }
         }
+        if ($resp.workflow_runs.Count -lt 30) { break }
         $page++
     }
     $sorted = $validRuns | Sort-Object created_at -Descending
-    Write-Host "  Total valid runs: $($sorted.Count)"
+    Write-Host "  Total valid runs: $($sorted.Count)" -ForegroundColor Green
+
+    # For daily-build-test, filter to only schedule event, take last 10
+    if ($wf.Name -eq "daily-build-test") {
+        $scheduleRuns = $sorted | Where-Object { $_.event -eq "schedule" }
+        if ($scheduleRuns.Count -eq 0) {
+            Write-Host "  Warning: No schedule event runs found, falling back to all events" -ForegroundColor Yellow
+            $scheduleRuns = $sorted
+        }
+        $sorted = $scheduleRuns | Select-Object -First 10
+        Write-Host "  Schedule runs selected: $($sorted.Count)" -ForegroundColor Cyan
+    }
+
+    # For pr-test-npu, take latest 10 runs
+    if ($wf.Name -eq "pr-test-npu") {
+        $sorted = $sorted | Select-Object -First 10
+        Write-Host "  Latest 10 runs selected" -ForegroundColor Cyan
+    }
 
     foreach ($run in $sorted) {
         $title = ($run.head_commit.message -split "`n")[0]
@@ -103,9 +164,14 @@ foreach ($wf in $workflowDefs) {
             if ($job.conclusion -eq "failure") {
                 try {
                     $logResp = Invoke-WebRequest -Uri "$apiBase/actions/jobs/$($job.id)/logs" -Headers $headers -UseBasicParsing -TimeoutSec 120
-                    [IO.File]::WriteAllText((Join-Path $jobDir "full-log.txt"), $logResp.Content, [Text.Encoding]::UTF8)
+                    $logPath = Join-Path $jobDir "full-log.txt"
+                    [IO.File]::WriteAllText($logPath, $logResp.Content, [Text.Encoding]::UTF8)
+                    Write-Host "    Log saved: $logPath" -ForegroundColor Gray
                 } catch {
-                    "Log fetch failed: $($_.Exception.Message)" | Out-File (Join-Path $jobDir "full-log.txt") -Encoding UTF8
+                    $errMsg = "Log fetch failed: $($_.Exception.Message)"
+                    $logPath = Join-Path $jobDir "full-log.txt"
+                    [IO.File]::WriteAllText($logPath, $errMsg, [Text.Encoding]::UTF8)
+                    Write-Host "    $errMsg" -ForegroundColor Red
                 }
                 Start-Sleep -Milliseconds 200
             }
@@ -119,10 +185,36 @@ $allRuns | Select-Object RunId,WorkflowName,Conclusion,Event,CreatedAt,Title,PR,
 $allJobs | ConvertTo-Json -Depth 5 | Out-File (Join-Path $reportsDir "all_jobs.json") -Encoding UTF8
 $allJobs | Export-Csv (Join-Path $reportsDir "all_jobs.csv") -NoTypeInformation -Encoding UTF8
 
+# Save analysis state for incremental analysis
+$state = @{
+    last_analysis_time = (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ")
+    analysis_timestamp = $ts
+    run_count = $allRuns.Count
+    job_count = $allJobs.Count
+    since_date = $SinceDate
+    until_date = $UntilDate
+    workflows = @{
+    }
+}
+foreach ($wf in $workflowDefs) {
+    # For incremental analysis, track the latest run ID across all runs (including previous ones)
+    $wfRuns = $allRuns | Where-Object { $_.WorkflowName -eq $wf.Name }
+    if ($wfRuns) {
+        $latest = $wfRuns | Sort-Object RunId -Descending | Select-Object -First 1
+        $state.workflows[$wf.Name] = @{ latest_run_id = $latest.RunId }
+    } elseif ($previousState -and $previousState.workflows.$($wf.Name)) {
+        # Preserve previous state if no new runs in this workflow
+        $state.workflows[$wf.Name] = @{ latest_run_id = $previousState.workflows.$($wf.Name).latest_run_id }
+    }
+}
+$state | ConvertTo-Json -Depth 5 | Out-File $stateFile -Encoding UTF8
+
 Write-Host "`n=== Data Fetch Complete ===" -ForegroundColor Green
 Write-Host "Timestamp: $ts"
 Write-Host "Runs: $($allRuns.Count), Jobs: $($allJobs.Count)"
 Write-Host "Logs dir: $logsDir"
 Write-Host "Reports dir: $reportsDir"
 Write-Host ""
-Write-Host "Next step: python scripts/generate_report.py --timestamp $ts"
+Write-Host "Next steps:"
+Write-Host "  1. python scripts\analyze_errors.py --timestamp $ts --base-dir ."
+Write-Host "  2. python scripts\generate_report.py --timestamp $ts --base-dir ."

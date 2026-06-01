@@ -27,12 +27,12 @@ def main():
     for j in jobs: wj_d[j["WorkflowName"]].append(j)
 
     L=[]
-    L.append(f"# {repo} CI/CD Pipeline Analysis Report")
-    L.append(""); L.append(f"**Generated**: {dt}"); L.append(f"**Repository**: {repo}")
-    L.append("**Scope**: All completed runs (success + failure) across 3 workflows")
-    L.append(f"**Data**: {len(runs)} runs, {len(jobs)} jobs"); L.append(""); L.append("---"); L.append("")
+    L.append(f"# {repo} CI/CD 流水线分析报告")
+    L.append(""); L.append(f"**生成时间**: {dt}"); L.append(f"**仓库**: {repo}")
+    L.append("**分析范围**: 所有已完成的运行（成功 + 失败）")
+    L.append(f"**数据量**: {len(runs)} 次运行, {len(jobs)} 个任务"); L.append(""); L.append("---"); L.append("")
 
-    L.append("## 1. Overview"); L.append("")
+    L.append("## 1. 概览"); L.append("")
     for wf in ["build_and_release","daily-build-test","pr-test-npu"]:
         wr=wr_d.get(wf,[]); wj=wj_d.get(wf,[])
         if not wr: continue
@@ -41,46 +41,46 @@ def main():
         jc=sum(1 for j in wj if j["JobConclusion"]=="cancelled"); jsk=sum(1 for j in wj if j["JobConclusion"]=="skipped")
         eff=len(wj)-jc-jsk
         L.append(f"### {wf}"); L.append("")
-        L.append("| Metric | Value |"); L.append("|--------|-------|")
-        L.append(f"| Total Runs | {len(wr)} |"); L.append(f"| Run Success / Failure | {rs} / {rf} |")
-        L.append(f"| Run Success Rate | {pct(rs,len(wr))}% |"); L.append(f"| Total Jobs | {len(wj)} |")
-        L.append(f"| Job Success / Failure / Cancelled / Skipped | {js} / {jf} / {jc} / {jsk} |")
-        L.append(f"| Job Pass Rate (excl cancelled/skipped) | {pct(js,eff)}% |"); L.append("")
+        L.append("| 指标 | 数值 |"); L.append("|------|------|")
+        L.append(f"| 总运行次数 | {len(wr)} |"); L.append(f"| 成功 / 失败 | {rs} / {rf} |")
+        L.append(f"| 运行成功率 | {pct(rs,len(wr))}% |"); L.append(f"| 总任务数 | {len(wj)} |")
+        L.append(f"| 成功 / 失败 / 取消 / 跳过 | {js} / {jf} / {jc} / {jsk} |")
+        L.append(f"| 任务通过率（不含取消/跳过） | {pct(js,eff)}% |"); L.append("")
 
     trs=sum(1 for r in runs if r["Conclusion"]=="success")
     tjs=sum(1 for j in jobs if j["JobConclusion"]=="success"); tjf=sum(1 for j in jobs if j["JobConclusion"]=="failure")
     tjc=sum(1 for j in jobs if j["JobConclusion"]=="cancelled"); tjsk=sum(1 for j in jobs if j["JobConclusion"]=="skipped")
     teff=len(jobs)-tjc-tjsk
-    L.append("### Grand Total"); L.append("")
-    L.append("| Metric | Value |"); L.append("|--------|-------|")
-    L.append(f"| Total Runs | {len(runs)} |"); L.append(f"| Run Success / Failure | {trs} / {len(runs)-trs} |")
-    L.append(f"| Run Success Rate | {pct(trs,len(runs))}% |"); L.append(f"| Total Jobs | {len(jobs)} |")
-    L.append(f"| Job Success / Failure / Cancelled / Skipped | {tjs} / {tjf} / {tjc} / {tjsk} |")
-    L.append(f"| Job Pass Rate (excl cancelled/skipped) | {pct(tjs,teff)}% |"); L.append("")
+    L.append("### 总计"); L.append("")
+    L.append("| 指标 | 数值 |"); L.append("|------|------|")
+    L.append(f"| 总运行次数 | {len(runs)} |"); L.append(f"| 成功 / 失败 | {trs} / {len(runs)-trs} |")
+    L.append(f"| 运行成功率 | {pct(trs,len(runs))}% |"); L.append(f"| 总任务数 | {len(jobs)} |")
+    L.append(f"| 成功 / 失败 / 取消 / 跳过 | {tjs} / {tjf} / {tjc} / {tjsk} |")
+    L.append(f"| 任务通过率（不含取消/跳过） | {pct(tjs,teff)}% |"); L.append("")
     L.append("---"); L.append("")
 
-    L.append("## 2. Per-Run Job Statistics (Recent 20 per workflow)"); L.append("")
+    L.append("## 2. 每次运行的任务统计（最近20次）"); L.append("")
     for wf in ["build_and_release","daily-build-test","pr-test-npu"]:
         wr=wr_d.get(wf,[])
         if not wr: continue
         L.append(f"### {wf}"); L.append("")
-        L.append("| Run | Title | Conclusion | Total | Success | Failure | Cancelled | Pass Rate |")
-        L.append("|-----|-------|------------|-------|---------|---------|-----------|-----------|")
+        L.append("| 运行 | 标题 | 结论 | 总任务 | 成功 | 失败 | 取消 | 通过率 |")
+        L.append("|------|------|------|--------|------|------|------|--------|")
         for r in sorted(wr, key=lambda r:r["CreatedAt"],reverse=True)[:20]:
             rj=[j for j in wj_d.get(wf,[]) if j["RunId"]==r["RunId"]]
             s=sum(1 for j in rj if j["JobConclusion"]=="success"); f=sum(1 for j in rj if j["JobConclusion"]=="failure")
             c=sum(1 for j in rj if j["JobConclusion"]=="cancelled"); eff=len(rj)-c; rate=pct(s,eff)
-            mark="OK" if r["Conclusion"]=="success" else "FAIL"; title=safe(r.get("Title","")); url=r.get("HtmlUrl","")
+            mark="成功" if r["Conclusion"]=="success" else "失败"; title=safe(r.get("Title","")); url=r.get("HtmlUrl","")
             L.append(f"| [{r['RunId']}]({url}) | {title} | {mark} | {len(rj)} | {s} | {f} | {c} | {rate}% |")
         L.append("")
     L.append("---"); L.append("")
 
-    L.append("## 3. Stability Analysis"); L.append("")
+    L.append("## 3. 稳定性分析"); L.append("")
     for wf in ["pr-test-npu","daily-build-test"]:
         wj=[j for j in wj_d.get(wf,[]) if j["JobConclusion"]!="cancelled"]
         if not wj: continue
-        L.append(f"### {wf} Job Stability"); L.append("")
-        L.append("| Job Name | Total | Success | Failure | Pass Rate |"); L.append("|----------|-------|---------|---------|-----------|")
+        L.append(f"### {wf} 任务稳定性"); L.append("")
+        L.append("| 任务名称 | 总次数 | 成功 | 失败 | 通过率 |"); L.append("|----------|--------|------|------|--------|")
         js={}
         for j in wj:
             n=j["JobName"]
@@ -92,31 +92,31 @@ def main():
             st=js[n]; L.append(f"| {n} | {st['total']} | {st['success']} | {st['failure']} | {pct(st['success'],st['total'])}% |")
         L.append("")
 
-    L.append("### PR Workflow E2E Duration (Target: <= 60 min)"); L.append("")
-    L.append("| Run | Title | Conclusion | Max Core Job Duration | Meets Target |")
-    L.append("|-----|-------|------------|----------------------|-------------|")
+    L.append("### PR 工作流端到端时长（目标: <= 60 分钟）"); L.append("")
+    L.append("| 运行 | 标题 | 结论 | 核心任务最大时长 | 是否达标 |")
+    L.append("|------|------|------|------------------|----------|")
     for r in sorted(wr_d.get("pr-test-npu",[]), key=lambda r:r["CreatedAt"],reverse=True)[:30]:
         rj=[j for j in wj_d.get("pr-test-npu",[]) if j["RunId"]==r["RunId"] and j["JobConclusion"]!="cancelled" and "Check changed files" not in j["JobName"] and j["JobName"]!="finish"]
         if not rj: continue
         durs=[float(j["DurationMin"]) for j in rj if float(j.get("DurationMin",0))>0]
-        mx=round(max(durs),1) if durs else 0; meets="YES" if mx<=60 else "NO"
+        mx=round(max(durs),1) if durs else 0; meets="是" if mx<=60 else "否"
         title=safe(r.get("Title",""),30); url=r.get("HtmlUrl","")
-        L.append(f"| [{r['RunId']}]({url}) | {title} | {r['Conclusion']} | {mx} min | {meets} |")
+        L.append(f"| [{r['RunId']}]({url}) | {title} | {r['Conclusion']} | {mx} 分钟 | {meets} |")
     L.append(""); L.append("---"); L.append("")
 
-    L.append("## 4. Execution Time Analysis"); L.append("")
+    L.append("## 4. 执行时间分析"); L.append("")
     tj=[j for j in jobs if j["JobConclusion"]!="cancelled" and float(j.get("DurationMin",0))>0]
     tj.sort(key=lambda j:float(j["DurationMin"]),reverse=True)
-    L.append("### 4.1 Top 30 Longest Jobs (All Workflows)"); L.append("")
-    L.append("| Rank | Workflow | Job Name | Run ID | Duration (min) | Conclusion |")
-    L.append("|------|----------|----------|--------|---------------|------------|")
+    L.append("### 4.1 耗时最长的30个任务（所有工作流）"); L.append("")
+    L.append("| 排名 | 工作流 | 任务名称 | 运行ID | 时长(分钟) | 结论 |")
+    L.append("|------|--------|----------|--------|------------|------|")
     for i,j in enumerate(tj[:30],1):
         L.append(f"| {i} | {j['WorkflowName']} | {j['JobName']} | {j['RunId']} | {float(j['DurationMin'])} | {j['JobConclusion']} |")
     L.append("")
 
-    L.append("### 4.2 Average Duration by Job Name"); L.append("")
-    L.append("| Workflow | Job Name | Count | Avg (min) | Max (min) | Min (min) |")
-    L.append("|----------|----------|-------|-----------|-----------|-----------|")
+    L.append("### 4.2 按任务名称的平均时长"); L.append("")
+    L.append("| 工作流 | 任务名称 | 次数 | 平均(分钟) | 最大(分钟) | 最小(分钟) |")
+    L.append("|--------|----------|------|------------|------------|------------|")
     ds={}
     for j in tj:
         k=(j["WorkflowName"],j["JobName"])
@@ -126,17 +126,17 @@ def main():
         L.append(f"| {wf} | {nm} | {len(durs)} | {round(sum(durs)/len(durs),1)} | {round(max(durs),1)} | {round(min(durs),1)} |")
     L.append(""); L.append("---"); L.append("")
 
-    L.append("## 5. Failure Analysis"); L.append("")
+    L.append("## 5. 失败分析"); L.append("")
     fj=[j for j in jobs if j["JobConclusion"]=="failure"]
-    L.append("### 5.1 Failed Jobs by Workflow"); L.append("")
-    L.append("| Workflow | Failed Jobs | Total Effective Jobs | Failure Rate |"); L.append("|----------|------------|--------------------|-------------|")
+    L.append("### 5.1 按工作流统计失败任务"); L.append("")
+    L.append("| 工作流 | 失败任务数 | 有效任务总数 | 失败率 |"); L.append("|--------|------------|--------------|--------|")
     for wf in ["build_and_release","daily-build-test","pr-test-npu"]:
         wf_f=[j for j in fj if j["WorkflowName"]==wf]; wf_e=[j for j in wj_d.get(wf,[]) if j["JobConclusion"]!="cancelled"]
         L.append(f"| {wf} | {len(wf_f)} | {len(wf_e)} | {pct(len(wf_f),len(wf_e))}% |")
     L.append("")
 
-    L.append("### 5.2 Failed Jobs by Job Name"); L.append("")
-    L.append("| Workflow | Job Name | Fail Count | Common Failed Steps |"); L.append("|----------|----------|------------|---------------------|")
+    L.append("### 5.2 按任务名称统计失败"); L.append("")
+    L.append("| 工作流 | 任务名称 | 失败次数 | 常见失败步骤 |"); L.append("|--------|----------|----------|--------------|")
     fbn={}
     for j in fj:
         k=(j["WorkflowName"],j["JobName"])
@@ -148,18 +148,18 @@ def main():
         ss=", ".join(sorted(info["steps"]))[:80]
         L.append(f"| {wf} | {nm} | {info['count']} | {ss} |")
     L.append(""); L.append("---"); L.append("")
-    L.append(f"*Report generated by GitHub Actions Log Analyzer v2 | Data source: {repo}*")
+    L.append(f"*报告由 GitHub Actions 日志分析器生成 | 数据源: {repo}*")
 
     with open(os.path.join(rdir,"full_analysis_report.md"),"w",encoding="utf-8") as f: f.write("\n".join(L))
     print(f"Report saved: {os.path.join(rdir,'full_analysis_report.md')}")
 
     # Optimization report
     O=[]
-    O.append(f"# {repo} CI/CD Pipeline Optimization Proposal"); O.append("")
-    O.append(f"Generated: {dt}"); O.append("Scope: Reduce total pipeline execution time without modifying test scripts"); O.append("")
+    O.append(f"# {repo} CI/CD 流水线优化建议"); O.append("")
+    O.append(f"生成时间: {dt}"); O.append("范围: 在不修改测试脚本的前提下减少流水线总执行时间"); O.append("")
     pt=[j for j in wj_d.get("pr-test-npu",[]) if j["JobConclusion"]!="cancelled" and "Check changed files" not in j["JobName"] and j["JobName"]!="finish" and float(j.get("DurationMin",0))>0]
-    O.append("## 1. Current PR Workflow Time Breakdown"); O.append("")
-    O.append("| Job Name | Count | Avg (min) | Max (min) |"); O.append("|----------|-------|-----------|-----------|")
+    O.append("## 1. 当前 PR 工作流时间分解"); O.append("")
+    O.append("| 任务名称 | 次数 | 平均(分钟) | 最大(分钟) |"); O.append("|----------|------|------------|------------|")
     pd={}
     for j in pt:
         n=j["JobName"]
@@ -168,41 +168,41 @@ def main():
     for n in sorted(pd, key=lambda n:-max(pd[n])):
         durs=pd[n]; O.append(f"| {n} | {len(durs)} | {round(sum(durs)/len(durs),1)} | {round(max(durs),1)} |")
     O.append("")
-    O.append("## 2. Bottleneck Analysis"); O.append("")
+    O.append("## 2. 瓶颈分析"); O.append("")
     for n in sorted(pd, key=lambda n:-sum(pd[n])/len(pd[n])):
-        durs=pd[n]; O.append(f"- **{n}**: avg {round(sum(durs)/len(durs),1)} min, max {round(max(durs),1)} min")
+        durs=pd[n]; O.append(f"- **{n}**: 平均 {round(sum(durs)/len(durs),1)} 分钟, 最大 {round(max(durs),1)} 分钟")
     O.append("")
-    O.append("## 3. Optimization Proposals"); O.append("")
-    O.append("### Proposal 1: Split test-all-build into Parallel Sub-Jobs"); O.append("")
-    O.append("Current: test-all-build runs all DeepEP tests sequentially (45+ steps, ~63 min)")
-    O.append("Proposal: Split into 3 parallel jobs by test type:"); O.append("")
-    O.append("| New Job | Tests Included | Est. Duration |"); O.append("|---------|---------------|--------------|")
-    O.append("| test-intranode | test_intranode (13 variants) | ~15 min |")
-    O.append("| test-low-latency-moe | test_low_latency (8) + test_fused_deep_moe (8) + test_mixed_running (7) | ~25 min |")
-    O.append("| test-combine-misc | test_combine (1) + test_generalization_fused_deep_moe (1) | ~10 min |"); O.append("")
-    O.append("Expected improvement: Wall-clock time from ~63 min to ~25 min (60% reduction)"); O.append("")
-    O.append("### Proposal 2: Share Build Artifact Across Jobs"); O.append("")
-    O.append("Current: test-all-build, test-build-deepep-a3, test-build-deepep-a2 each build DeepEP independently")
-    O.append("Proposal: Create a dedicated build job, upload wheel as GitHub Actions artifact")
-    O.append("Expected improvement: Save 20-30 min of redundant build time per run"); O.append("")
-    O.append("### Proposal 3: Conditional Internode Testing"); O.append("")
-    O.append("Current: test_internode_a2 runs on every PR, fails ~90% of the time, blocks workflow for 3 hours")
-    O.append("Proposal: continue-on-error: true / schedule only / reduce timeout from 10800s to 1800s")
-    O.append("Expected improvement: PR workflow from 3+ hours to <30 min when K8s is unavailable"); O.append("")
-    O.append("### Proposal 4: Optimize enumerate_test Shell Scripts"); O.append("")
-    O.append("Current: enumerate scripts run tests sequentially for each parameter combination")
-    O.append("Proposal: Run parameter combinations in parallel using background processes or GNU parallel")
-    O.append("Expected improvement: 30-50% reduction in daily-build-test job duration"); O.append("")
-    O.append("### Proposal 5: Add sgl_kernel_npu Operator Tests to CI"); O.append("")
-    O.append("Current: 36 operator tests in tests/python/sgl_kernel_npu/ are not in any CI workflow")
-    O.append("Proposal: Add a new job in daily-build-test.yml or pr-test-npu.yml"); O.append("")
-    O.append("## 4. Summary of Expected Improvements"); O.append("")
-    O.append("| Proposal | Target | Expected Time Saving | Priority |"); O.append("|----------|--------|---------------------|----------|")
-    O.append("| Split test-all-build | PR workflow | ~38 min (63 to 25 min) | P0 |")
-    O.append("| Share build artifact | PR workflow | ~20 to 30 min | P0 |")
-    O.append("| Conditional internode | PR workflow | ~2.5 hours (when K8s down) | P0 |")
-    O.append("| Parallel enumerate | Daily workflow | 30 to 50 pct job time | P1 |")
-    O.append("| Add operator tests | Coverage | N/A (new tests) | P1 |"); O.append("")
+    O.append("## 3. 优化建议"); O.append("")
+    O.append("### 建议 1: 将 test-all-build 拆分为并行子任务"); O.append("")
+    O.append("现状: test-all-build 串行运行所有 DeepEP 测试（45+ 步骤, ~63 分钟）")
+    O.append("建议: 按测试类型拆分为 3 个并行任务:"); O.append("")
+    O.append("| 新任务 | 包含测试 | 预估时长 |"); O.append("|--------|----------|----------|")
+    O.append("| test-intranode | test_intranode (13 种变体) | ~15 分钟 |")
+    O.append("| test-low-latency-moe | test_low_latency (8) + test_fused_deep_moe (8) + test_mixed_running (7) | ~25 分钟 |")
+    O.append("| test-combine-misc | test_combine (1) + test_generalization_fused_deep_moe (1) | ~10 分钟 |"); O.append("")
+    O.append("预期改进: 墙上时间从 ~63 分钟降至 ~25 分钟（减少60%）"); O.append("")
+    O.append("### 建议 2: 跨任务共享构建产物"); O.append("")
+    O.append("现状: test-all-build, test-build-deepep-a3, test-build-deepep-a2 各自独立构建 DeepEP")
+    O.append("建议: 创建专用构建任务，将 wheel 作为 GitHub Actions 产物上传")
+    O.append("预期改进: 每次运行节省 20-30 分钟冗余构建时间"); O.append("")
+    O.append("### 建议 3: 条件化 Internode 测试"); O.append("")
+    O.append("现状: test_internode_a2 在每个 PR 都运行，失败率约90%，阻塞工作流 3 小时")
+    O.append("建议: continue-on-error: true / 仅定时触发 / 超时从 10800秒 降至 1800秒")
+    O.append("预期改进: K8s 不可用时 PR 工作流从 3+ 小时降至 <30 分钟"); O.append("")
+    O.append("### 建议 4: 优化 enumerate_test 脚本"); O.append("")
+    O.append("现状: enumerate 脚本对每个参数组合串行运行测试")
+    O.append("建议: 使用后台进程或 GNU parallel 并行运行参数组合")
+    O.append("预期改进: daily-build-test 任务时长减少 30-50%"); O.append("")
+    O.append("### 建议 5: 将 sgl_kernel_npu 算子测试加入 CI"); O.append("")
+    O.append("现状: tests/python/sgl_kernel_npu/ 中的 36 个算子测试未在任何 CI 工作流中")
+    O.append("建议: 在 daily-build-test.yml 或 pr-test-npu.yml 中新增任务"); O.append("")
+    O.append("## 4. 预期改进汇总"); O.append("")
+    O.append("| 建议 | 目标 | 预期节省时间 | 优先级 |"); O.append("|------|------|--------------|--------|")
+    O.append("| 拆分 test-all-build | PR 工作流 | ~38 分钟 (63 到 25 分钟) | P0 |")
+    O.append("| 共享构建产物 | PR 工作流 | ~20 到 30 分钟 | P0 |")
+    O.append("| 条件化 internode | PR 工作流 | ~2.5 小时 (K8s 故障时) | P0 |")
+    O.append("| 并行 enumerate | 定时工作流 | 30% 到 50% 任务时间 | P1 |")
+    O.append("| 添加算子测试 | 覆盖率 | N/A (新增测试) | P1 |"); O.append("")
     with open(os.path.join(odir,"optimization_proposal.md"),"w",encoding="utf-8") as f: f.write("\n".join(O))
     print(f"Optimization report saved: {os.path.join(odir,'optimization_proposal.md')}")
 
