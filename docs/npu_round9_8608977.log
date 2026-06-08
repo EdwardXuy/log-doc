@@ -1,0 +1,1077 @@
+﻿ï»¿2026-06-06T13:00:52.9034487Z Current runner version: '2.334.0'
+2026-06-06T13:00:52.9042491Z Runner name: 'linux-aarch64-a3-2-xt6zn-runner-7x958'
+2026-06-06T13:00:52.9043536Z Runner group name: 'Default'
+2026-06-06T13:00:52.9044828Z Machine name: 'linux-aarch64-a3-2-xt6zn-runner-7x958'
+2026-06-06T13:00:52.9049972Z ##[group]GITHUB_TOKEN Permissions
+2026-06-06T13:00:52.9053377Z Actions: read
+2026-06-06T13:00:52.9054077Z ArtifactMetadata: read
+2026-06-06T13:00:52.9054768Z Attestations: read
+2026-06-06T13:00:52.9055373Z Checks: read
+2026-06-06T13:00:52.9055980Z CodeQuality: read
+2026-06-06T13:00:52.9056622Z Contents: read
+2026-06-06T13:00:52.9057232Z Deployments: read
+2026-06-06T13:00:52.9057893Z Discussions: read
+2026-06-06T13:00:52.9058586Z Issues: read
+2026-06-06T13:00:52.9059227Z Metadata: read
+2026-06-06T13:00:52.9059839Z Models: read
+2026-06-06T13:00:52.9060414Z Packages: read
+2026-06-06T13:00:52.9061046Z Pages: read
+2026-06-06T13:00:52.9061639Z PullRequests: read
+2026-06-06T13:00:52.9062422Z RepositoryProjects: read
+2026-06-06T13:00:52.9063128Z SecurityEvents: read
+2026-06-06T13:00:52.9064081Z Statuses: read
+2026-06-06T13:00:52.9064757Z VulnerabilityAlerts: read
+2026-06-06T13:00:52.9065415Z ##[endgroup]
+2026-06-06T13:00:52.9068353Z Secret source: None
+2026-06-06T13:00:52.9069362Z Prepare workflow directory
+2026-06-06T13:00:52.9739923Z Prepare all required actions
+2026-06-06T13:00:52.9779331Z Getting action download info
+2026-06-06T13:00:57.8609362Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-06-06T13:01:01.8127491Z Complete job name: single-node-poc
+2026-06-06T13:01:01.8891470Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:01:01.8895323Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:01:01.8896181Z ##[endgroup]
+2026-06-06T13:01:09.6575891Z (node:296) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-06-06T13:01:09.6577087Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-06T13:01:10.9337443Z ##[group]Run actions/checkout@v4
+2026-06-06T13:01:10.9338041Z with:
+2026-06-06T13:01:10.9338360Z   repository: Ascend/sglang
+2026-06-06T13:01:10.9341993Z   token: ***
+2026-06-06T13:01:10.9342287Z   ssh-strict: true
+2026-06-06T13:01:10.9342556Z   ssh-user: git
+2026-06-06T13:01:10.9342872Z   persist-credentials: true
+2026-06-06T13:01:10.9343186Z   clean: true
+2026-06-06T13:01:10.9343527Z   sparse-checkout-cone-mode: true
+2026-06-06T13:01:10.9343909Z   fetch-depth: 1
+2026-06-06T13:01:10.9344167Z   fetch-tags: false
+2026-06-06T13:01:10.9344465Z   show-progress: true
+2026-06-06T13:01:10.9344752Z   lfs: false
+2026-06-06T13:01:10.9345015Z   submodules: false
+2026-06-06T13:01:10.9345327Z   set-safe-directory: true
+2026-06-06T13:01:10.9345614Z ##[endgroup]
+2026-06-06T13:01:10.9449988Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:01:10.9451296Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:01:10.9451702Z ##[endgroup]
+2026-06-06T13:01:11.4161947Z (node:413) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-06-06T13:01:11.4163085Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-06T13:01:12.1660380Z Syncing repository: Ascend/sglang
+2026-06-06T13:01:12.1662058Z ##[group]Getting Git version info
+2026-06-06T13:01:12.1662663Z Working directory is '/__w/sglang/sglang'
+2026-06-06T13:01:12.1663303Z [command]/usr/bin/git version
+2026-06-06T13:01:12.1663678Z git version 2.34.1
+2026-06-06T13:01:12.1665789Z ##[endgroup]
+2026-06-06T13:01:12.1670460Z Copying '/root/.gitconfig' to '/__w/_temp/c4ffcc27-2591-494a-ad5c-3783ff6d7448/.gitconfig'
+2026-06-06T13:01:12.1671338Z Temporarily overriding HOME='/__w/_temp/c4ffcc27-2591-494a-ad5c-3783ff6d7448' before making global git config changes
+2026-06-06T13:01:12.1672216Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-06T13:01:12.1674655Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-06-06T13:01:12.1712936Z Deleting the contents of '/__w/sglang/sglang'
+2026-06-06T13:01:12.1715153Z ##[group]Initializing the repository
+2026-06-06T13:01:12.1720382Z [command]/usr/bin/git init /__w/sglang/sglang
+2026-06-06T13:01:12.1786021Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-06-06T13:01:12.1786917Z hint: is subject to change. To configure the initial branch name to use in all
+2026-06-06T13:01:12.1787593Z hint: of your new repositories, which will suppress this warning, call:
+2026-06-06T13:01:12.1788038Z hint: 
+2026-06-06T13:01:12.1788449Z hint: 	git config --global init.defaultBranch <name>
+2026-06-06T13:01:12.1788880Z hint: 
+2026-06-06T13:01:12.1789261Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-06-06T13:01:12.1789899Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-06-06T13:01:12.1790382Z hint: 
+2026-06-06T13:01:12.1790845Z hint: 	git branch -m <name>
+2026-06-06T13:01:12.1795275Z Initialized empty Git repository in /__w/sglang/sglang/.git/
+2026-06-06T13:01:12.1971422Z [command]/usr/bin/git remote add origin https://github.com/Ascend/sglang
+2026-06-06T13:01:12.1972500Z ##[endgroup]
+2026-06-06T13:01:12.1972944Z ##[group]Disabling automatic garbage collection
+2026-06-06T13:01:12.1973377Z [command]/usr/bin/git config --local gc.auto 0
+2026-06-06T13:01:12.1974189Z ##[endgroup]
+2026-06-06T13:01:12.1974558Z ##[group]Setting up auth
+2026-06-06T13:01:12.1974992Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-06T13:01:12.1976397Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-06T13:01:12.2285090Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-06T13:01:12.2318660Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-06T13:01:12.2702021Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-06T13:01:12.2703272Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-06T13:01:12.3029174Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-06-06T13:01:12.3069454Z ##[endgroup]
+2026-06-06T13:01:12.3069929Z ##[group]Fetching the repository
+2026-06-06T13:01:12.3078059Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +da334503863443312daedecb435ef499b989c88c:refs/remotes/pull/710/merge
+2026-06-06T13:01:16.2562689Z From https://gh-proxy.test.osinfra.cn/https://github.com/Ascend/sglang
+2026-06-06T13:01:16.2563659Z  * [new ref]         da334503863443312daedecb435ef499b989c88c -> pull/710/merge
+2026-06-06T13:01:16.2587423Z ##[endgroup]
+2026-06-06T13:01:16.2587867Z ##[group]Determining the checkout info
+2026-06-06T13:01:16.2589079Z ##[endgroup]
+2026-06-06T13:01:16.2594316Z [command]/usr/bin/git sparse-checkout disable
+2026-06-06T13:01:16.2646447Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-06-06T13:01:16.2677443Z ##[group]Checking out the ref
+2026-06-06T13:01:16.2681809Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/710/merge
+2026-06-06T13:01:16.6632961Z Note: switching to 'refs/remotes/pull/710/merge'.
+2026-06-06T13:01:16.6633320Z 
+2026-06-06T13:01:16.6633546Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-06-06T13:01:16.6634118Z changes and commit them, and you can discard any commits you make in this
+2026-06-06T13:01:16.6634669Z state without impacting any branches by switching back to a branch.
+2026-06-06T13:01:16.6635421Z 
+2026-06-06T13:01:16.6635671Z If you want to create a new branch to retain commits you create, you may
+2026-06-06T13:01:16.6636196Z do so (now or later) by using -c with the switch command. Example:
+2026-06-06T13:01:16.6636493Z 
+2026-06-06T13:01:16.6636623Z   git switch -c <new-branch-name>
+2026-06-06T13:01:16.6636821Z 
+2026-06-06T13:01:16.6636948Z Or undo this operation with:
+2026-06-06T13:01:16.6637132Z 
+2026-06-06T13:01:16.6637242Z   git switch -
+2026-06-06T13:01:16.6637484Z 
+2026-06-06T13:01:16.6637724Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-06-06T13:01:16.6638181Z 
+2026-06-06T13:01:16.6638578Z HEAD is now at da33450 Merge 8608977d3d5de805f3019e9876b451e9fcf32c55 into ec457446aa9a9157d560673cfa80f3ac2ea02201
+2026-06-06T13:01:16.6676833Z ##[endgroup]
+2026-06-06T13:01:16.6713683Z [command]/usr/bin/git log -1 --format=%H
+2026-06-06T13:01:16.6747082Z da334503863443312daedecb435ef499b989c88c
+2026-06-06T13:01:17.2306193Z ##[group]Run npu-smi info
+2026-06-06T13:01:17.2306680Z [36;1mnpu-smi info[0m
+2026-06-06T13:01:17.2310200Z shell: sh -e {0}
+2026-06-06T13:01:17.2310482Z ##[endgroup]
+2026-06-06T13:01:17.2405127Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:01:17.2406425Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:01:17.2406784Z ##[endgroup]
+2026-06-06T13:01:17.7141249Z (node:442) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-06-06T13:01:17.7142293Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-06T13:01:18.8242226Z +------------------------------------------------------------------------------------------------+
+2026-06-06T13:01:18.8242857Z | npu-smi 25.5.2                   Version: 25.5.2                                               |
+2026-06-06T13:01:18.8243493Z +---------------------------+---------------+----------------------------------------------------+
+2026-06-06T13:01:18.8244125Z | NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|
+2026-06-06T13:01:18.8244745Z | Chip  Phy-ID              | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |
+2026-06-06T13:01:18.8245282Z +===========================+===============+====================================================+
+2026-06-06T13:01:18.8245783Z | 0     Ascend910           | OK            | 162.8       37                0    / 0             |
+2026-06-06T13:01:18.8246350Z | 0     0                   | 0000:9D:00.0  | 0           0    / 0          3129 / 65536         |
+2026-06-06T13:01:18.8246877Z +------------------------------------------------------------------------------------------------+
+2026-06-06T13:01:18.8247423Z | 0     Ascend910           | OK            | -           37                0    / 0             |
+2026-06-06T13:01:18.8247954Z | 1     1                   | 0000:9F:00.0  | 0           0    / 0          2890 / 65536         |
+2026-06-06T13:01:18.8248431Z +===========================+===============+====================================================+
+2026-06-06T13:01:18.8248937Z +---------------------------+---------------+----------------------------------------------------+
+2026-06-06T13:01:18.8249528Z | NPU     Chip              | Process id    | Process name             | Process memory(MB)      |
+2026-06-06T13:01:18.8250081Z +===========================+===============+====================================================+
+2026-06-06T13:01:18.8250607Z | No running processes found in NPU 0                                                            |
+2026-06-06T13:01:18.8251128Z +===========================+===============+====================================================+
+2026-06-06T13:01:19.3001535Z ##[group]Run sglang_source_path=$(pwd)
+2026-06-06T13:01:19.3001997Z [36;1msglang_source_path=$(pwd)[0m
+2026-06-06T13:01:19.3002392Z [36;1mecho "Source code path: ${sglang_source_path}"[0m
+2026-06-06T13:01:19.3003059Z [36;1mln -sf ${sglang_source_path} /root/sglang[0m
+2026-06-06T13:01:19.3003397Z [36;1m[0m
+2026-06-06T13:01:19.3003709Z [36;1m# tabulate is required by sglang.test.send_one (used by[0m
+2026-06-06T13:01:19.3004217Z [36;1m# test_npu_eagle_dp_attention.py). NPU CI image does not ship it.[0m
+2026-06-06T13:01:19.3004661Z [36;1mpip install --quiet tabulate[0m
+2026-06-06T13:01:19.3004957Z [36;1m[0m
+2026-06-06T13:01:19.3005279Z [36;1m# Test cases - 3 NPU speculative decoding test cases (round 7).[0m
+2026-06-06T13:01:19.3005813Z [36;1m# Run infer_beta_dp_attention first (no send_one dep, most stable),[0m
+2026-06-06T13:01:19.3006271Z [36;1m# then dp_attention, then constrained.[0m
+2026-06-06T13:01:19.3006599Z [36;1mtest_cases=([0m
+2026-06-06T13:01:19.3007260Z [36;1m  "test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_infer_beta_dp_attention.py"[0m
+2026-06-06T13:01:19.3008247Z [36;1m  "test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_dp_attention.py"[0m
+2026-06-06T13:01:19.3009247Z [36;1m  "test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_constrained_decoding_spec_reasoning.py"[0m
+2026-06-06T13:01:19.3009929Z [36;1m)[0m
+2026-06-06T13:01:19.3010137Z [36;1m[0m
+2026-06-06T13:01:19.3010388Z [36;1mfor test_case in "${test_cases[@]}"; do[0m
+2026-06-06T13:01:19.3010790Z [36;1m  if [ ! -f "${sglang_source_path}/${test_case}" ]; then[0m
+2026-06-06T13:01:19.3011297Z [36;1m    echo "The testcase does not exit: ${sglang_source_path}/${test_case}"[0m
+2026-06-06T13:01:19.3011732Z [36;1m    exit 1[0m
+2026-06-06T13:01:19.3011963Z [36;1m  fi[0m
+2026-06-06T13:01:19.3012178Z [36;1mdone[0m
+2026-06-06T13:01:19.3012389Z [36;1m[0m
+2026-06-06T13:01:19.3012647Z [36;1m# copy required file from our daily cache[0m
+2026-06-06T13:01:19.3013330Z [36;1mcp ~/.cache/modelscope/hub/datasets/otavia/ShareGPT_Vicuna_unfiltered/ShareGPT_V3_unfiltered_cleaned_split.json /tmp[0m
+2026-06-06T13:01:19.3014065Z [36;1mcp ~/.cache/modelscope/hub/datasets/tmp/test.jsonl /tmp[0m
+2026-06-06T13:01:19.3014442Z [36;1m[0m
+2026-06-06T13:01:19.3014705Z [36;1mecho "scaling_governor performance num: \[0m
+2026-06-06T13:01:19.3015258Z [36;1m  $(cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor | grep performance | wc -l)"[0m
+2026-06-06T13:01:19.3015854Z [36;1mecho "swappiness: $(cat /proc/sys/vm/swappiness)"[0m
+2026-06-06T13:01:19.3016336Z [36;1mecho "numa_balancing: $(cat /proc/sys/kernel/numa_balancing)"[0m
+2026-06-06T13:01:19.3016916Z [36;1mecho "sched_migration_cost_ns: $(cat /proc/sys/kernel/sched_migration_cost_ns)"[0m
+2026-06-06T13:01:19.3017383Z [36;1m[0m
+2026-06-06T13:01:19.3017615Z [36;1mexport SGLANG_TEST_MAX_RETRY=0[0m
+2026-06-06T13:01:19.3017957Z [36;1mexport SGLANG_SET_CPU_AFFINITY=1[0m
+2026-06-06T13:01:19.3018354Z [36;1mecho "SGLANG_SET_CPU_AFFINITY: $SGLANG_SET_CPU_AFFINITY"[0m
+2026-06-06T13:01:19.3018743Z [36;1m[0m
+2026-06-06T13:01:19.3018970Z [36;1mecho "Use sglang from image"[0m
+2026-06-06T13:01:19.3019328Z [36;1msglang_pkg_path=/sgl-workspace/sglang/python[0m
+2026-06-06T13:01:19.3019786Z [36;1mascend_test_util_path=${sglang_pkg_path}/sglang/test/ascend[0m
+2026-06-06T13:01:19.3020216Z [36;1mmkdir -p ${ascend_test_util_path}[0m
+2026-06-06T13:01:19.3020626Z [36;1mmv ${ascend_test_util_path} ${ascend_test_util_path}_bak[0m
+2026-06-06T13:01:19.3021172Z [36;1mcp -r ${sglang_source_path}/python/sglang/test/ascend ${ascend_test_util_path}[0m
+2026-06-06T13:01:19.3021632Z [36;1m[0m
+2026-06-06T13:01:19.3021852Z [36;1m# Set environment of cann[0m
+2026-06-06T13:01:19.3022207Z [36;1msource /usr/local/Ascend/cann/set_env.sh || true[0m
+2026-06-06T13:01:19.3022843Z [36;1msource /usr/local/Ascend/nnal/atb/set_env.sh || true[0m
+2026-06-06T13:01:19.3023235Z [36;1m[0m
+2026-06-06T13:01:19.3023456Z [36;1mcurrent_date=$(date +%Y%m%d)[0m
+2026-06-06T13:01:19.3023872Z [36;1mlog_path="/root/.cache/tests/logs/log/${current_date}/${HOSTNAME}"[0m
+2026-06-06T13:01:19.3024400Z [36;1mrm -rf ${log_path}[0m
+2026-06-06T13:01:19.3024680Z [36;1mmkdir -p ${log_path}[0m
+2026-06-06T13:01:19.3024970Z [36;1mecho "Log path: ${log_path}"[0m
+2026-06-06T13:01:19.3025255Z [36;1m[0m
+2026-06-06T13:01:19.3025516Z [36;1mfor test_case in "${test_cases[@]}"; do[0m
+2026-06-06T13:01:19.3025872Z [36;1m  tc_name=$(basename ${test_case} .py)[0m
+2026-06-06T13:01:19.3026235Z [36;1m  echo "Running test case ${test_case}"[0m
+2026-06-06T13:01:19.3026621Z [36;1m  python -u ${sglang_source_path}/${test_case}[0m
+2026-06-06T13:01:19.3027007Z [36;1m  echo "Finished test case ${test_case}"[0m
+2026-06-06T13:01:19.3027348Z [36;1mdone[0m
+2026-06-06T13:01:19.3027546Z [36;1m[0m
+2026-06-06T13:01:19.3027782Z [36;1mplog_path="/root/ascend/log/debug/plog"[0m
+2026-06-06T13:01:19.3028109Z [36;1mif [ -d "$plog_path" ];then[0m
+2026-06-06T13:01:19.3028477Z [36;1m  echo "Plog files found. Begin to backup them."[0m
+2026-06-06T13:01:19.3028983Z [36;1m  target_plog_path="/root/.cache/tests/logs/plog/${HOSTNAME}"[0m
+2026-06-06T13:01:19.3029407Z [36;1m  echo "Save path: ${target_plog_path}"[0m
+2026-06-06T13:01:19.3029731Z [36;1m  rm -rf ${target_plog_path}[0m
+2026-06-06T13:01:19.3030027Z [36;1m  mkdir -p ${target_plog_path}[0m
+2026-06-06T13:01:19.3030345Z [36;1m  cp ${plog_path}/* ${target_plog_path}[0m
+2026-06-06T13:01:19.3030643Z [36;1mfi[0m
+2026-06-06T13:01:19.3031033Z shell: bash --noprofile --norc -e -o pipefail {0}
+2026-06-06T13:01:19.3031343Z env:
+2026-06-06T13:01:19.3031541Z   SGLANG_USE_MODELSCOPE: true
+2026-06-06T13:01:19.3031827Z   HF_ENDPOINT: https://hf-mirror.com
+2026-06-06T13:01:19.3032107Z   SGLANG_IS_IN_CI: true
+2026-06-06T13:01:19.3032335Z ##[endgroup]
+2026-06-06T13:01:19.3115746Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:01:19.3116762Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:01:19.3117093Z ##[endgroup]
+2026-06-06T13:01:19.7807287Z (node:482) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-06-06T13:01:19.7808369Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-06T13:01:20.3893374Z Source code path: /__w/sglang/sglang
+2026-06-06T13:01:28.5931793Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-06-06T13:01:28.5933660Z 
+2026-06-06T13:01:28.5934090Z [notice] A new release of pip is available: 26.1.1 -> 26.1.2
+2026-06-06T13:01:28.5934630Z [notice] To update, run: pip install --upgrade pip
+2026-06-06T13:01:30.7475897Z scaling_governor performance num:   320
+2026-06-06T13:01:30.7479965Z swappiness: 0
+2026-06-06T13:01:30.7495462Z numa_balancing: 0
+2026-06-06T13:01:30.7510391Z sched_migration_cost_ns: 50000
+2026-06-06T13:01:30.7511424Z SGLANG_SET_CPU_AFFINITY: 1
+2026-06-06T13:01:30.7511789Z Use sglang from image
+2026-06-06T13:01:42.9716578Z Log path: /root/.cache/tests/logs/log/20260606/linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:01:42.9731440Z Running test case test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_infer_beta_dp_attention.py
+2026-06-06T13:01:53.4746020Z command=sglang serve --model-path /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B --trust-remote-code --tp-size 2 --dp-size 2 --enable-dp-attention --speculative-draft-model-path /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 --speculative-algorithm EAGLE3 --speculative-num-steps 3 --speculative-eagle-topk 1 --speculative-num-draft-tokens 4 --attention-backend ascend --disable-cuda-graph --mem-fraction-static 0.7 --device npu --host 127.0.0.1 --port 11000
+2026-06-06T13:01:53.4748732Z CI_OFFLINE: Launching server HF_HUB_OFFLINE=0 model=/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B
+2026-06-06T13:02:02.3267096Z [2026-06-06 13:02:02] get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-06-06T13:02:02.5589607Z [2026-06-06 13:02:02] get env LD_LIBRARY_PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/cann-9.0.0/lib64:/usr/local/Ascend/cann-9.0.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.0.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.11.15/lib:
+2026-06-06T13:02:02.6741653Z [2026-06-06 13:02:02] DP attention is enabled. The chunked prefill size is adjusted to 4096 to avoid MoE kernel issues. 
+2026-06-06T13:02:02.6856248Z [2026-06-06 13:02:02] Max running requests is reset to 48 for speculative decoding. You can override this by explicitly setting --max-running-requests.
+2026-06-06T13:02:02.6857164Z [2026-06-06 13:02:02] Spec v2 is enabled by default for eagle/eagle3/standalone speculative decoding.
+2026-06-06T13:02:02.6881096Z [2026-06-06 13:02:02] Set soft_watchdog_timeout since in CI
+2026-06-06T13:02:04.4428645Z [2026-06-06 13:02:04] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:02:04.9153633Z [2026-06-06 13:02:04] server_args=ServerArgs(model_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', tokenizer_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', tokenizer_mode='auto', tokenizer_backend='huggingface', tokenizer_worker_num=1, detokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=True, context_length=None, is_embedding=False, prefill_only_disable_kv_cache=False, enable_multimodal=None, revision=None, model_impl='auto', model_config_parser='auto', host='127.0.0.1', port=11000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=False, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, ssl_keyfile_password=None, enable_ssl_refresh=False, enable_http2=False, dtype='auto', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.7, max_running_requests=48, max_queued_requests=None, max_total_tokens=None, chunked_prefill_size=4096, enable_dynamic_chunking=False, max_prefill_tokens=16384, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, disable_priority_preemption=False, default_priority_value=None, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=0.3, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, prefill_delayer_queue_min_ratio=None, prefill_delayer_max_delay_ms=None, device='npu', tp_size=2, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, batch_notify_size=16, stream_response_default_include_usage=False, incremental_streaming_output=False, enable_streaming_session=False, random_seed=799928449, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=300, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, load_snapshot_publish_interval=15, use_ray=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, grpc_http_sidecar_port=None, enable_mfu_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_forward_pass_metrics=False, forward_pass_metrics_worker_id='', forward_pass_metrics_ipc_name=None, enable_trace=False, trace_modules='request', otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, stat_loggers=None, api_key=None, admin_api_key=None, served_model_name='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, strip_thinking_cache=False, enable_strict_thinking=False, tool_call_parser=None, tool_server=None, sampling_defaults='model', asr_max_buffer_seconds=60, asr_max_concurrent_sessions=32, dp_size=2, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, experts_shared_outer_loras=None, lora_use_virtual_experts=False, lora_strict_loading=False, lora_drain_wait_threshold=0.0, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', radix_cache_backend=None, mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='auto', dsa_prefill_backend=None, dsa_decode_backend=None, dsa_topk_backend='sgl-kernel', disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm='EAGLE3', speculative_draft_model_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3', speculative_draft_model_revision='main', speculative_draft_load_format=None, speculative_num_steps=3, speculative_eagle_topk=1, speculative_num_draft_tokens=4, speculative_dflash_block_size=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_draft_window_size=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_skip_dp_mlp_sync=False, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_max_trie_depth=18, speculative_ngram_capacity=10000000, speculative_ngram_external_corpus_path=None, speculative_ngram_external_sam_budget=0, speculative_ngram_external_corpus_max_tokens=10000000, enable_multi_layer_eagle=False, speculative_adaptive=False, speculative_adaptive_config=None, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enforce_disable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', deepep_dispatcher_output_dtype='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm=None, init_expert_location='trivial', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, enable_elastic_expert_backup=False, mooncake_ib_device=None, enable_deepep_waterfill=False, elastic_ep_rejoin=False, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', hicache_storage_backend=None, hicache_storage_prefetch_policy='timeout', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, enable_lmcache=False, lmcache_config_file=None, kt_weight_path=None, kt_method='AMXINT4', kt_cpuinfer=None, kt_threadpool_count=2, kt_num_gpu_experts=None, kt_max_deferred_experts_per_token=None, dllm_algorithm=None, dllm_algorithm_config=None, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', enable_mis=False, disable_radix_cache=False, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 40, 44, 48, 52, 56, 60, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_breakable_cuda_graph=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, debug_cuda_graph=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, pre_warm_nccl=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=True, enable_dp_attention_local_control_broadcast=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, disable_piecewise_cuda_graph=True, enforce_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=8192, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096, 4608, 5120, 5632, 6144, 6656, 7168, 7680, 8192], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=False, enforce_shared_experts_fusion=False, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, enable_deepseek_v4_fp4_indexer=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, disable_attn_tp_gather=False, gc_threshold=None, kv_canary='none', kv_canary_real_data='none', kv_canary_sweep_interval=0, enable_dsa_prefill_context_parallel=False, dsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_fused_moe_sum_all_reduce=False, enable_prefill_context_parallel=False, prefill_cp_mode='in-seq-split', enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_ib_device=None, disaggregation_decode_enable_radix_cache=False, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, optimistic_prefill_retries=0, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], enable_adaptive_dispatch_to_encoder=False, custom_weight_loader=[], weight_loader_disable_mmap=False, weight_loader_prefetch_checkpoints=False, weight_loader_prefetch_num_threads=4, weight_loader_drop_cache_after_load=False, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, engine_info_bootstrap_port=6789, modelexpress_config=None, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None, enable_quant_communications=False, msprobe_dump_config=None)
+2026-06-06T13:02:06.0476782Z [2026-06-06 13:02:06] Watchdog TokenizerManager initialized.
+2026-06-06T13:02:06.0766918Z [2026-06-06 13:02:06] Using default HuggingFace chat template with detected content format: string
+2026-06-06T13:02:06.1783281Z [2026-06-06 13:02:06] Auto-detected template features: reasoning_config=ReasoningToggleConfig(toggle_param='enable_thinking', default_enabled=True, special_case=None), reasoning_parser=qwen3, tool_call_parser=qwen
+2026-06-06T13:02:15.3911562Z [2026-06-06 13:02:15] Watchdog DetokenizerManager initialized.
+2026-06-06T13:02:23.8726566Z [2026-06-06 13:02:23 DP1 TP1] get env SGLANG_SET_CPU_AFFINITY = 1
+2026-06-06T13:02:23.8922201Z [2026-06-06 13:02:23 DP1 TP1] Process 1521 gpu_id 1 is running on CPUs: [160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319]
+2026-06-06T13:02:24.1644793Z [2026-06-06 13:02:24 DP0 TP0] get env SGLANG_SET_CPU_AFFINITY = 1
+2026-06-06T13:02:24.1839026Z [2026-06-06 13:02:24 DP0 TP0] Process 1520 gpu_id 0 is running on CPUs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159]
+2026-06-06T13:02:25.2779337Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+2026-06-06T13:02:25.2780055Z     *************************************************************************************************************
+2026-06-06T13:02:25.2780732Z     The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+2026-06-06T13:02:25.2781622Z     The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+2026-06-06T13:02:25.2782333Z     The backend in torch.distributed.init_process_group set to hccl now..
+2026-06-06T13:02:25.2782964Z     The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+2026-06-06T13:02:25.2783593Z     The device parameters have been replaced with npu in the function below:
+2026-06-06T13:02:25.2788368Z     torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+2026-06-06T13:02:25.2793391Z     *************************************************************************************************************
+2026-06-06T13:02:25.2793804Z     
+2026-06-06T13:02:25.2794028Z   warnings.warn(msg, ImportWarning)
+2026-06-06T13:02:25.2795294Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+2026-06-06T13:02:25.2796592Z   warnings.warn(msg, RuntimeWarning)
+2026-06-06T13:02:25.4614888Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+2026-06-06T13:02:25.4615592Z     *************************************************************************************************************
+2026-06-06T13:02:25.4616282Z     The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+2026-06-06T13:02:25.4617559Z     The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+2026-06-06T13:02:25.4618301Z     The backend in torch.distributed.init_process_group set to hccl now..
+2026-06-06T13:02:25.4619090Z     The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+2026-06-06T13:02:25.4619727Z     The device parameters have been replaced with npu in the function below:
+2026-06-06T13:02:25.4624559Z     torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+2026-06-06T13:02:25.4629562Z     *************************************************************************************************************
+2026-06-06T13:02:25.4629940Z     
+2026-06-06T13:02:25.4630163Z   warnings.warn(msg, ImportWarning)
+2026-06-06T13:02:25.4631436Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+2026-06-06T13:02:25.4632723Z   warnings.warn(msg, RuntimeWarning)
+2026-06-06T13:02:25.6926042Z [2026-06-06 13:02:25 DP1 TP1] Failed to load generation config for /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3: /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co//root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3/tree/main' for available files.. Proceeding without generation config.
+2026-06-06T13:02:25.6934052Z [2026-06-06 13:02:25 DP1 TP1] Init torch distributed begin.
+2026-06-06T13:02:25.8772453Z [2026-06-06 13:02:25 DP0 TP0] Failed to load generation config for /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3: /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co//root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3/tree/main' for available files.. Proceeding without generation config.
+2026-06-06T13:02:25.8774214Z [2026-06-06 13:02:25 DP0 TP0] Init torch distributed begin.
+2026-06-06T13:02:26.5973266Z [2026-06-06 13:02:26 DP1 TP1] get env HCCL_BUFFSIZE = 200
+2026-06-06T13:02:26.7582882Z [2026-06-06 13:02:26 DP0 TP0] get env HCCL_BUFFSIZE = 200
+2026-06-06T13:02:27.1279519Z [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:02:27.1280223Z [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:02:27.1490293Z [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:02:27.2207474Z [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:02:27.2286093Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2297832Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2310882Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2323122Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2335768Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2893396Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2906680Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2921352Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2935251Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2948194Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:02:27.2970111Z [2026-06-06 13:02:27 DP1 TP1] Init torch distributed ends. elapsed=1.60 s, mem usage=0.01 GB
+2026-06-06T13:02:27.2970739Z [2026-06-06 13:02:27 DP0 TP0] Init torch distributed ends. elapsed=1.42 s, mem usage=0.01 GB
+2026-06-06T13:02:27.5733077Z [2026-06-06 13:02:27 DP1 TP1] Ignore import error when loading sglang.srt.models.bailing_moe_linear: No module named 'vllm'
+2026-06-06T13:02:27.5738312Z [2026-06-06 13:02:27 DP0 TP0] Ignore import error when loading sglang.srt.models.bailing_moe_linear: No module named 'vllm'
+2026-06-06T13:02:27.5755380Z [2026-06-06 13:02:27 DP1 TP1] Ignore import error when loading sglang.srt.models.bailing_moe_nextn: No module named 'vllm'
+2026-06-06T13:02:27.5763390Z [2026-06-06 13:02:27 DP0 TP0] Ignore import error when loading sglang.srt.models.bailing_moe_nextn: No module named 'vllm'
+2026-06-06T13:02:27.7505291Z [2026-06-06 13:02:27 DP0 TP0] Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+2026-06-06T13:02:27.7506200Z [2026-06-06 13:02:27 DP1 TP1] Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+2026-06-06T13:02:27.7536577Z [2026-06-06 13:02:27 DP0 TP0] Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+2026-06-06T13:02:27.7538039Z [2026-06-06 13:02:27 DP1 TP1] Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+2026-06-06T13:02:29.1425757Z [2026-06-06 13:02:29 DP0 TP0] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-06-06T13:02:29.1427784Z [2026-06-06 13:02:29 DP1 TP1] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-06-06T13:02:29.4721483Z [2026-06-06 13:02:29 DP1 TP1] Load weight begin. avail mem=61.11 GB
+2026-06-06T13:02:29.4722945Z [2026-06-06 13:02:29 DP0 TP0] Load weight begin. avail mem=60.81 GB
+2026-06-06T13:02:30.4524886Z 
+2026-06-06T13:02:38.4052792Z Multi-thread loading shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+2026-06-06T13:02:45.0471940Z Multi-thread loading shards:  20% Completed | 1/5 [00:07<00:31,  7.95s/it]
+2026-06-06T13:02:51.9622138Z Multi-thread loading shards:  40% Completed | 2/5 [00:14<00:21,  7.18s/it]
+2026-06-06T13:02:57.4798904Z Multi-thread loading shards:  60% Completed | 3/5 [00:21<00:14,  7.06s/it]
+2026-06-06T13:02:58.7577349Z Multi-thread loading shards:  80% Completed | 4/5 [00:27<00:06,  6.45s/it][2026-06-06 13:02:58 DP1 TP1] Load weight end. elapsed=29.29 s, type=Qwen3ForCausalLM, avail mem=51.48 GB, mem usage=9.63 GB.
+2026-06-06T13:02:58.8293104Z 
+2026-06-06T13:02:58.8293951Z Multi-thread loading shards: 100% Completed | 5/5 [00:28<00:00,  4.61s/it]
+2026-06-06T13:02:58.8294532Z Multi-thread loading shards: 100% Completed | 5/5 [00:28<00:00,  5.68s/it]
+2026-06-06T13:02:58.8619312Z [2026-06-06 13:02:58 DP0 TP0] Load weight end. elapsed=29.39 s, type=Qwen3ForCausalLM, avail mem=51.18 GB, mem usage=9.63 GB.
+2026-06-06T13:02:58.8731538Z [2026-06-06 13:02:58 DP0 TP0] Max concurrent requests (per dp worker) from the finalized token capacity: max_num_reqs=24.
+2026-06-06T13:02:58.8732447Z [2026-06-06 13:02:58 DP1 TP1] Max concurrent requests (per dp worker) from the finalized token capacity: max_num_reqs=24.
+2026-06-06T13:03:02.2613968Z [2026-06-06 13:03:02 DP0 TP0] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 239616, K size: 16.46 GB, V size: 16.46 GB
+2026-06-06T13:03:02.2896847Z [2026-06-06 13:03:02 DP0 TP0] Memory pool end. avail mem=18.23 GB
+2026-06-06T13:03:02.3200191Z [2026-06-06 13:03:02 DP0 TP0] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:03:02.4214829Z [2026-06-06 13:03:02 DP1 TP1] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 239616, K size: 16.46 GB, V size: 16.46 GB
+2026-06-06T13:03:02.4448915Z [2026-06-06 13:03:02 DP1 TP1] Memory pool end. avail mem=18.53 GB
+2026-06-06T13:03:02.4624350Z [2026-06-06 13:03:02 DP1 TP1] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:03:02.9786867Z /sgl-workspace/sglang/python/sglang/srt/utils/common.py:1426: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+2026-06-06T13:03:02.9789228Z   tensor_data = torch.ByteTensor(
+2026-06-06T13:03:03.1801810Z [2026-06-06 13:03:03 DP1 TP1] get env SGLANG_ENABLE_TORCH_COMPILE = 0
+2026-06-06T13:03:03.1802422Z [2026-06-06 13:03:03 DP0 TP0] get env SGLANG_ENABLE_TORCH_COMPILE = 0
+2026-06-06T13:03:03.2110855Z [2026-06-06 13:03:03 DP1 TP1] SPECULATIVE_MOE_RUNNER_BACKEND is not initialized, using auto backend
+2026-06-06T13:03:03.2111628Z [2026-06-06 13:03:03 DP1 TP1] SPECULATIVE_MOE_A2A_BACKEND is not initialized, using none backend
+2026-06-06T13:03:03.2112350Z [2026-06-06 13:03:03 DP0 TP0] SPECULATIVE_MOE_RUNNER_BACKEND is not initialized, using auto backend
+2026-06-06T13:03:03.2113059Z [2026-06-06 13:03:03 DP0 TP0] SPECULATIVE_MOE_A2A_BACKEND is not initialized, using none backend
+2026-06-06T13:03:03.2122996Z [2026-06-06 13:03:03 DP0 TP0] Init torch distributed begin.
+2026-06-06T13:03:03.2123437Z [2026-06-06 13:03:03 DP1 TP1] Init torch distributed begin.
+2026-06-06T13:03:03.2158747Z [2026-06-06 13:03:03 DP0 TP0] Init torch distributed ends. elapsed=0.00 s, mem usage=0.00 GB
+2026-06-06T13:03:03.2159403Z [2026-06-06 13:03:03 DP1 TP1] Init torch distributed ends. elapsed=0.00 s, mem usage=0.00 GB
+2026-06-06T13:03:03.2170910Z [2026-06-06 13:03:03 DP0 TP0] Load weight begin. avail mem=18.23 GB
+2026-06-06T13:03:03.2171394Z [2026-06-06 13:03:03 DP1 TP1] Load weight begin. avail mem=18.53 GB
+2026-06-06T13:03:03.4674586Z 
+2026-06-06T13:03:06.7138037Z Multi-thread loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+2026-06-06T13:03:06.7138906Z Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:03<00:00,  3.25s/it]
+2026-06-06T13:03:06.7139642Z Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:03<00:00,  3.25s/it]
+2026-06-06T13:03:06.7178402Z [2026-06-06 13:03:06 DP1 TP1] Load weight end. elapsed=3.50 s, type=LlamaForCausalLMEagle3, avail mem=16.30 GB, mem usage=2.23 GB.
+2026-06-06T13:03:06.7245523Z [2026-06-06 13:03:06 DP0 TP0] Load weight end. elapsed=3.51 s, type=LlamaForCausalLMEagle3, avail mem=16.04 GB, mem usage=2.19 GB.
+2026-06-06T13:03:06.8243822Z [2026-06-06 13:03:06 DP1 TP1] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 239616, K size: 0.46 GB, V size: 0.46 GB
+2026-06-06T13:03:06.8254067Z [2026-06-06 13:03:06 DP0 TP0] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 239616, K size: 0.46 GB, V size: 0.46 GB
+2026-06-06T13:03:06.8254984Z [2026-06-06 13:03:06 DP1 TP1] Memory pool end. avail mem=15.38 GB
+2026-06-06T13:03:06.8266628Z [2026-06-06 13:03:06 DP0 TP0] Memory pool end. avail mem=15.12 GB
+2026-06-06T13:03:06.8310758Z [2026-06-06 13:03:06 DP1 TP1] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:03:06.8334558Z [2026-06-06 13:03:06 DP0 TP0] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:03:08.5230981Z [2026-06-06 13:03:08 DP0 TP0] get env SGLANG_ENABLE_OVERLAP_PLAN_STREAM = 1
+2026-06-06T13:03:08.5232045Z [2026-06-06 13:03:08 DP0 TP0] max_total_num_tokens=239616, chunked_prefill_size=4096, max_prefill_tokens=16384, max_running_requests=24, context_len=40960, available_gpu_mem=16.51 GB
+2026-06-06T13:03:08.5234701Z [2026-06-06 13:03:08 DP0 TP0] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+2026-06-06T13:03:08.5235630Z [2026-06-06 13:03:08 DP1 TP1] get env SGLANG_ENABLE_OVERLAP_PLAN_STREAM = 1
+2026-06-06T13:03:08.5258704Z [2026-06-06 13:03:08 DP1 TP1] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+2026-06-06T13:03:09.0819598Z [2026-06-06 13:03:09 DP0 TP0] DEEPEP_MODE is not initialized, using auto mode
+2026-06-06T13:03:09.0820375Z [2026-06-06 13:03:09 DP1 TP1] DEEPEP_MODE is not initialized, using auto mode
+2026-06-06T13:03:09.0864395Z [2026-06-06 13:03:09] Watchdog DataParallelController initialized.
+2026-06-06T13:03:09.0944210Z [2026-06-06 13:03:09] INFO:     Started server process [1072]
+2026-06-06T13:03:09.0944882Z [2026-06-06 13:03:09] INFO:     Waiting for application startup.
+2026-06-06T13:03:09.0949247Z [2026-06-06 13:03:09] Using default chat sampling params from model generation config: {'temperature': 0.6, 'top_k': 20, 'top_p': 0.95}
+2026-06-06T13:03:09.1270179Z [2026-06-06 13:03:09] INFO:     Application startup complete.
+2026-06-06T13:03:09.1275110Z [2026-06-06 13:03:09] INFO:     Uvicorn running on http://127.0.0.1:11000 (Press CTRL+C to quit)
+2026-06-06T13:03:10.1327003Z [2026-06-06 13:03:10] INFO:     127.0.0.1:40782 - "GET /model_info HTTP/1.1" 200 OK
+2026-06-06T13:03:10.2886930Z [2026-06-06 13:03:10 DP0 TP0] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:03:10.2939471Z [2026-06-06 13:03:10 DP1 TP1] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:03:13.4907630Z [2026-06-06 13:03:13] INFO:     127.0.0.1:46220 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:03:23.4950690Z [2026-06-06 13:03:23] INFO:     127.0.0.1:57632 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:03:24.7157682Z [2026-06-06 13:03:24 DP0 TP0] TBO_TOKEN_DISTRIBUTION_THRESHOLD is not initialized, using 0.48
+2026-06-06T13:03:24.8962670Z [2026-06-06 13:03:24 DP1 TP1] TBO_TOKEN_DISTRIBUTION_THRESHOLD is not initialized, using 0.48
+2026-06-06T13:03:33.4987598Z [2026-06-06 13:03:33] INFO:     127.0.0.1:48222 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:03:39.7833825Z [rank1]:[W606 13:03:39.451690241 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_assert_async' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+2026-06-06T13:03:39.7835995Z [rank0]:[W606 13:03:39.452927623 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_assert_async' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+2026-06-06T13:03:43.5024873Z [2026-06-06 13:03:43] INFO:     127.0.0.1:55944 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:03:53.5064355Z [2026-06-06 13:03:53] INFO:     127.0.0.1:60186 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:04:00.8843132Z [2026-06-06 13:04:00 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 2.44
+2026-06-06T13:04:01.1577146Z [2026-06-06 13:04:01 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 2.43
+2026-06-06T13:04:03.5098135Z [2026-06-06 13:04:03] INFO:     127.0.0.1:49116 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:04:04.8507928Z [2026-06-06 13:04:04] INFO:     127.0.0.1:40794 - "POST /generate HTTP/1.1" 200 OK
+2026-06-06T13:04:04.8522833Z [2026-06-06 13:04:04] The server is fired up and ready to roll!
+2026-06-06T13:04:15.1835625Z [2026-06-06 13:04:15 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 9.13
+2026-06-06T13:04:15.5134563Z [2026-06-06 13:04:15] INFO:     127.0.0.1:54450 - "GET /health_generate HTTP/1.1" 200 OK
+2026-06-06T13:04:15.5142166Z [CI Test Method] TestNpuEagleDPAttnServerSmall.test_a_gsm8k
+2026-06-06T13:04:15.5187727Z [2026-06-06 13:04:15 DP0 TP0] Cache flushed successfully!
+2026-06-06T13:04:15.5188149Z [2026-06-06 13:04:15 DP1 TP1] Cache flushed successfully!
+2026-06-06T13:04:15.5199004Z [2026-06-06 13:04:15] INFO:     127.0.0.1:54452 - "GET /flush_cache HTTP/1.1" 200 OK
+2026-06-06T13:04:15.5686797Z CompletionSampler initialized with self.model='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B' self.temperature=0.0 self.max_tokens=512 self.stop=['Question', 'Assistant:', '<|separator|>']
+2026-06-06T13:04:15.5875163Z 
+2026-06-06T13:04:19.5221957Z   0%|          | 0/200 [00:00<?, ?it/s][2026-06-06 13:04:19 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 896, #cached-token: 0, token usage: 0.02, #running-req: 0, #queue-req: 58, #pending-token: 0, npu graph: False, input throughput (token/s): 48.07
+2026-06-06T13:04:21.3393977Z [2026-06-06 13:04:21 DP1 TP1] Prefill batch, #new-seq: 5, #new-token: 4096, #cached-token: 0, token usage: 0.02, #running-req: 1, #queue-req: 41, #pending-token: 49501, npu graph: False, input throughput (token/s): 2253.70
+2026-06-06T13:04:21.3403092Z [2026-06-06 13:04:21 DP0 TP0] Prefill batch, #new-seq: 5, #new-token: 4096, #cached-token: 0, token usage: 0.02, #running-req: 0, #queue-req: 52, #pending-token: 50973, npu graph: False, input throughput (token/s): 665.23
+2026-06-06T13:04:23.0719699Z [2026-06-06 13:04:23 DP1 TP1] Prefill batch, #new-seq: 18, #new-token: 2560, #cached-token: 13056, token usage: 0.02, #running-req: 5, #queue-req: 41, #pending-token: 34835, npu graph: False, input throughput (token/s): 1477.46
+2026-06-06T13:04:23.0736264Z [2026-06-06 13:04:23 DP0 TP0] Prefill batch, #new-seq: 8, #new-token: 4096, #cached-token: 2688, token usage: 0.02, #running-req: 4, #queue-req: 40, #pending-token: 44655, npu graph: False, input throughput (token/s): 2363.13
+2026-06-06T13:04:32.8590726Z [2026-06-06 13:04:32 DP0 TP0] Prefill batch, #new-seq: 12, #new-token: 1664, #cached-token: 9216, token usage: 0.02, #running-req: 12, #queue-req: 40, #pending-token: 34328, npu graph: False, input throughput (token/s): 170.06
+2026-06-06T13:04:41.0462562Z [2026-06-06 13:04:41] INFO:     127.0.0.1:54578 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:45.1857797Z [2026-06-06 13:04:45 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33435, npu graph: False, input throughput (token/s): 10.38
+2026-06-06T13:04:45.5004892Z [2026-06-06 13:04:45] INFO:     127.0.0.1:54796 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:45.5644562Z [2026-06-06 13:04:45] INFO:     127.0.0.1:54626 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:49.5387879Z [2026-06-06 13:04:49 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 41, #pending-token: 33944, npu graph: False, input throughput (token/s): 9.67
+2026-06-06T13:04:49.6692425Z [2026-06-06 13:04:49 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 33940, npu graph: False, input throughput (token/s): 978.96
+2026-06-06T13:04:49.7972546Z [2026-06-06 13:04:49] INFO:     127.0.0.1:54852 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:49.8632721Z [2026-06-06 13:04:49] INFO:     127.0.0.1:54728 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:49.9967210Z [2026-06-06 13:04:49 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 34255, npu graph: False, input throughput (token/s): 26.60
+2026-06-06T13:04:51.6756934Z [2026-06-06 13:04:51 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33430, npu graph: False, input throughput (token/s): 76.24
+2026-06-06T13:04:51.7397734Z [2026-06-06 13:04:51] INFO:     127.0.0.1:54670 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:51.9392252Z [2026-06-06 13:04:51 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33419, npu graph: False, input throughput (token/s): 485.70
+2026-06-06T13:04:54.3112692Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54654 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.3802441Z [2026-06-06 13:04:54 DP1 TP1] Decode batch, #running-req: 24, #token: 6272, token usage: 0.03, accept len: 1.96, accept rate: 0.32, npu graph: False, gen throughput (token/s): 17.22, #queue-req: 41
+2026-06-06T13:04:54.3803807Z [2026-06-06 13:04:54 DP0 TP0] Decode batch, #running-req: 24, #token: 6528, token usage: 0.03, accept len: 1.95, accept rate: 0.32, npu graph: False, gen throughput (token/s): 17.58, #queue-req: 39
+2026-06-06T13:04:54.4489213Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54724 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.4491044Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54750 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.5101581Z [2026-06-06 13:04:54 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 34776, npu graph: False, input throughput (token/s): 26.44
+2026-06-06T13:04:54.5751223Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54886 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.6369049Z [2026-06-06 13:04:54 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 40, #pending-token: 33923, npu graph: False, input throughput (token/s): 2022.62
+2026-06-06T13:04:54.7132437Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54790 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.7789597Z [2026-06-06 13:04:54 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 34230, npu graph: False, input throughput (token/s): 45.07
+2026-06-06T13:04:54.8469084Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54606 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.8471375Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54732 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:54.9122069Z [2026-06-06 13:04:54 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33345, npu graph: False, input throughput (token/s): 960.43
+2026-06-06T13:04:54.9751806Z [2026-06-06 13:04:54] INFO:     127.0.0.1:54608 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:55.0385061Z [2026-06-06 13:04:55 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 40, #pending-token: 33997, npu graph: False, input throughput (token/s): 641.65
+2026-06-06T13:04:56.7405009Z [2026-06-06 13:04:56 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 34210, npu graph: False, input throughput (token/s): 70.02
+2026-06-06T13:04:56.8672655Z [2026-06-06 13:04:56] INFO:     127.0.0.1:54772 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.5546611Z [2026-06-06 13:04:58] INFO:     127.0.0.1:54862 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.6224708Z [2026-06-06 13:04:58 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33380, npu graph: False, input throughput (token/s): 68.01
+2026-06-06T13:04:58.6923369Z [2026-06-06 13:04:58] INFO:     127.0.0.1:54618 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.7563893Z [2026-06-06 13:04:58 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33401, npu graph: False, input throughput (token/s): 953.99
+2026-06-06T13:04:58.8209595Z [2026-06-06 13:04:58] INFO:     127.0.0.1:54480 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.8236004Z [2026-06-06 13:04:58] INFO:     127.0.0.1:54638 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.8239860Z [2026-06-06 13:04:58] INFO:     127.0.0.1:54650 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:04:58.8908142Z [2026-06-06 13:04:58 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 38, #pending-token: 32564, npu graph: False, input throughput (token/s): 952.33
+2026-06-06T13:05:00.5808336Z [2026-06-06 13:05:00] INFO:     127.0.0.1:54702 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:00.6442126Z [2026-06-06 13:05:00 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 384, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 38, #pending-token: 32486, npu graph: False, input throughput (token/s): 219.03
+2026-06-06T13:05:00.6443711Z [2026-06-06 13:05:00 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 35785, npu graph: False, input throughput (token/s): 22.82
+2026-06-06T13:05:00.7107091Z [2026-06-06 13:05:00] INFO:     127.0.0.1:54806 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:00.7742609Z [2026-06-06 13:05:00 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 42, #pending-token: 35837, npu graph: False, input throughput (token/s): 985.39
+2026-06-06T13:05:00.8415004Z [2026-06-06 13:05:00] INFO:     127.0.0.1:54712 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:00.9041718Z [2026-06-06 13:05:00 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 38, #pending-token: 32509, npu graph: False, input throughput (token/s): 492.35
+2026-06-06T13:05:00.9682824Z [2026-06-06 13:05:00] INFO:     127.0.0.1:54764 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.0304271Z [2026-06-06 13:05:01 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 37, #pending-token: 31657, npu graph: False, input throughput (token/s): 1012.69
+2026-06-06T13:05:01.0973463Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54688 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.1001584Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54814 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.1622074Z [2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 35859, npu graph: False, input throughput (token/s): 329.90
+2026-06-06T13:05:01.2973685Z [2026-06-06 13:05:01 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 38, #pending-token: 32539, npu graph: False, input throughput (token/s): 479.59
+2026-06-06T13:05:01.2985677Z [2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 35913, npu graph: False, input throughput (token/s): 938.66
+2026-06-06T13:05:01.3648791Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54920 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.4286834Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54854 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.5621302Z [2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 35905, npu graph: False, input throughput (token/s): 487.49
+2026-06-06T13:05:01.6338373Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54522 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.6970130Z [2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35067, npu graph: False, input throughput (token/s): 943.25
+2026-06-06T13:05:01.7611364Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54538 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.7663357Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54468 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.7721365Z 
+2026-06-06T13:05:01.8245345Z   0%|          | 1/200 [00:46<2:33:10, 46.18s/it][2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35097, npu graph: False, input throughput (token/s): 1002.98
+2026-06-06T13:05:01.8943503Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54828 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.8948958Z [2026-06-06 13:05:01] INFO:     127.0.0.1:54550 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:01.9550798Z [2026-06-06 13:05:01 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33341, npu graph: False, input throughput (token/s): 194.60
+2026-06-06T13:05:01.9553309Z [2026-06-06 13:05:01 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35123, npu graph: False, input throughput (token/s): 977.16
+2026-06-06T13:05:02.0816220Z [2026-06-06 13:05:02 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33370, npu graph: False, input throughput (token/s): 1011.43
+2026-06-06T13:05:02.0820300Z [2026-06-06 13:05:02 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35216, npu graph: False, input throughput (token/s): 1011.65
+2026-06-06T13:05:02.1437328Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54528 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.1439535Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54936 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.3418372Z [2026-06-06 13:05:02 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 38, #pending-token: 32502, npu graph: False, input throughput (token/s): 984.07
+2026-06-06T13:05:02.4033275Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54582 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.4645313Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54958 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.4661272Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54574 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.5936039Z [2026-06-06 13:05:02 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 35213, npu graph: False, input throughput (token/s): 250.27
+2026-06-06T13:05:02.7198667Z [2026-06-06 13:05:02 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33302, npu graph: False, input throughput (token/s): 338.61
+2026-06-06T13:05:02.7200260Z [2026-06-06 13:05:02 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35185, npu graph: False, input throughput (token/s): 1013.34
+2026-06-06T13:05:02.8410702Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54592 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.9021681Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54678 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.9691850Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54756 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:02.9694539Z [2026-06-06 13:05:02] INFO:     127.0.0.1:54906 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.0308506Z [2026-06-06 13:05:03 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 32467, npu graph: False, input throughput (token/s): 411.48
+2026-06-06T13:05:03.1569888Z [2026-06-06 13:05:03 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 36033, npu graph: False, input throughput (token/s): 292.77
+2026-06-06T13:05:03.1573501Z [2026-06-06 13:05:03 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 38, #pending-token: 32481, npu graph: False, input throughput (token/s): 2021.53
+2026-06-06T13:05:03.2182985Z [2026-06-06 13:05:03] INFO:     127.0.0.1:54870 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.3518480Z [2026-06-06 13:05:03 DP0 TP0] Decode batch, #running-req: 24, #token: 6144, token usage: 0.03, accept len: 1.97, accept rate: 0.32, npu graph: False, gen throughput (token/s): 206.71, #queue-req: 38
+2026-06-06T13:05:03.3548229Z [2026-06-06 13:05:03 DP1 TP1] Decode batch, #running-req: 23, #token: 5632, token usage: 0.02, accept len: 1.99, accept rate: 0.33, npu graph: False, gen throughput (token/s): 208.26, #queue-req: 42
+2026-06-06T13:05:03.4149083Z [2026-06-06 13:05:03 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 42, #pending-token: 36062, npu graph: False, input throughput (token/s): 496.20
+2026-06-06T13:05:03.6568129Z [2026-06-06 13:05:03] INFO:     127.0.0.1:55052 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.7171389Z [2026-06-06 13:05:03] INFO:     127.0.0.1:54644 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.8453331Z [2026-06-06 13:05:03 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 38, #pending-token: 32432, npu graph: False, input throughput (token/s): 186.11
+2026-06-06T13:05:03.9144248Z [2026-06-06 13:05:03] INFO:     127.0.0.1:54844 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.9146687Z [2026-06-06 13:05:03] INFO:     127.0.0.1:54894 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:03.9752175Z [2026-06-06 13:05:03 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 42, #pending-token: 36071, npu graph: False, input throughput (token/s): 228.43
+2026-06-06T13:05:05.6803496Z [2026-06-06 13:05:05 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 41, #pending-token: 35206, npu graph: False, input throughput (token/s): 150.19
+2026-06-06T13:05:05.8636821Z [2026-06-06 13:05:05] INFO:     127.0.0.1:54510 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:05.8639057Z [2026-06-06 13:05:05] INFO:     127.0.0.1:54780 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:05.8647368Z [2026-06-06 13:05:05] INFO:     127.0.0.1:55034 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:05.9253476Z [2026-06-06 13:05:05] INFO:     127.0.0.1:55134 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.0557391Z [2026-06-06 13:05:06 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 41, #pending-token: 34376, npu graph: False, input throughput (token/s): 687.24
+2026-06-06T13:05:06.0559465Z [2026-06-06 13:05:06 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 34080, npu graph: False, input throughput (token/s): 57.94
+2026-06-06T13:05:06.1819146Z [2026-06-06 13:05:06 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33258, npu graph: False, input throughput (token/s): 1007.66
+2026-06-06T13:05:06.2423738Z [2026-06-06 13:05:06] INFO:     127.0.0.1:54968 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.3132719Z [2026-06-06 13:05:06] INFO:     127.0.0.1:54980 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.4387478Z [2026-06-06 13:05:06 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 41, #pending-token: 34462, npu graph: False, input throughput (token/s): 331.33
+2026-06-06T13:05:06.5058481Z [2026-06-06 13:05:06] INFO:     127.0.0.1:55040 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.5060378Z [2026-06-06 13:05:06] INFO:     127.0.0.1:55196 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.5683669Z [2026-06-06 13:05:06 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 39, #pending-token: 33235, npu graph: False, input throughput (token/s): 330.96
+2026-06-06T13:05:06.6349479Z [2026-06-06 13:05:06] INFO:     127.0.0.1:54616 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.6964282Z [2026-06-06 13:05:06 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 40, #pending-token: 34492, npu graph: False, input throughput (token/s): 993.00
+2026-06-06T13:05:06.7597555Z [2026-06-06 13:05:06] INFO:     127.0.0.1:55246 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.7632018Z [2026-06-06 13:05:06] INFO:     127.0.0.1:54948 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.7634990Z [2026-06-06 13:05:06] INFO:     127.0.0.1:55008 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:06.8233447Z [2026-06-06 13:05:06 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33612, npu graph: False, input throughput (token/s): 1008.29
+2026-06-06T13:05:08.5076524Z [2026-06-06 13:05:08 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 39, #pending-token: 33610, npu graph: False, input throughput (token/s): 152.02
+2026-06-06T13:05:08.5101526Z [2026-06-06 13:05:08 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 41, #pending-token: 34852, npu graph: False, input throughput (token/s): 131.84
+2026-06-06T13:05:08.5741625Z [2026-06-06 13:05:08] INFO:     127.0.0.1:54494 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:08.5745404Z [2026-06-06 13:05:08] INFO:     127.0.0.1:55014 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:08.5816357Z 
+2026-06-06T13:05:08.6381547Z [2026-06-06 13:05:08] INFO:     127.0.0.1:55172 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:08.7043452Z [2026-06-06 13:05:08] INFO:     127.0.0.1:55030 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:08.7688266Z   2%|â         | 3/200 [00:52<47:35, 14.50s/it]  [2026-06-06 13:05:08 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 41, #pending-token: 33991, npu graph: False, input throughput (token/s): 990.01
+2026-06-06T13:05:08.8940312Z [2026-06-06 13:05:08 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 40, #pending-token: 34471, npu graph: False, input throughput (token/s): 331.03
+2026-06-06T13:05:08.8954354Z [2026-06-06 13:05:08 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 33951, npu graph: False, input throughput (token/s): 1009.19
+2026-06-06T13:05:08.9580898Z [2026-06-06 13:05:08] INFO:     127.0.0.1:54744 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.0188582Z [2026-06-06 13:05:09] INFO:     127.0.0.1:54984 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.0814865Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55090 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.1428001Z [2026-06-06 13:05:09 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 40, #pending-token: 33942, npu graph: False, input throughput (token/s): 517.80
+2026-06-06T13:05:09.2065018Z [2026-06-06 13:05:09] INFO:     127.0.0.1:54966 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.2068361Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55268 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.2769701Z [2026-06-06 13:05:09 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 39, #pending-token: 33627, npu graph: False, input throughput (token/s): 668.46
+2026-06-06T13:05:09.3503264Z [2026-06-06 13:05:09] INFO:     127.0.0.1:54996 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.4074036Z [2026-06-06 13:05:09 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 40, #pending-token: 33945, npu graph: False, input throughput (token/s): 967.31
+2026-06-06T13:05:09.4752717Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55206 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.4754867Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55310 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.5371786Z [2026-06-06 13:05:09 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33091, npu graph: False, input throughput (token/s): 986.37
+2026-06-06T13:05:09.6014096Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55218 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.6045356Z [2026-06-06 13:05:09] INFO:     127.0.0.1:54566 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.6112254Z 
+2026-06-06T13:05:09.6656586Z   2%|â         | 4/200 [00:54<32:07,  9.84s/it][2026-06-06 13:05:09 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 384, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 38, #pending-token: 32224, npu graph: False, input throughput (token/s): 2989.99
+2026-06-06T13:05:09.7905038Z [2026-06-06 13:05:09 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 41, #pending-token: 35357, npu graph: False, input throughput (token/s): 249.30
+2026-06-06T13:05:09.7910455Z [2026-06-06 13:05:09 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 38, #pending-token: 32198, npu graph: False, input throughput (token/s): 1019.33
+2026-06-06T13:05:09.8506277Z [2026-06-06 13:05:09] INFO:     127.0.0.1:55130 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:09.9755221Z [2026-06-06 13:05:09] INFO:     127.0.0.1:54964 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.0361349Z [2026-06-06 13:05:10 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 40, #pending-token: 34528, npu graph: False, input throughput (token/s): 520.99
+2026-06-06T13:05:10.1599993Z [2026-06-06 13:05:10 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 39, #pending-token: 33665, npu graph: False, input throughput (token/s): 1035.52
+2026-06-06T13:05:10.2199892Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55190 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.3551749Z [2026-06-06 13:05:10 DP1 TP1] Decode batch, #running-req: 24, #token: 5760, token usage: 0.02, accept len: 1.93, accept rate: 0.31, npu graph: False, gen throughput (token/s): 259.42, #queue-req: 39
+2026-06-06T13:05:10.3585674Z [2026-06-06 13:05:10 DP0 TP0] Decode batch, #running-req: 23, #token: 5888, token usage: 0.02, accept len: 2.07, accept rate: 0.36, npu graph: False, gen throughput (token/s): 279.45, #queue-req: 37
+2026-06-06T13:05:10.3586667Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55372 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.4206229Z [2026-06-06 13:05:10 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 37, #pending-token: 31348, npu graph: False, input throughput (token/s): 203.35
+2026-06-06T13:05:10.4858351Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55164 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.4860274Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55298 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.5472572Z [2026-06-06 13:05:10 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 36, #pending-token: 30521, npu graph: False, input throughput (token/s): 1012.79
+2026-06-06T13:05:10.6730149Z [2026-06-06 13:05:10 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 37, #pending-token: 31981, npu graph: False, input throughput (token/s): 498.78
+2026-06-06T13:05:10.7933529Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55226 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.7935425Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55334 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:10.8538036Z [2026-06-06 13:05:10] INFO:     127.0.0.1:55258 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:12.5101041Z [2026-06-06 13:05:12] INFO:     127.0.0.1:55176 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:12.5775095Z [2026-06-06 13:05:12 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 34, #pending-token: 28863, npu graph: False, input throughput (token/s): 126.08
+2026-06-06T13:05:12.7034867Z [2026-06-06 13:05:12 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 35, #pending-token: 30295, npu graph: False, input throughput (token/s): 126.08
+2026-06-06T13:05:12.7674399Z [2026-06-06 13:05:12] INFO:     127.0.0.1:55160 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:12.8275829Z [2026-06-06 13:05:12] INFO:     127.0.0.1:55450 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:12.9596030Z [2026-06-06 13:05:12 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 33, #pending-token: 27997, npu graph: False, input throughput (token/s): 334.95
+2026-06-06T13:05:13.0830147Z [2026-06-06 13:05:13 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 34, #pending-token: 29456, npu graph: False, input throughput (token/s): 337.23
+2026-06-06T13:05:13.2063903Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55150 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.2088083Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55384 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.3514073Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55494 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.4131941Z [2026-06-06 13:05:13 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 32, #pending-token: 27164, npu graph: False, input throughput (token/s): 282.21
+2026-06-06T13:05:13.4163393Z [2026-06-06 13:05:13 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 33, #pending-token: 28589, npu graph: False, input throughput (token/s): 383.98
+2026-06-06T13:05:13.4821876Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55078 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.4845714Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55114 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.5487127Z [2026-06-06 13:05:13 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 32, #pending-token: 27750, npu graph: False, input throughput (token/s): 967.88
+2026-06-06T13:05:13.6801166Z [2026-06-06 13:05:13 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 31, #pending-token: 26325, npu graph: False, input throughput (token/s): 479.63
+2026-06-06T13:05:13.6816582Z [2026-06-06 13:05:13 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 31, #pending-token: 26918, npu graph: False, input throughput (token/s): 962.01
+2026-06-06T13:05:13.8692359Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55286 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.8695838Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55322 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:13.9332213Z [2026-06-06 13:05:13] INFO:     127.0.0.1:55574 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.0019281Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55504 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.0642112Z [2026-06-06 13:05:14 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 29, #pending-token: 24609, npu graph: False, input throughput (token/s): 667.01
+2026-06-06T13:05:14.1945962Z [2026-06-06 13:05:14 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 28, #pending-token: 23751, npu graph: False, input throughput (token/s): 979.35
+2026-06-06T13:05:14.1957238Z [2026-06-06 13:05:14 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 30, #pending-token: 26068, npu graph: False, input throughput (token/s): 248.97
+2026-06-06T13:05:14.2582973Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55440 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.3988872Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55374 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.4018472Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55564 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.4643044Z [2026-06-06 13:05:14 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 27, #pending-token: 22865, npu graph: False, input throughput (token/s): 474.54
+2026-06-06T13:05:14.5377422Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55468 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.6029415Z [2026-06-06 13:05:14 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 29, #pending-token: 25142, npu graph: False, input throughput (token/s): 632.06
+2026-06-06T13:05:14.6030961Z [2026-06-06 13:05:14 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 26, #pending-token: 22031, npu graph: False, input throughput (token/s): 934.89
+2026-06-06T13:05:14.7279941Z [2026-06-06 13:05:14 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 25, #pending-token: 21167, npu graph: False, input throughput (token/s): 1009.51
+2026-06-06T13:05:14.9147205Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55342 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:14.9171767Z [2026-06-06 13:05:14] INFO:     127.0.0.1:55282 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.5911003Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55356 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.6520683Z [2026-06-06 13:05:16 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 24, #pending-token: 20300, npu graph: False, input throughput (token/s): 66.53
+2026-06-06T13:05:16.6522227Z [2026-06-06 13:05:16 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 28, #pending-token: 24224, npu graph: False, input throughput (token/s): 124.79
+2026-06-06T13:05:16.7160607Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55424 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.7855900Z [2026-06-06 13:05:16 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 27, #pending-token: 23390, npu graph: False, input throughput (token/s): 961.16
+2026-06-06T13:05:16.8503344Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55324 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.8506471Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55560 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.8522958Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55626 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.9131553Z [2026-06-06 13:05:16 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 23, #pending-token: 19457, npu graph: False, input throughput (token/s): 490.19
+2026-06-06T13:05:16.9836582Z [2026-06-06 13:05:16] INFO:     127.0.0.1:54796 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:16.9843013Z [2026-06-06 13:05:16] INFO:     127.0.0.1:55336 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.0464184Z [2026-06-06 13:05:17 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 22, #pending-token: 18609, npu graph: False, input throughput (token/s): 969.97
+2026-06-06T13:05:17.0465753Z [2026-06-06 13:05:17 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 25, #pending-token: 21611, npu graph: False, input throughput (token/s): 980.12
+2026-06-06T13:05:17.1139257Z [2026-06-06 13:05:17] INFO:     127.0.0.1:54654 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.1741165Z [2026-06-06 13:05:17 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 21, #pending-token: 17774, npu graph: False, input throughput (token/s): 992.41
+2026-06-06T13:05:17.1765403Z [2026-06-06 13:05:17 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 24, #pending-token: 20744, npu graph: False, input throughput (token/s): 985.18
+2026-06-06T13:05:17.3056562Z [2026-06-06 13:05:17 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 23, #pending-token: 19848, npu graph: False, input throughput (token/s): 992.31
+2026-06-06T13:05:17.3739345Z [2026-06-06 13:05:17] INFO:     127.0.0.1:55122 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.3743131Z [2026-06-06 13:05:17] INFO:     127.0.0.1:54852 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.4371959Z [2026-06-06 13:05:17 DP0 TP0] Decode batch, #running-req: 24, #token: 6016, token usage: 0.03, accept len: 1.97, accept rate: 0.32, npu graph: False, gen throughput (token/s): 262.62, #queue-req: 21
+2026-06-06T13:05:17.4377794Z [2026-06-06 13:05:17 DP1 TP1] Decode batch, #running-req: 24, #token: 6272, token usage: 0.03, accept len: 2.00, accept rate: 0.33, npu graph: False, gen throughput (token/s): 266.14, #queue-req: 23
+2026-06-06T13:05:17.4381188Z [2026-06-06 13:05:17] INFO:     127.0.0.1:55408 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.5058502Z [2026-06-06 13:05:17] INFO:     127.0.0.1:55602 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.5667851Z [2026-06-06 13:05:17 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 19, #pending-token: 16061, npu graph: False, input throughput (token/s): 651.93
+2026-06-06T13:05:17.6972497Z [2026-06-06 13:05:17 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 18, #pending-token: 15241, npu graph: False, input throughput (token/s): 998.69
+2026-06-06T13:05:17.6974023Z [2026-06-06 13:05:17 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 22, #pending-token: 18997, npu graph: False, input throughput (token/s): 327.73
+2026-06-06T13:05:17.7589794Z [2026-06-06 13:05:17] INFO:     127.0.0.1:55064 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.8223984Z [2026-06-06 13:05:17] INFO:     127.0.0.1:54626 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.8912064Z [2026-06-06 13:05:17] INFO:     127.0.0.1:55474 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:17.9550421Z [2026-06-06 13:05:17 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 21, #pending-token: 18132, npu graph: False, input throughput (token/s): 496.30
+2026-06-06T13:05:18.0201805Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55458 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.0229859Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55540 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.0851934Z [2026-06-06 13:05:18 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 384, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 19, #pending-token: 16373, npu graph: False, input throughput (token/s): 2929.59
+2026-06-06T13:05:18.2126292Z [2026-06-06 13:05:18 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 17, #pending-token: 14417, npu graph: False, input throughput (token/s): 247.27
+2026-06-06T13:05:18.2133365Z [2026-06-06 13:05:18 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 18, #pending-token: 15551, npu graph: False, input throughput (token/s): 998.06
+2026-06-06T13:05:18.2758375Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55318 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.4174892Z [2026-06-06 13:05:18] INFO:     127.0.0.1:54578 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.4807329Z [2026-06-06 13:05:18 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 17, #pending-token: 14703, npu graph: False, input throughput (token/s): 478.82
+2026-06-06T13:05:18.5514804Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55400 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.5518493Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55616 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.6149893Z [2026-06-06 13:05:18 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 16, #pending-token: 13854, npu graph: False, input throughput (token/s): 952.95
+2026-06-06T13:05:18.7461659Z [2026-06-06 13:05:18 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 14, #pending-token: 12125, npu graph: False, input throughput (token/s): 1952.10
+2026-06-06T13:05:18.9311694Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55524 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.9314449Z [2026-06-06 13:05:18] INFO:     127.0.0.1:54886 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.9319655Z [2026-06-06 13:05:18] INFO:     127.0.0.1:54724 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:18.9940139Z [2026-06-06 13:05:18] INFO:     127.0.0.1:55554 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:19.1246662Z [2026-06-06 13:05:19 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 13, #pending-token: 11239, npu graph: False, input throughput (token/s): 338.35
+2026-06-06T13:05:19.1251369Z [2026-06-06 13:05:19 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 15, #pending-token: 12670, npu graph: False, input throughput (token/s): 280.52
+2026-06-06T13:05:19.2523698Z [2026-06-06 13:05:19 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 14, #pending-token: 11832, npu graph: False, input throughput (token/s): 1025.20
+2026-06-06T13:05:19.3783962Z [2026-06-06 13:05:19] INFO:     127.0.0.1:54862 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:19.3866781Z [2026-06-06 13:05:19] INFO:     127.0.0.1:55432 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:19.5160024Z [2026-06-06 13:05:19] INFO:     127.0.0.1:55098 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:19.5774908Z [2026-06-06 13:05:19 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 12, #pending-token: 10404, npu graph: False, input throughput (token/s): 282.55
+2026-06-06T13:05:19.5776429Z [2026-06-06 13:05:19 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 13, #pending-token: 10997, npu graph: False, input throughput (token/s): 390.58
+2026-06-06T13:05:19.7042458Z [2026-06-06 13:05:19 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 12, #pending-token: 10155, npu graph: False, input throughput (token/s): 1011.77
+2026-06-06T13:05:19.7670156Z [2026-06-06 13:05:19] INFO:     127.0.0.1:55404 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:19.9539373Z [2026-06-06 13:05:19 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 11, #pending-token: 9326, npu graph: False, input throughput (token/s): 512.71
+2026-06-06T13:05:20.0165867Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54750 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.1423869Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54764 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.2039985Z [2026-06-06 13:05:20 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 10, #pending-token: 8492, npu graph: False, input throughput (token/s): 511.89
+2026-06-06T13:05:20.2689313Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54854 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.3414684Z [2026-06-06 13:05:20 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 9, #pending-token: 7659, npu graph: False, input throughput (token/s): 930.83
+2026-06-06T13:05:20.4055077Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54618 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.4682552Z [2026-06-06 13:05:20 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 8, #pending-token: 6797, npu graph: False, input throughput (token/s): 1010.38
+2026-06-06T13:05:20.5366303Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54650 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.5403943Z [2026-06-06 13:05:20] INFO:     127.0.0.1:55464 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.5406941Z [2026-06-06 13:05:20] INFO:     127.0.0.1:55520 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.6045231Z [2026-06-06 13:05:20 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 11, #pending-token: 9517, npu graph: False, input throughput (token/s): 124.63
+2026-06-06T13:05:20.7331043Z [2026-06-06 13:05:20 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 7, #pending-token: 5968, npu graph: False, input throughput (token/s): 483.24
+2026-06-06T13:05:20.7341329Z [2026-06-06 13:05:20 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 384, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 9, #pending-token: 7758, npu graph: False, input throughput (token/s): 2960.14
+2026-06-06T13:05:20.7963306Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54608 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.7966050Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54582 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.7973410Z [2026-06-06 13:05:20] INFO:     127.0.0.1:55238 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.8607397Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54732 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.8620138Z [2026-06-06 13:05:20] INFO:     127.0.0.1:54528 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:20.9901803Z [2026-06-06 13:05:20 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 8, #pending-token: 6850, npu graph: False, input throughput (token/s): 1000.11
+2026-06-06T13:05:20.9915516Z [2026-06-06 13:05:20 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 5, #pending-token: 4287, npu graph: False, input throughput (token/s): 989.94
+2026-06-06T13:05:21.1183825Z [2026-06-06 13:05:21 DP0 TP0] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.02, #running-req: 22, #queue-req: 3, #pending-token: 2584, npu graph: False, input throughput (token/s): 2020.48
+2026-06-06T13:05:21.3004117Z [2026-06-06 13:05:21 DP0 TP0] Decode batch, #running-req: 24, #token: 6016, token usage: 0.03, accept len: 2.06, accept rate: 0.35, npu graph: False, gen throughput (token/s): 501.94, #queue-req: 3
+2026-06-06T13:05:21.3005461Z [2026-06-06 13:05:21 DP1 TP1] Decode batch, #running-req: 24, #token: 6656, token usage: 0.03, accept len: 1.95, accept rate: 0.32, npu graph: False, gen throughput (token/s): 477.92, #queue-req: 8
+2026-06-06T13:05:21.4351242Z [2026-06-06 13:05:21] INFO:     127.0.0.1:54814 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:21.4979416Z [2026-06-06 13:05:21] INFO:     127.0.0.1:54828 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:21.6252313Z [2026-06-06 13:05:21 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.02, #running-req: 23, #queue-req: 2, #pending-token: 1741, npu graph: False, input throughput (token/s): 252.55
+2026-06-06T13:05:21.7524300Z [2026-06-06 13:05:21 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 1, #pending-token: 852, npu graph: False, input throughput (token/s): 1006.01
+2026-06-06T13:05:21.9358334Z [2026-06-06 13:05:21] INFO:     127.0.0.1:55052 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:21.9979981Z [2026-06-06 13:05:21] INFO:     127.0.0.1:54790 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.0608198Z [2026-06-06 13:05:22] INFO:     127.0.0.1:55592 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.1229918Z [2026-06-06 13:05:22 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 345.41
+2026-06-06T13:05:22.2536146Z [2026-06-06 13:05:22 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 22, #queue-req: 6, #pending-token: 5167, npu graph: False, input throughput (token/s): 202.62
+2026-06-06T13:05:22.3156435Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54920 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.3882423Z [2026-06-06 13:05:22] INFO:     127.0.0.1:55584 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.5180806Z [2026-06-06 13:05:22 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 5, #pending-token: 4254, npu graph: False, input throughput (token/s): 968.06
+2026-06-06T13:05:22.5821029Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54538 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.6458284Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54670 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.6460857Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54510 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.7731404Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54958 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.9001866Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54470 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.9003070Z [2026-06-06 13:05:22] INFO:     127.0.0.1:54806 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:22.9070269Z 
+2026-06-06T13:05:23.0877467Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54574 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.1544252Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54550 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.2800489Z   4%|â         | 9/200 [01:07<15:02,  4.73s/it][2026-06-06 13:05:23 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 4, #pending-token: 3421, npu graph: False, input throughput (token/s): 168.02
+2026-06-06T13:05:23.4177073Z [2026-06-06 13:05:23 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 3, #pending-token: 2576, npu graph: False, input throughput (token/s): 929.19
+2026-06-06T13:05:23.5424914Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54894 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6064125Z [2026-06-06 13:05:23] INFO:     127.0.0.1:55008 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6069825Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54772 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6072911Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54522 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6076032Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54980 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6746988Z [2026-06-06 13:05:23] INFO:     127.0.0.1:54844 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:23.6749173Z [2026-06-06 13:05:23] INFO:     127.0.0.1:55196 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:28.0802336Z [2026-06-06 13:05:28 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 768, token usage: 0.03, #running-req: 23, #queue-req: 2, #pending-token: 1705, npu graph: False, input throughput (token/s): 27.46
+2026-06-06T13:05:28.1512485Z [2026-06-06 13:05:28] INFO:     127.0.0.1:54936 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:28.1515171Z [2026-06-06 13:05:28] INFO:     127.0.0.1:54592 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:28.2135600Z [2026-06-06 13:05:28 DP1 TP1] Prefill batch, #new-seq: 2, #new-token: 256, #cached-token: 1536, token usage: 0.03, #running-req: 21, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 1912.66
+2026-06-06T13:05:30.6476219Z [2026-06-06 13:05:30] INFO:     127.0.0.1:54468 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:30.6545036Z [2026-06-06 13:05:30] INFO:     127.0.0.1:54968 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:30.6549028Z [2026-06-06 13:05:30] INFO:     127.0.0.1:54744 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:33.0723711Z [2026-06-06 13:05:33] INFO:     127.0.0.1:55172 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:33.1425126Z [2026-06-06 13:05:33] INFO:     127.0.0.1:54616 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:33.2039596Z [2026-06-06 13:05:33] INFO:     127.0.0.1:54756 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:33.3421655Z [2026-06-06 13:05:33] INFO:     127.0.0.1:54966 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:38.1518427Z [2026-06-06 13:05:38 DP1 TP1] Decode batch, #running-req: 19, #token: 5888, token usage: 0.02, accept len: 2.04, accept rate: 0.35, npu graph: False, gen throughput (token/s): 110.62, #queue-req: 0
+2026-06-06T13:05:38.1609583Z [2026-06-06 13:05:38 DP0 TP0] Decode batch, #running-req: 9, #token: 3456, token usage: 0.01, accept len: 2.04, accept rate: 0.35, npu graph: False, gen throughput (token/s): 90.21, #queue-req: 0
+2026-06-06T13:05:38.3060175Z [2026-06-06 13:05:38] INFO:     127.0.0.1:54480 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:42.7228754Z [2026-06-06 13:05:42] INFO:     127.0.0.1:54712 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:42.7229452Z [2026-06-06 13:05:42] INFO:     127.0.0.1:54948 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:47.5376720Z [2026-06-06 13:05:47] INFO:     127.0.0.1:54678 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:49.8731279Z [2026-06-06 13:05:49] INFO:     127.0.0.1:54780 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:49.9467585Z [2026-06-06 13:05:49] INFO:     127.0.0.1:54728 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:50.0754593Z [2026-06-06 13:05:50] INFO:     127.0.0.1:54870 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:52.7363151Z [2026-06-06 13:05:52] INFO:     127.0.0.1:54638 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:52.8636198Z [2026-06-06 13:05:52] INFO:     127.0.0.1:55034 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:52.9255441Z [2026-06-06 13:05:52] INFO:     127.0.0.1:54606 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:53.0528079Z [2026-06-06 13:05:53] INFO:     127.0.0.1:55206 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:53.2419699Z [2026-06-06 13:05:53] INFO:     127.0.0.1:55030 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:53.2420308Z [2026-06-06 13:05:53] INFO:     127.0.0.1:54984 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:53.3746954Z [2026-06-06 13:05:53] INFO:     127.0.0.1:55090 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:05:58.6427987Z [2026-06-06 13:05:58] INFO:     127.0.0.1:55218 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:02.9764550Z [2026-06-06 13:06:02 DP1 TP1] Decode batch, #running-req: 9, #token: 3584, token usage: 0.01, accept len: 2.09, accept rate: 0.36, npu graph: False, gen throughput (token/s): 44.03, #queue-req: 0
+2026-06-06T13:06:02.9769170Z [2026-06-06 13:06:02] INFO:     127.0.0.1:54644 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:02.9789662Z [2026-06-06 13:06:02 DP0 TP0] Decode batch, #running-req: 5, #token: 1792, token usage: 0.01, accept len: 1.87, accept rate: 0.29, npu graph: False, gen throughput (token/s): 19.74, #queue-req: 0
+2026-06-06T13:06:02.9792344Z [2026-06-06 13:06:02] INFO:     127.0.0.1:55482 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:02.9897098Z 
+2026-06-06T13:06:07.6783374Z [2026-06-06 13:06:07] INFO:     127.0.0.1:54688 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:07.9889059Z [2026-06-06 13:06:07] INFO:     127.0.0.1:55246 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:10.4284433Z [2026-06-06 13:06:10] INFO:     127.0.0.1:55134 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:15.1682670Z [2026-06-06 13:06:15] INFO:     127.0.0.1:54906 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:19.5882936Z [2026-06-06 13:06:19] INFO:     127.0.0.1:54494 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:19.5883663Z [2026-06-06 13:06:19] INFO:     127.0.0.1:55310 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:19.8810931Z [2026-06-06 13:06:19] INFO:     127.0.0.1:55040 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:20.0125451Z [2026-06-06 13:06:20] INFO:     127.0.0.1:54702 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:20.0127412Z [2026-06-06 13:06:20] INFO:     127.0.0.1:55014 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:20.0170301Z  57%|ââââââ    | 115/200 [01:47<00:48,  1.75it/s]
+2026-06-06T13:06:30.1666292Z  74%|ââââââââ  | 149/200 [02:04<00:28,  1.82it/s][2026-06-06 13:06:30 DP1 TP1] Decode batch, #running-req: 2, #token: 1536, token usage: 0.01, accept len: 2.02, accept rate: 0.34, npu graph: False, gen throughput (token/s): 12.32, #queue-req: 0
+2026-06-06T13:06:34.0302900Z [2026-06-06 13:06:34] INFO:     127.0.0.1:55268 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:34.0350028Z 
+2026-06-06T13:06:39.5343639Z  98%|ââââââââââ| 195/200 [02:18<00:02,  2.18it/s][2026-06-06 13:06:39 DP1 TP1] Decode batch, #running-req: 1, #token: 1152, token usage: 0.00, accept len: 2.37, accept rate: 0.46, npu graph: False, gen throughput (token/s): 17.19, #queue-req: 0
+2026-06-06T13:06:39.5927740Z [2026-06-06 13:06:39] INFO:     127.0.0.1:54996 - "POST /v1/completions HTTP/1.1" 200 OK
+2026-06-06T13:06:39.5979764Z 
+2026-06-06T13:06:39.5985579Z  98%|ââââââââââ| 197/200 [02:24<00:01,  1.96it/s]
+2026-06-06T13:06:39.5986021Z 100%|ââââââââââ| 200/200 [02:24<00:00,  1.39it/s]
+2026-06-06T13:06:39.6000861Z Total latency: 144.031 s
+2026-06-06T13:06:39.6001133Z Score: 0.955
+2026-06-06T13:06:39.6001405Z Output throughput: 168.859 token/s
+2026-06-06T13:06:39.6011130Z [METRIC] gsm8k_score=0.955 labels={"model": "/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B", "eval": "gsm8k"}
+2026-06-06T13:06:39.6014902Z [METRIC] gsm8k_latency=144.03144472837448 labels={"model": "/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B", "eval": "gsm8k"}
+2026-06-06T13:06:39.6015670Z Writing report to /tmp/gsm8k__root_.cache_modelscope_hub_models_Qwen_Qwen3-8B.html
+2026-06-06T13:06:39.6066839Z {'score:std': 0.20730412441627882, 'score': 0.955, 'latency': 144.03144472837448, 'output_throughput': 168.8589602490373}
+2026-06-06T13:06:39.6071176Z Writing results to /tmp/gsm8k__root_.cache_modelscope_hub_models_Qwen_Qwen3-8B.json
+2026-06-06T13:06:39.6174785Z [2026-06-06 13:06:39] INFO:     127.0.0.1:54326 - "GET /server_info HTTP/1.1" 200 OK
+2026-06-06T13:06:39.6369900Z .
+2026-06-06T13:06:39.6370340Z ----------------------------------------------------------------------
+2026-06-06T13:06:39.6370891Z Ran 1 test in 287.096s
+2026-06-06T13:06:39.6371137Z 
+2026-06-06T13:06:39.6371260Z OK
+2026-06-06T13:06:42.1004188Z Finished test case test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_infer_beta_dp_attention.py
+2026-06-06T13:06:42.1026390Z Running test case test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_dp_attention.py
+2026-06-06T13:06:51.4909930Z command=sglang serve --model-path /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B --trust-remote-code --speculative-algorithm EAGLE3 --speculative-num-steps 6 --speculative-eagle-topk 1 --speculative-num-draft-tokens 32 --speculative-draft-model-path /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 --tp-size 2 --dp-size 2 --enable-dp-attention --enable-dp-lm-head --moe-dense-tp-size 1 --attention-backend ascend --disable-cuda-graph --mem-fraction-static 0.7 --cuda-graph-max-bs 64 --device npu --host 127.0.0.1 --port 11000
+2026-06-06T13:06:51.4912681Z CI_OFFLINE: Launching server HF_HUB_OFFLINE=0 model=/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B
+2026-06-06T13:07:00.8165690Z [2026-06-06 13:07:00] get env TORCHINDUCTOR_CACHE_DIR = /tmp/torchinductor_root
+2026-06-06T13:07:01.0485000Z [2026-06-06 13:07:01] get env LD_LIBRARY_PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/cann-9.0.0/lib64:/usr/local/Ascend/cann-9.0.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.0.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.11.15/lib:
+2026-06-06T13:07:01.1591756Z [2026-06-06 13:07:01] DP attention is enabled. The chunked prefill size is adjusted to 4096 to avoid MoE kernel issues. 
+2026-06-06T13:07:01.1631943Z [2026-06-06 13:07:01] Max running requests is reset to 48 for speculative decoding. You can override this by explicitly setting --max-running-requests.
+2026-06-06T13:07:01.1632838Z [2026-06-06 13:07:01] Spec v2 is enabled by default for eagle/eagle3/standalone speculative decoding.
+2026-06-06T13:07:01.1633633Z [2026-06-06 13:07:01] speculative_num_draft_tokens is adjusted to speculative_num_steps + 1 when speculative_eagle_topk == 1
+2026-06-06T13:07:01.1645421Z [2026-06-06 13:07:01] Set soft_watchdog_timeout since in CI
+2026-06-06T13:07:02.4313096Z [2026-06-06 13:07:02] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:07:02.7612874Z [2026-06-06 13:07:02] server_args=ServerArgs(model_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', tokenizer_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', tokenizer_mode='auto', tokenizer_backend='huggingface', tokenizer_worker_num=1, detokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=True, context_length=None, is_embedding=False, prefill_only_disable_kv_cache=False, enable_multimodal=None, revision=None, model_impl='auto', model_config_parser='auto', host='127.0.0.1', port=11000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=False, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, ssl_keyfile=None, ssl_certfile=None, ssl_ca_certs=None, ssl_keyfile_password=None, enable_ssl_refresh=False, enable_http2=False, dtype='auto', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.7, max_running_requests=48, max_queued_requests=None, max_total_tokens=None, chunked_prefill_size=4096, enable_dynamic_chunking=False, max_prefill_tokens=16384, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, disable_priority_preemption=False, default_priority_value=None, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=0.3, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, prefill_delayer_queue_min_ratio=None, prefill_delayer_max_delay_ms=None, device='npu', tp_size=2, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, batch_notify_size=16, stream_response_default_include_usage=False, incremental_streaming_output=False, enable_streaming_session=False, random_seed=1042506536, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=300, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, load_snapshot_publish_interval=15, use_ray=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, grpc_http_sidecar_port=None, enable_mfu_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_forward_pass_metrics=False, forward_pass_metrics_worker_id='', forward_pass_metrics_ipc_name=None, enable_trace=False, trace_modules='request', otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, stat_loggers=None, api_key=None, admin_api_key=None, served_model_name='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, strip_thinking_cache=False, enable_strict_thinking=False, tool_call_parser=None, tool_server=None, sampling_defaults='model', asr_max_buffer_seconds=60, asr_max_concurrent_sessions=32, dp_size=2, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, experts_shared_outer_loras=None, lora_use_virtual_experts=False, lora_strict_loading=False, lora_drain_wait_threshold=0.0, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', radix_cache_backend=None, mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='auto', dsa_prefill_backend=None, dsa_decode_backend=None, dsa_topk_backend='sgl-kernel', disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm='EAGLE3', speculative_draft_model_path='/root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3', speculative_draft_model_revision='main', speculative_draft_load_format=None, speculative_num_steps=6, speculative_eagle_topk=1, speculative_num_draft_tokens=7, speculative_dflash_block_size=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_draft_window_size=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_skip_dp_mlp_sync=False, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_max_trie_depth=18, speculative_ngram_capacity=10000000, speculative_ngram_external_corpus_path=None, speculative_ngram_external_sam_budget=0, speculative_ngram_external_corpus_max_tokens=10000000, enable_multi_layer_eagle=False, speculative_adaptive=False, speculative_adaptive_config=None, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enforce_disable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', deepep_dispatcher_output_dtype='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm=None, init_expert_location='trivial', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=1, elastic_ep_backend=None, enable_elastic_expert_backup=False, mooncake_ib_device=None, enable_deepep_waterfill=False, elastic_ep_rejoin=False, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', hicache_storage_backend=None, hicache_storage_prefetch_policy='timeout', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, enable_lmcache=False, lmcache_config_file=None, kt_weight_path=None, kt_method='AMXINT4', kt_cpuinfer=None, kt_threadpool_count=2, kt_num_gpu_experts=None, kt_max_deferred_experts_per_token=None, dllm_algorithm=None, dllm_algorithm_config=None, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', enable_mis=False, disable_radix_cache=False, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 40, 44, 48, 52, 56, 60, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_breakable_cuda_graph=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, debug_cuda_graph=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, pre_warm_nccl=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=True, enable_dp_attention_local_control_broadcast=False, enable_dp_lm_head=True, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, disable_piecewise_cuda_graph=True, enforce_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=8192, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096, 4608, 5120, 5632, 6144, 6656, 7168, 7680, 8192], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=False, enforce_shared_experts_fusion=False, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, enable_deepseek_v4_fp4_indexer=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, disable_attn_tp_gather=False, gc_threshold=None, kv_canary='none', kv_canary_real_data='none', kv_canary_sweep_interval=0, enable_dsa_prefill_context_parallel=False, dsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_fused_moe_sum_all_reduce=False, enable_prefill_context_parallel=False, prefill_cp_mode='in-seq-split', enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_ib_device=None, disaggregation_decode_enable_radix_cache=False, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, optimistic_prefill_retries=0, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], enable_adaptive_dispatch_to_encoder=False, custom_weight_loader=[], weight_loader_disable_mmap=False, weight_loader_prefetch_checkpoints=False, weight_loader_prefetch_num_threads=4, weight_loader_drop_cache_after_load=False, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, engine_info_bootstrap_port=6789, modelexpress_config=None, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None, enable_quant_communications=False, msprobe_dump_config=None)
+2026-06-06T13:07:03.9234428Z [2026-06-06 13:07:03] Watchdog TokenizerManager initialized.
+2026-06-06T13:07:03.9525853Z [2026-06-06 13:07:03] Using default HuggingFace chat template with detected content format: string
+2026-06-06T13:07:04.0523015Z [2026-06-06 13:07:04] Auto-detected template features: reasoning_config=ReasoningToggleConfig(toggle_param='enable_thinking', default_enabled=True, special_case=None), reasoning_parser=qwen3, tool_call_parser=qwen
+2026-06-06T13:07:13.3895238Z [2026-06-06 13:07:13] Watchdog DetokenizerManager initialized.
+2026-06-06T13:07:22.1015456Z [2026-06-06 13:07:22 DP1 TP1] get env SGLANG_SET_CPU_AFFINITY = 1
+2026-06-06T13:07:22.1210553Z [2026-06-06 13:07:22 DP1 TP1] Process 10090 gpu_id 1 is running on CPUs: [160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319]
+2026-06-06T13:07:22.2273290Z [2026-06-06 13:07:22 DP0 TP0] get env SGLANG_SET_CPU_AFFINITY = 1
+2026-06-06T13:07:22.2472100Z [2026-06-06 13:07:22 DP0 TP0] Process 10089 gpu_id 0 is running on CPUs: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159]
+2026-06-06T13:07:23.3157327Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+2026-06-06T13:07:23.3158711Z     *************************************************************************************************************
+2026-06-06T13:07:23.3159390Z     The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+2026-06-06T13:07:23.3160263Z     The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+2026-06-06T13:07:23.3160980Z     The backend in torch.distributed.init_process_group set to hccl now..
+2026-06-06T13:07:23.3161587Z     The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+2026-06-06T13:07:23.3162216Z     The device parameters have been replaced with npu in the function below:
+2026-06-06T13:07:23.3167024Z     torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+2026-06-06T13:07:23.3171991Z     *************************************************************************************************************
+2026-06-06T13:07:23.3172376Z     
+2026-06-06T13:07:23.3172608Z   warnings.warn(msg, ImportWarning)
+2026-06-06T13:07:23.3173886Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+2026-06-06T13:07:23.3175181Z   warnings.warn(msg, RuntimeWarning)
+2026-06-06T13:07:23.3189686Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+2026-06-06T13:07:23.3190373Z     *************************************************************************************************************
+2026-06-06T13:07:23.3191064Z     The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+2026-06-06T13:07:23.3191956Z     The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+2026-06-06T13:07:23.3192716Z     The backend in torch.distributed.init_process_group set to hccl now..
+2026-06-06T13:07:23.3193341Z     The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+2026-06-06T13:07:23.3194010Z     The device parameters have been replaced with npu in the function below:
+2026-06-06T13:07:23.3199291Z     torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+2026-06-06T13:07:23.3204367Z     *************************************************************************************************************
+2026-06-06T13:07:23.3204739Z     
+2026-06-06T13:07:23.3204945Z   warnings.warn(msg, ImportWarning)
+2026-06-06T13:07:23.3206191Z /usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+2026-06-06T13:07:23.3207459Z   warnings.warn(msg, RuntimeWarning)
+2026-06-06T13:07:23.7320613Z [2026-06-06 13:07:23 DP1 TP1] Failed to load generation config for /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3: /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co//root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3/tree/main' for available files.. Proceeding without generation config.
+2026-06-06T13:07:23.7325683Z [2026-06-06 13:07:23 DP0 TP0] Failed to load generation config for /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3: /root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3 does not appear to have a file named generation_config.json. Checkout 'https://huggingface.co//root/.cache/modelscope/hub/models/Qwen/Qwen3-8B_eagle3/tree/main' for available files.. Proceeding without generation config.
+2026-06-06T13:07:23.7327394Z [2026-06-06 13:07:23 DP1 TP1] Init torch distributed begin.
+2026-06-06T13:07:23.7327795Z [2026-06-06 13:07:23 DP0 TP0] Init torch distributed begin.
+2026-06-06T13:07:24.6585928Z [2026-06-06 13:07:24 DP1 TP1] get env HCCL_BUFFSIZE = 200
+2026-06-06T13:07:24.6652746Z [2026-06-06 13:07:24 DP0 TP0] get env HCCL_BUFFSIZE = 200
+2026-06-06T13:07:25.3887215Z [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:07:25.3887891Z [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:07:25.3976093Z [Gloo] Rank 1 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:07:25.4686037Z [Gloo] Rank 0 is connected to 1 peer ranks. Expected number of connected peer ranks is : 1
+2026-06-06T13:07:25.4753455Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.4767437Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.4779530Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.4791967Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.4804660Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5652022Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5666430Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5680281Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5693565Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5706619Z [Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+2026-06-06T13:07:25.5764795Z [2026-06-06 13:07:25 DP1 TP1] Init torch distributed ends. elapsed=1.84 s, mem usage=0.01 GB
+2026-06-06T13:07:25.5765447Z [2026-06-06 13:07:25 DP0 TP0] Init torch distributed ends. elapsed=1.84 s, mem usage=0.01 GB
+2026-06-06T13:07:25.7545229Z [2026-06-06 13:07:25 DP0 TP0] Ignore import error when loading sglang.srt.models.bailing_moe_linear: No module named 'vllm'
+2026-06-06T13:07:25.7552764Z [2026-06-06 13:07:25 DP0 TP0] Ignore import error when loading sglang.srt.models.bailing_moe_nextn: No module named 'vllm'
+2026-06-06T13:07:25.7568600Z [2026-06-06 13:07:25 DP1 TP1] Ignore import error when loading sglang.srt.models.bailing_moe_linear: No module named 'vllm'
+2026-06-06T13:07:25.7579929Z [2026-06-06 13:07:25 DP1 TP1] Ignore import error when loading sglang.srt.models.bailing_moe_nextn: No module named 'vllm'
+2026-06-06T13:07:25.8426153Z [2026-06-06 13:07:25 DP0 TP0] Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+2026-06-06T13:07:25.8427053Z [2026-06-06 13:07:25 DP0 TP0] Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+2026-06-06T13:07:25.8456839Z [2026-06-06 13:07:25 DP1 TP1] Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+2026-06-06T13:07:25.8471723Z [2026-06-06 13:07:25 DP1 TP1] Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+2026-06-06T13:07:26.6959991Z [2026-06-06 13:07:26 DP0 TP0] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-06-06T13:07:26.8282685Z [2026-06-06 13:07:26 DP0 TP0] Load weight begin. avail mem=60.81 GB
+2026-06-06T13:07:26.8330492Z [2026-06-06 13:07:26 DP1 TP1] Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+2026-06-06T13:07:26.9949702Z [2026-06-06 13:07:26 DP1 TP1] Load weight begin. avail mem=61.11 GB
+2026-06-06T13:07:27.7010921Z 
+2026-06-06T13:07:28.1935096Z Multi-thread loading shards:   0% Completed | 0/5 [00:00<?, ?it/s]
+2026-06-06T13:07:28.7505545Z Multi-thread loading shards:  20% Completed | 1/5 [00:00<00:01,  2.03it/s]
+2026-06-06T13:07:29.2191057Z Multi-thread loading shards:  40% Completed | 2/5 [00:01<00:01,  1.89it/s]
+2026-06-06T13:07:29.6228204Z Multi-thread loading shards:  60% Completed | 3/5 [00:01<00:01,  1.99it/s]
+2026-06-06T13:07:29.9071820Z Multi-thread loading shards:  80% Completed | 4/5 [00:01<00:00,  2.16it/s]
+2026-06-06T13:07:29.9072432Z Multi-thread loading shards: 100% Completed | 5/5 [00:02<00:00,  2.51it/s]
+2026-06-06T13:07:29.9072965Z Multi-thread loading shards: 100% Completed | 5/5 [00:02<00:00,  2.27it/s]
+2026-06-06T13:07:30.1182531Z [2026-06-06 13:07:30 DP0 TP0] Load weight end. elapsed=3.29 s, type=Qwen3ForCausalLM, avail mem=50.59 GB, mem usage=10.22 GB.
+2026-06-06T13:07:30.9300369Z [2026-06-06 13:07:30 DP1 TP1] Load weight end. elapsed=3.96 s, type=Qwen3ForCausalLM, avail mem=50.89 GB, mem usage=10.22 GB.
+2026-06-06T13:07:30.9357820Z [2026-06-06 13:07:30 DP0 TP0] Max concurrent requests (per dp worker) from the finalized token capacity: max_num_reqs=24.
+2026-06-06T13:07:30.9358854Z [2026-06-06 13:07:30 DP1 TP1] Max concurrent requests (per dp worker) from the finalized token capacity: max_num_reqs=24.
+2026-06-06T13:07:34.1298654Z [2026-06-06 13:07:34 DP0 TP0] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 235392, K size: 16.17 GB, V size: 16.17 GB
+2026-06-06T13:07:34.1527934Z [2026-06-06 13:07:34 DP0 TP0] Memory pool end. avail mem=18.23 GB
+2026-06-06T13:07:34.1691606Z [2026-06-06 13:07:34 DP0 TP0] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:07:34.1784202Z [2026-06-06 13:07:34 DP1 TP1] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 235392, K size: 16.17 GB, V size: 16.17 GB
+2026-06-06T13:07:34.2013128Z [2026-06-06 13:07:34 DP1 TP1] Memory pool end. avail mem=18.53 GB
+2026-06-06T13:07:34.2189567Z [2026-06-06 13:07:34 DP1 TP1] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:07:34.8198425Z /sgl-workspace/sglang/python/sglang/srt/utils/common.py:1426: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+2026-06-06T13:07:34.8202818Z   tensor_data = torch.ByteTensor(
+2026-06-06T13:07:34.8928539Z [2026-06-06 13:07:34 DP0 TP0] get env SGLANG_ENABLE_TORCH_COMPILE = 0
+2026-06-06T13:07:34.8943833Z [2026-06-06 13:07:34 DP1 TP1] get env SGLANG_ENABLE_TORCH_COMPILE = 0
+2026-06-06T13:07:34.9122894Z [2026-06-06 13:07:34 DP0 TP0] SPECULATIVE_MOE_RUNNER_BACKEND is not initialized, using auto backend
+2026-06-06T13:07:34.9123594Z [2026-06-06 13:07:34 DP0 TP0] SPECULATIVE_MOE_A2A_BACKEND is not initialized, using none backend
+2026-06-06T13:07:34.9127879Z [2026-06-06 13:07:34 DP0 TP0] Init torch distributed begin.
+2026-06-06T13:07:34.9150142Z [2026-06-06 13:07:34 DP1 TP1] SPECULATIVE_MOE_RUNNER_BACKEND is not initialized, using auto backend
+2026-06-06T13:07:34.9150940Z [2026-06-06 13:07:34 DP1 TP1] SPECULATIVE_MOE_A2A_BACKEND is not initialized, using none backend
+2026-06-06T13:07:34.9158274Z [2026-06-06 13:07:34 DP1 TP1] Init torch distributed begin.
+2026-06-06T13:07:34.9192070Z [2026-06-06 13:07:34 DP0 TP0] Init torch distributed ends. elapsed=0.01 s, mem usage=0.00 GB
+2026-06-06T13:07:34.9192793Z [2026-06-06 13:07:34 DP1 TP1] Init torch distributed ends. elapsed=0.00 s, mem usage=0.00 GB
+2026-06-06T13:07:34.9204100Z [2026-06-06 13:07:34 DP1 TP1] Load weight begin. avail mem=18.53 GB
+2026-06-06T13:07:34.9209480Z [2026-06-06 13:07:34 DP0 TP0] Load weight begin. avail mem=18.23 GB
+2026-06-06T13:07:35.1481325Z 
+2026-06-06T13:07:35.3262501Z Multi-thread loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s][2026-06-06 13:07:35 DP1 TP1] Load weight end. elapsed=0.41 s, type=LlamaForCausalLMEagle3, avail mem=16.55 GB, mem usage=1.97 GB.
+2026-06-06T13:07:35.3492007Z 
+2026-06-06T13:07:35.3493357Z Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.88it/s]
+2026-06-06T13:07:35.3494226Z Multi-thread loading pt checkpoint shards: 100% Completed | 1/1 [00:00<00:00,  4.88it/s]
+2026-06-06T13:07:35.3812344Z [2026-06-06 13:07:35 DP1 TP1] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 235392, K size: 0.45 GB, V size: 0.45 GB
+2026-06-06T13:07:35.3823576Z [2026-06-06 13:07:35 DP1 TP1] Memory pool end. avail mem=15.66 GB
+2026-06-06T13:07:35.3876446Z [2026-06-06 13:07:35 DP1 TP1] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:07:35.3961233Z [2026-06-06 13:07:35 DP0 TP0] Load weight end. elapsed=0.48 s, type=LlamaForCausalLMEagle3, avail mem=16.26 GB, mem usage=1.97 GB.
+2026-06-06T13:07:35.4608272Z [2026-06-06 13:07:35 DP0 TP0] KV Cache is allocated. dtype: torch.bfloat16, #tokens: 235392, K size: 0.45 GB, V size: 0.45 GB
+2026-06-06T13:07:35.4616426Z [2026-06-06 13:07:35 DP0 TP0] Memory pool end. avail mem=15.36 GB
+2026-06-06T13:07:35.4692022Z [2026-06-06 13:07:35 DP0 TP0] Disable piecewise CUDA graph because --disable-piecewise-cuda-graph is set
+2026-06-06T13:07:36.9506821Z [2026-06-06 13:07:36 DP0 TP0] get env SGLANG_ENABLE_OVERLAP_PLAN_STREAM = 1
+2026-06-06T13:07:36.9507985Z [2026-06-06 13:07:36 DP0 TP0] max_total_num_tokens=235392, chunked_prefill_size=4096, max_prefill_tokens=16384, max_running_requests=24, context_len=40960, available_gpu_mem=16.47 GB
+2026-06-06T13:07:36.9509886Z [2026-06-06 13:07:36 DP0 TP0] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+2026-06-06T13:07:36.9510867Z [2026-06-06 13:07:36 DP1 TP1] get env SGLANG_ENABLE_OVERLAP_PLAN_STREAM = 1
+2026-06-06T13:07:36.9512069Z [2026-06-06 13:07:36 DP1 TP1] Tree cache initialized: source=default impl=RadixCache hybrid_swa=False hybrid_ssm=False hierarchical=False streaming_wrapped=False
+2026-06-06T13:07:37.4953258Z [2026-06-06 13:07:37 DP0 TP0] DEEPEP_MODE is not initialized, using auto mode
+2026-06-06T13:07:37.4953923Z [2026-06-06 13:07:37 DP1 TP1] DEEPEP_MODE is not initialized, using auto mode
+2026-06-06T13:07:37.4988040Z [2026-06-06 13:07:37] Watchdog DataParallelController initialized.
+2026-06-06T13:07:37.5077653Z [2026-06-06 13:07:37] INFO:     Started server process [9641]
+2026-06-06T13:07:37.5078358Z [2026-06-06 13:07:37] INFO:     Waiting for application startup.
+2026-06-06T13:07:37.5080142Z [2026-06-06 13:07:37] Using default chat sampling params from model generation config: {'temperature': 0.6, 'top_k': 20, 'top_p': 0.95}
+2026-06-06T13:07:37.5278809Z [2026-06-06 13:07:37] INFO:     Application startup complete.
+2026-06-06T13:07:37.5358845Z [2026-06-06 13:07:37] INFO:     Uvicorn running on http://127.0.0.1:11000 (Press CTRL+C to quit)
+2026-06-06T13:07:38.5339344Z [2026-06-06 13:07:38] INFO:     127.0.0.1:47620 - "GET /model_info HTTP/1.1" 200 OK
+2026-06-06T13:07:38.6862266Z [2026-06-06 13:07:38 DP0 TP0] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:07:38.6919261Z [2026-06-06 13:07:38 DP1 TP1] get env HOSTNAME = linux-aarch64-a3-2-xt6zn-runner-7x958-workflow
+2026-06-06T13:07:40.3122081Z [2026-06-06 13:07:40 DP1 TP1] TBO_TOKEN_DISTRIBUTION_THRESHOLD is not initialized, using 0.48
+2026-06-06T13:07:40.3534339Z [2026-06-06 13:07:40 DP0 TP0] TBO_TOKEN_DISTRIBUTION_THRESHOLD is not initialized, using 0.48
+2026-06-06T13:07:41.5057031Z [2026-06-06 13:07:41] INFO:     127.0.0.1:45426 - "GET /health_generate HTTP/1.1" 503 Service Unavailable
+2026-06-06T13:07:44.8321330Z [rank1]:[W606 13:07:44.514897493 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_assert_async' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+2026-06-06T13:07:44.8333848Z [rank0]:[W606 13:07:44.516694361 VariableFallbackKernel.cpp:250] Warning: CAUTION: The operator 'aten::_assert_async' is not currently supported on the NPU backend and will fall back to run on the CPU. This may have performance implications. (function npu_cpu_fallback)
+2026-06-06T13:07:48.8377472Z [2026-06-06 13:07:48 DP1 TP1] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 10.77
+2026-06-06T13:07:49.0431915Z [2026-06-06 13:07:49 DP0 TP0] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, #pending-token: 0, npu graph: False, input throughput (token/s): 10.58
+2026-06-06T13:07:49.3330012Z [2026-06-06 13:07:49] INFO:     127.0.0.1:47622 - "POST /generate HTTP/1.1" 200 OK
+2026-06-06T13:07:49.3348556Z [2026-06-06 13:07:49] The server is fired up and ready to roll!
+2026-06-06T13:08:11.5111860Z [2026-06-06 13:08:11] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:07:51. last_heartbeat time: 13:07:49
+2026-06-06T13:08:26.5202079Z [2026-06-06 13:08:26] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:08:06. last_heartbeat time: 13:07:49
+2026-06-06T13:08:41.5225985Z [2026-06-06 13:08:41] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:08:21. last_heartbeat time: 13:07:49
+2026-06-06T13:08:56.5264684Z [2026-06-06 13:08:56] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:08:36. last_heartbeat time: 13:07:49
+2026-06-06T13:09:11.5291122Z [2026-06-06 13:09:11] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:08:51. last_heartbeat time: 13:07:49
+2026-06-06T13:09:27.5320403Z [2026-06-06 13:09:27] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:09:06. last_heartbeat time: 13:07:49
+2026-06-06T13:09:41.5385875Z [2026-06-06 13:09:41] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:09:21. last_heartbeat time: 13:07:49
+2026-06-06T13:09:56.5405269Z [2026-06-06 13:09:56] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:09:36. last_heartbeat time: 13:07:49
+2026-06-06T13:10:11.5461204Z [2026-06-06 13:10:11] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:09:51. last_heartbeat time: 13:07:49
+2026-06-06T13:10:26.5499771Z [2026-06-06 13:10:26] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:10:06. last_heartbeat time: 13:07:49
+2026-06-06T13:10:41.5553509Z [2026-06-06 13:10:41] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:10:21. last_heartbeat time: 13:07:49
+2026-06-06T13:10:56.5702755Z [2026-06-06 13:10:56] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:10:36. last_heartbeat time: 13:07:49
+2026-06-06T13:11:11.5663043Z [2026-06-06 13:11:11] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:10:51. last_heartbeat time: 13:07:49
+2026-06-06T13:11:26.5660692Z [2026-06-06 13:11:26] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:11:06. last_heartbeat time: 13:07:49
+2026-06-06T13:11:31.8909563Z [2026-06-06 13:11:31 DP0 TP0] Scheduler hit an exception: Traceback (most recent call last):
+2026-06-06T13:11:31.8910434Z   File "/sgl-workspace/sglang/python/sglang/srt/managers/scheduler.py", line 4017, in run_scheduler_process
+2026-06-06T13:11:31.8911065Z     scheduler.run_event_loop()
+2026-06-06T13:11:31.8911591Z   File "/sgl-workspace/sglang/python/sglang/srt/managers/scheduler.py", line 1423, in run_event_loop
+2026-06-06T13:11:31.8912171Z     dispatch_event_loop(self)
+2026-06-06T13:11:31.8912713Z   File "/sgl-workspace/sglang/python/sglang/srt/managers/scheduler.py", line 3882, in dispatch_event_loop
+2026-06-06T13:11:31.8913297Z     scheduler.event_loop_overlap()
+2026-06-06T13:11:31.8913902Z   File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+2026-06-06T13:11:31.8914527Z     return func(*args, **kwargs)
+2026-06-06T13:11:31.8914841Z            ^^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8915366Z   File "/sgl-workspace/sglang/python/sglang/srt/managers/scheduler.py", line 1487, in event_loop_overlap
+2026-06-06T13:11:31.8915963Z     batch_result = self.run_batch(batch)
+2026-06-06T13:11:31.8916270Z                    ^^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8916769Z   File "/sgl-workspace/sglang/python/sglang/srt/managers/scheduler.py", line 3023, in run_batch
+2026-06-06T13:11:31.8917382Z     batch_result = self.model_worker.forward_batch_generation(
+2026-06-06T13:11:31.8917793Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8918505Z   File "/sgl-workspace/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 937, in forward_batch_generation
+2026-06-06T13:11:31.8919162Z     self.draft_worker._draft_extend_for_prefill(
+2026-06-06T13:11:31.8919818Z   File "/sgl-workspace/sglang/python/sglang/srt/speculative/eagle_worker_v2.py", line 665, in _draft_extend_for_prefill
+2026-06-06T13:11:31.8920533Z     forward_batch = ForwardBatch.init_new(batch, self.draft_runner)
+2026-06-06T13:11:31.8920971Z                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8922064Z   File "/sgl-workspace/sglang/python/sglang/srt/model_executor/forward_batch_info.py", line 718, in init_new
+2026-06-06T13:11:31.8922682Z     ).to(device, non_blocking=True)
+2026-06-06T13:11:31.8923222Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8923808Z   File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py", line 183, in decorated
+2026-06-06T13:11:31.8924431Z     return fn(*args, **kwargs)
+2026-06-06T13:11:31.8924706Z            ^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:31.8925389Z RuntimeError: The Inner error is reported as above. The process exits for this inner error, and the current copy params are srclen=16, dstlen=16, kind=1.
+2026-06-06T13:11:31.8926645Z Since the operator is called asynchronously, the stacktrace may be inaccurate. If you want to get the accurate stacktrace, please set the environment variable ASCEND_LAUNCH_BLOCKING=1.
+2026-06-06T13:11:31.8928005Z Note: ASCEND_LAUNCH_BLOCKING=1 will force ops to run in synchronous mode, resulting in performance degradation. Please unset ASCEND_LAUNCH_BLOCKING in time after debugging.
+2026-06-06T13:11:31.8928979Z [ERROR] 2026-06-06-13:11:31 (PID:10089, Device:0, RankID:-1) ERR00100 PTA call acl api failed.
+2026-06-06T13:11:31.8931003Z [PID: 10089] 2026-06-06-13:11:31.870.519 Communication_Error_Timeout(EI0002): An timeout occurs when the Notify register waits for execution. Waiting peer end: 4294967295; task information: streamID:[50], taskID[3029], taskType[Notify Wait], tag[AllReduce_group_name_3ringAllReduceRingFor91093Executor_device], AlgType(level 0-1-2):[ring-ring-NHR].; communication operator information: notify id:[0x0000000000000aa9], stage:[0], remote rank:[local]
+2026-06-06T13:11:31.8932848Z there are(is) 1 abnormal device(s):
+2026-06-06T13:11:31.8933811Z 	[TaskExecStage][HeartbeatAbnormal]Cluster Exception Location[IP/ID]:[10.0.0.213/1], Arrival Time:[Sat Jun  6 13:09:55 2026], ExceptionType:[Stuck Occurred], Possible Reason:1.Host process is stuck, 2.Device task is stuck
+2026-06-06T13:11:31.8934763Z ; communicator: .
+2026-06-06T13:11:31.8936765Z         Possible Cause: 1. An exception occurs during the execution on some NPUs in the cluster. As a result, collective communication operation failed.2. The execution speed on some NPU in the cluster is too slow to complete a communication operation within the timeout interval. (The default timeout interval is 1800s, You can set the interval by using HCCL_EXEC_TIMEOUT.)3. The number of training samples of each NPU is inconsistent.4. Packet loss or other connectivity problems occur on the communication link.
+2026-06-06T13:11:31.8941395Z         Solution: 1. If this error is reported on part of these ranks, check other ranks to see whether other errors have been reported earlier.2. If this error is reported for all ranks, check whether the error reporting time is consistent (the maximum difference must not exceed 1800s). If not, locate the cause or set the HCCL_EXEC_TIMEOUT environment variable to a larger value. 3. Ensure that the number of training samples of each NPU is consistent. 4. Check whether the completion queue element (CQE) of the error exists in the plog(grep -rn 'error cqe'). If so, check the network connection status. For details about the troubleshooting method, search for the keyword "EI0002" on https://www.hiascend.com/en/document/.
+2026-06-06T13:11:31.8944235Z         TraceBack (most recent call last):
+2026-06-06T13:11:31.8945361Z         The error from device(chipId:0, dieId:0), serial number is 1, notify wait timeout occurred during task execution, stream_id:50, sq_id:50, task_id:3029, notify_id=2729, timeout=200s.[FUNC:ProcessStarsWaitTimeoutErrorInfo][FILE:device_error_proc.cc][LINE:1587]
+2026-06-06T13:11:31.8946781Z         Error task from the device stream.[FUNC:ProcessStarsWaitTimeoutErrorInfo][FILE:device_error_proc.cc][LINE:1602]
+2026-06-06T13:11:31.8948327Z         The error from device(chipId:0, dieId:0), serial number is 2, notify wait timeout occurred during task execution, stream_id:90, sq_id:90, task_id:8575, notify_id=2843, timeout=200s.[FUNC:ProcessStarsWaitTimeoutErrorInfo][FILE:device_error_proc.cc][LINE:1587]
+2026-06-06T13:11:31.8950277Z         The error from device(chipId:0, dieId:0), serial number is 3, notify wait timeout occurred during task execution, stream_id:35, sq_id:14, task_id:1262, notify_id=2845, timeout=227s.[FUNC:ProcessStarsWaitTimeoutErrorInfo][FILE:device_error_proc.cc][LINE:1587]
+2026-06-06T13:11:31.8952756Z         An timeout occurs when the Notify register waits for execution. Waiting peer end: 4294967295; task information: streamID:[50], taskID[3029], taskType[Notify Wait], tag[AllReduce_group_name_3ringAllReduceRingFor91093Executor_device], AlgType(level 0-1-2):[ring-ring-NHR].; communication operator information: notify id:[0x0000000000000aa9], stage:[0], remote rank:[local]
+2026-06-06T13:11:31.8954321Z there are(is) 1 abnormal device(s):
+2026-06-06T13:11:31.8955264Z 	[TaskExecStage][HeartbeatAbnormal]Cluster Exception Location[IP/ID]:[10.0.0.213/1], Arrival Time:[Sat Jun  6 13:09:55 2026], ExceptionType:[Stuck Occurred], Possible Reason:1.Host process is stuck, 2.Device task is stuck
+2026-06-06T13:11:31.8956217Z ; communicator: .
+2026-06-06T13:11:31.8956768Z         rtMemcpyAsync execution failed, reason=tsfw unknown error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:65]
+2026-06-06T13:11:31.8957697Z         [Call][Rts]call rts api [rtMemcpyAsync] failed, retCode is 507001[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+2026-06-06T13:11:31.8958357Z 
+2026-06-06T13:11:31.8958361Z 
+2026-06-06T13:11:31.8958691Z [rank0]:[W606 13:11:31.575655553 NPUStream.cpp:596] Warning: NPU warning, error code is 507001[Error]: 
+2026-06-06T13:11:31.8959330Z [Error]: An internal error occurs in the task scheduler module on the device. 
+2026-06-06T13:11:31.8959878Z         Rectify the fault based on the error information in the ascend log.
+2026-06-06T13:11:31.8960286Z EE9999: Inner Error!
+2026-06-06T13:11:31.8961100Z EE9999[PID: 10089] 2026-06-06-13:11:31.890.886 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=tsfw unknown error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:65]
+2026-06-06T13:11:31.8961980Z         TraceBack (most recent call last):
+2026-06-06T13:11:31.8962585Z        wait for compute device to finish failed, runtime result = 507001.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+2026-06-06T13:11:31.8963221Z  (function npuSynchronizeUsedDevices)
+2026-06-06T13:11:31.8963703Z [W606 13:11:31.578146258 NPUStream.cpp:578] Warning: NPU warning, error code is 507001[Error]: 
+2026-06-06T13:11:31.8964314Z [Error]: An internal error occurs in the task scheduler module on the device. 
+2026-06-06T13:11:31.8964860Z         Rectify the fault based on the error information in the ascend log.
+2026-06-06T13:11:31.8965264Z EE9999: Inner Error!
+2026-06-06T13:11:31.8966072Z EE9999[PID: 10089] 2026-06-06-13:11:31.893.633 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=tsfw unknown error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:65]
+2026-06-06T13:11:31.8966970Z         TraceBack (most recent call last):
+2026-06-06T13:11:31.8967575Z        wait for compute device to finish failed, runtime result = 507001.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+2026-06-06T13:11:31.8968196Z  (function npuSynchronizeDevice)
+2026-06-06T13:11:31.8968666Z [W606 13:11:31.579786635 NPUStream.cpp:578] Warning: NPU warning, error code is 507001[Error]: 
+2026-06-06T13:11:31.8969287Z [Error]: An internal error occurs in the task scheduler module on the device. 
+2026-06-06T13:11:31.8969830Z         Rectify the fault based on the error information in the ascend log.
+2026-06-06T13:11:31.8970239Z EE9999: Inner Error!
+2026-06-06T13:11:31.8971043Z EE9999[PID: 10089] 2026-06-06-13:11:31.895.403 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=tsfw unknown error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:65]
+2026-06-06T13:11:31.8971916Z         TraceBack (most recent call last):
+2026-06-06T13:11:31.8972739Z        wait for compute device to finish failed, runtime result = 507001.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+2026-06-06T13:11:31.8973371Z  (function npuSynchronizeDevice)
+2026-06-06T13:11:31.9174118Z [W606 13:11:31.600791218 NPUStream.cpp:578] Warning: NPU warning, error code is 507001[Error]: 
+2026-06-06T13:11:31.9174733Z [Error]: An internal error occurs in the task scheduler module on the device. 
+2026-06-06T13:11:31.9175290Z         Rectify the fault based on the error information in the ascend log.
+2026-06-06T13:11:31.9175701Z EE9999: Inner Error!
+2026-06-06T13:11:31.9176507Z EE9999[PID: 10089] 2026-06-06-13:11:31.916.399 (EE9999):  rtDeviceSynchronizeWithTimeout execution failed, reason=tsfw unknown error[FUNC:FuncErrorReason][FILE:error_message_manage.cc][LINE:65]
+2026-06-06T13:11:31.9177385Z         TraceBack (most recent call last):
+2026-06-06T13:11:31.9177982Z        wait for compute device to finish failed, runtime result = 507001.[FUNC:ReportCallError][FILE:log_inner.cpp][LINE:148]
+2026-06-06T13:11:31.9178607Z  (function npuSynchronizeDevice)
+2026-06-06T13:11:32.5316265Z [2026-06-06 13:11:32] Subprocess scheduler_0 (pid=9793) crashed with exit code -3. Triggering SIGQUIT for cleanup...
+2026-06-06T13:11:32.5317071Z [2026-06-06 13:11:32] SIGQUIT received. signum=None, frame=None. It usually means one child failed.
+2026-06-06T13:11:32.5317760Z [2026-06-06 13:11:32] Sleeping 5 seconds before crash diagnostics to let GPU activity settle.
+2026-06-06T13:11:37.5378034Z [2026-06-06 13:11:37] No live scheduler processes found; skipping py-spy and CUDA coredump.
+2026-06-06T13:11:37.5378810Z [2026-06-06 13:11:37] kill_process_tree called: parent_pid=9641, include_parent=True, pid=9641
+2026-06-06T13:11:47.5509802Z E
+2026-06-06T13:11:47.5510167Z ======================================================================
+2026-06-06T13:11:47.5510674Z ERROR: setUpClass (__main__.TestNpuEAGLE3EngineDPAttention)
+2026-06-06T13:11:47.5511141Z ----------------------------------------------------------------------
+2026-06-06T13:11:47.5511565Z Traceback (most recent call last):
+2026-06-06T13:11:47.5512080Z   File "/sgl-workspace/sglang/python/sglang/test/test_utils.py", line 2188, in safe_setUpClass
+2026-06-06T13:11:47.5512603Z     orig_func(klass)
+2026-06-06T13:11:47.5513315Z   File "/__w/sglang/sglang/test/registered/ascend/basic_function/speculative_inference/GENERATED_20260606/test_npu_eagle_dp_attention.py", line 80, in setUpClass
+2026-06-06T13:11:47.5514109Z     cls.process = popen_launch_server(
+2026-06-06T13:11:47.5514409Z                   ^^^^^^^^^^^^^^^^^^^^
+2026-06-06T13:11:47.5514925Z   File "/sgl-workspace/sglang/python/sglang/test/test_utils.py", line 1027, in popen_launch_server
+2026-06-06T13:11:47.5515563Z     raise Exception(error_msg + ". Check server logs for errors.")
+2026-06-06T13:11:47.5516096Z Exception: Server process exited with code -9. Check server logs for errors.
+2026-06-06T13:11:47.5516449Z 
+2026-06-06T13:11:47.5516620Z ----------------------------------------------------------------------
+2026-06-06T13:11:47.5517012Z Ran 0 tests in 296.696s
+2026-06-06T13:11:47.5517166Z 
+2026-06-06T13:11:47.5517266Z FAILED (errors=1)
+2026-06-06T13:11:50.0821694Z ##[error]Error: failed to run script step: Error: command terminated with non-zero exit code: command terminated with exit code 1
+2026-06-06T13:11:50.1079875Z ##[error]Process completed with exit code 1.
+2026-06-06T13:11:50.1231276Z ##[error]Executing the custom container implementation failed. Please contact your self hosted runner administrator.
+2026-06-06T13:11:50.1736555Z Post job cleanup.
+2026-06-06T13:11:50.1765701Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:11:50.1766687Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:11:50.1766997Z ##[endgroup]
+2026-06-06T13:11:50.6448352Z (node:625) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-06-06T13:11:50.6449383Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-06-06T13:11:51.3755652Z [command]/usr/bin/git version
+2026-06-06T13:11:51.3800169Z git version 2.34.1
+2026-06-06T13:11:51.3833749Z Copying '/root/.gitconfig' to '/__w/_temp/ea096e11-2a1d-4741-a766-f106fa3ed662/.gitconfig'
+2026-06-06T13:11:51.3844588Z Temporarily overriding HOME='/__w/_temp/ea096e11-2a1d-4741-a766-f106fa3ed662' before making global git config changes
+2026-06-06T13:11:51.3845587Z Adding repository directory to the temporary git global config as a safe directory
+2026-06-06T13:11:51.3848452Z [command]/usr/bin/git config --global --add safe.directory /__w/sglang/sglang
+2026-06-06T13:11:51.3890310Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-06-06T13:11:51.3929867Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-06-06T13:11:51.4293358Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-06-06T13:11:51.4319894Z http.https://github.com/.extraheader
+2026-06-06T13:11:51.4332878Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-06-06T13:11:51.4370485Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-06-06T13:11:51.4715387Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-06-06T13:11:51.4753843Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-06-06T13:11:51.9640247Z ##[group]Run '/home/runner/k8s/index.js'
+2026-06-06T13:11:51.9641326Z shell: /home/runner/externals/node20/bin/node {0}
+2026-06-06T13:11:51.9641647Z ##[endgroup]
+2026-06-06T13:11:52.5250363Z Cleaning up orphan processes
+2026-06-06T13:11:52.5294133Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@v4. Actions will be forced to run with Node.js 24 by default starting June 16th, 2026. Node.js 20 will be removed from the runner on September 16th, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
