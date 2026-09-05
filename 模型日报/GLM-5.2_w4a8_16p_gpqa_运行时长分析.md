@@ -55,10 +55,10 @@
 - decode 侧其实不慢：NEXTN 投机解码 `accept rate avg 0.796`（0.25~1.0），单 DP 组 `gen throughput avg 161.4 tok/s`，单请求折算 `43.08 tok/s`。
 - 35123 / 43 ≈ 817s，与 `Avg Lat = 815.28 s` 完全吻合——**慢的根子是“每题要写 3.5 万 token”，不是生成速度**。
 
-### 3.3 TTFT 122s 异常（排队，不是 prefill 慢）
-- 输入仅 `Avg In = 270 token`，但 `TTFT = 122.23 s`。
-- prefill 原始吞吐不低：`input throughput avg 392 tok/s`（峰值 3.4 万 tok/s）。
-- 结合 `context-length 135000 / chunked-prefill 65536 / max-prefill 280000` 与长 decode，长输出序列长期占满 decode 槽，新请求 prefill 在队列里被饿死，把 TTFT 抬到 2 分钟。
+### 3.3 TTFT 122s 异常（两节点 deepep 部署下的首 token 慢）
+- 输入仅 `Avg In = 270 token`，但 `TTFT = 122.23 s`（~122s），在两节点（`--tp-size 32`、每节点 16 NPU）+ `deepep` MoE 后端部署下首 token 明显偏慢。
+- 但 prefill 原始吞吐并不低：`input throughput avg 392 tok/s`（峰值 3.4 万 tok/s）。
+- 因此这 122s 的根因更偏向**排队/调度饿死**而非单纯 prefill 计算慢：`context-length 135000 / chunked-prefill 65536 / max-prefill 280000` 配合长 decode，长输出序列长期占满 decode 槽，新请求 prefill 在队列里被饿死，把 TTFT 抬到 2 分钟。
 
 ## 4. 关键日志证据
 
@@ -74,7 +74,7 @@
 
 1. 【最高优先级 · 正确性】先修精度：定位 `reasoning-parser=glm45` 的答案提取与 65536-token 长输出下的截断/格式问题，先跑 20 题小样本验证 score 回升，再全量，不要靠重试硬扛。
 2. 【止损】在评测基类 `test_npu_accuracy_utils.py` 增加“首轮严重不达标（如 <0.5）直接 fail、不重试”，或限制重试轮次，避免单轮 1.5h × 2 的必然超时。
-3. 【调度】压 TTFT：`chunked-prefill-size` 从 65536 调小、`max-prefill-tokens` 下调、`max-running-requests` 适当上调，减少 prefill 排队饿死。
-4. 【输出长度】若评测目标是正确率而非长文本生成，可下调 `max_tokens`/`temperature`（不改投机与量化等要求项），直接砍掉 3.5 万 token/题的主因。
+3. 【调度】压 TTFT：`chunked-prefill-size` 从 65536 调小、`max-prefill-tokens` 下调、`max-running-requests` 适当上调，减少 prefill 排队饿死；也可增加并行度/节点数（如拆 TP 或加节点）摊薄长上下文 prefill 压力。
+4. 【输出长度】若评测目标是正确率而非长文本生成，可下调 `max_tokens`/`temperature`，或改用更短的评测模板/prompt（不改投机与量化等要求项），直接砍掉 3.5 万 token/题的主因。
 5. 【元数据】`register_npu_ci(est_time=3600)` 与实际 1.5h/轮、可能 2 轮严重不符，建议上调到 ≥7200，给调度与超时留余量。
 6. 【基础设施】权重加载 217s（96 shards）相对可控，可继续通过镜像预热/节点本地缓存压缩；pod 5.5min 调度等待可通过资源预占缓解。
