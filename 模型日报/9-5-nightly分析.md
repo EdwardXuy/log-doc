@@ -8,11 +8,11 @@
 - kimi_k3：执行通过，实测精度 0.9293（低于基线 0.935）。较 9/4 的 0.9444 有所下降，仍在基线附近波动。
 - glm_5_2：评测已完成（精度 0.5657，远低于基线 0.912），但用例最终报 "Monitoring ended but target pattern was not detected"（monitor_pod_logs 未检测到目标 pattern），标记失败。精度与 9/2（0.5303）、8/27（0.4949）同量级，精度问题未修复。
 - DSV4-Flash 性能 8p_in32k / 8p_in8k：段错误（SIGSEGV）`aclnnQuantLightningIndexerGetWorkspaceSize`，即 npu_quant_lightning_indexer 段错误，与 9/4 同源（zbal 问题），未修复。
-- DSV4-Flash 精度 8p_gpqa：server 启动时段错误（SIGSEGV）——CUDA graph 捕获阶段调用 DSV4 indexer 自定义算子（`ascend_dsv4_backend.py _forward_npu_fused → forward_c4_indexer`）时崩溃，server 进程退出（code -9），setUpClass 失败。与 9/4 的 indexer/量化段错误同一类问题。
-- DSV4-Flash 性能 1p1d_16p（多节点 PD 分离）：decode 侧 pod 提前退出（status: Succeeded），monitor_pod_logs 未检测到就绪 pattern，server 未就绪，与 9/4 表现一致。
+- DSV4-Flash 精度 8p_gpqa：server 启动过程段错误（SIGSEGV）——崩溃点在 CUDA graph 捕获阶段调用 DSV4 c4 indexer 前向（`ascend_dsv4_backend.py _forward_npu_fused → _forward_indexer → forward_c4_indexer`），server 进程退出（code -9），setUpClass 失败。崩溃点与 9/4 的 `aclnnQuantLightningIndexerGetWorkspaceSize`（量化 lightning indexer workspace 计算）不同，是否同一根因待确认。
+- DSV4-Flash 性能 1p1d_16p（多节点 PD 分离）：prefill 节点已就绪，但 decode 节点 server 进程提前干净退出（pod 状态 Succeeded），monitor_pod_logs 未检测到就绪 pattern。与 9/4 同现象（decode pod 干净退出、非段错误），与 9/1 的 npu_quant_lightning_indexer 段错误不同；decode 退出根因需拉 pod 日志定位。
 
 ## 三、结论
-- DSV4-Flash 的段错误（zbal / npu_quant_lightning_indexer）连续多日未修复，性能与精度用例均持续失败，需跟进开发定位 zbal。
+- DSV4-Flash 持续失败但根因并不单一：8p_in32k / 8p_in8k 性能连日为 `aclnnQuantLightningIndexerGetWorkspaceSize` 段错误（zbal），未修复；8p_gpqa 精度 9/5 的崩溃点（c4 indexer 前向，CUDA graph 捕获）与 9/4（aclnnQuant workspace 计算）不同；1p1d_16p 多节点则为 decode pod 干净退出（非段错误），根因待定位。需分别跟进，不能一概归为同一段错误。
 - GLM5.2 精度长期远低于基线（0.49~0.57 vs 0.912），且本次监控逻辑判失败，精度本身未见改善。
 - Kimi-K3 精度在基线附近波动（9/2 0.9192、9/4 0.9444、9/5 0.9293），需关注是否稳定达标 0.935。
 
