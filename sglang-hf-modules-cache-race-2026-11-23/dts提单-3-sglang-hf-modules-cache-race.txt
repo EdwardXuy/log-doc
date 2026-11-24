@@ -1,0 +1,63 @@
+简要描述 :
+【测试提单】【sglang NPU nightly 流水线】【1113日构建】【功能】在 4 节点×16 卡、--trust-remote-code、HF_MODULES_CACHE 为 pod 本地冷缓存的条件下，运行 kimi_k3_w4a8_32p_gpqa 多机用例，node-1 的 5/16 个 scheduler 进程在 init_tokenizer 阶段报 AttributeError: module 'transformers_modules...tokenization_kimi' has no attribute 'TikTokenTokenizer'，导致 TP/EP 通信组断开，其他节点 all_reduce 报 gloo Connection closed by peer，server 启动失败、用例 3600s 超时。
+
+详细描述 :
+ ============基本信息================
+【必填】【版本信息】：sgl-project/sglang main commit 721ef92c4c764bb3c2307378bf13609fc7be7e72（Nightly Test (NPU) run 43255221761，job 131471889371，1113 日构建）；transformers 5.19.0；tokenizers 0.23.2；镜像 swr.cn-southwest-2.myhuaweicloud.com/base_image/dockerhub/lmsysorg/sglang:main-cann9.1.0-a3
+【必填】【版本问题】：新版本问题（产品启动路径缺陷，非环境问题、非用例问题）
+【必填】【定位人员】：xxx
+【必填】【问题时间】：2026-11-13 04:35
+【必填】【初步结论】：同一个 pod 内 16 个 scheduler 进程并发首次填充 transformers 动态模块缓存 HF_MODULES_CACHE（/tmp/hf_modules，pod 本地冷缓存）。transformers 5.19.0 对本地模型使用非原子 shutil.copyfile 写缓存，读者可能 import 到只写了一半的 tokenization_kimi.py：模块可以导入但缺少 TikTokenTokenizer，getattr 抛 AttributeError。sglang 每个 scheduler 进程独立加载 tokenizer，且 node_rank>=1 的 worker 节点不创建 TokenizerManager（没有天然预热），因此 worker 节点命中概率最高。与共享盘、多机测试框架无关。
+
+ ===========问题信息================
+【必填】【现象描述】：
+1) node-1（172.22.3.158）16 个 scheduler 进程在 04:35:03 同时启动，04:35:07 其中 5 个在 init_tokenizer 阶段失败，报错栈：
+   scheduler.py:961 init_tokenizer → processor.py:379 AutoProcessor.from_pretrained → transformers/dynamic_module_utils.py:622 get_class_from_dynamic_module → :311 return getattr(module, class_name)
+   AttributeError: module 'transformers_modules.Kimi_hyphen_K3_hyphen_W4A8.caf40b2773f9029e.tokenization_kimi' has no attribute 'TikTokenTokenizer'
+2) node-1 进程退出后，TP/EP 通信组断开：node-0 在 04:35:10、node-2 在 04:35:12 于 bootstrap.measure_pre_model_load_memory → get_available_gpu_memory → all_reduce 报
+   RuntimeError: [/pytorch/third_party/gloo/gloo/transport/tcp/pair.cc:547] Connection closed by peer [172.22.3.158]:xxxxx
+   该 gloo 报错是 node-1 退出的连锁反应，不是根因。
+3) server 进程最终退出（exit code -9），wait_server_ready 等待 /health 满 3600s 超时，setUpClass 失败。
+4) 对比：node-0 未失败，因为其父进程 TokenizerManager/Detokenizer 在 04:34:46~57 先加载了 tokenizer，把本 pod 缓存写完整（依赖 scheduler 还在 import 的时序，并非设计保证）；node-2/node-3 同为冷缓存，04:35:07/08 全部成功，属于概率侥幸。
+
+【必填】【测试步骤】：
+1) nightly 流水线运行多机 pd-mix 用例：test/registered/npu/accuracy/kimi_k3/test_npu_kimi_k3_w4a8_32p_gpqa.py（4 节点，--tp-size 64 --enable-dp-attention --attn-dp-size 4，环境变量 SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS=1，--trust-remote-code）；
+2) 最小复现：export HF_MODULES_CACHE=/tmp/hf_modules_repro && rm -rf $HF_MODULES_CACHE；SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS=1 python -m sglang.launch_server --model-path <本地 trust_remote_code 模型目录> --tokenizer-path <同上> --trust-remote-code --tp-size 16 --device npu ...；冷缓存下循环启动 10~20 次，可观察到 AttributeError；
+3) 将 `--tp-size` 改为 1（单进程）后不再复现，可佐证是多进程并发首次写缓存导致。
+
+【选填】【影响评估】：现网使用 --trust-remote-code 模型、以多进程方式启动（单 pod 多卡、SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS=1、DP/EP 多 rank）且 HF_MODULES_CACHE 为冷缓存（新容器/pod、缓存被清理、模型源码 hash 目录变化）的客户会概率性启动失败；多机 worker 节点概率最高。问题偶发，容易被误判为环境抖动。单进程 tp=1 或缓存已热的环境不受影响。CI 侧脚本预热（PR #52549）只能保证 nightly 稳定，不覆盖现网客户的启动路径。
+
+【选填】【原因分析】：
+1) 进程拓扑：SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS=1 + DP attention 使每个 pod 启动 16 个 scheduler 进程，每个进程在 Scheduler.init_tokenizer() 中独立加载 processor/tokenizer，无跨进程共享或串行化。
+2) 缓存写入：模型为本地目录 + --trust-remote-code 时，transformers 5.19.0 的 get_cached_module_file 对本地源码执行 filecmp.cmp 判断后直接 shutil.copyfile（以 "wb" 打开目标文件，先 truncate 再写），不是原子写；进程内的 _HF_REMOTE_CODE_LOCK 是 threading.Lock，对独立进程无效。
+3) 缓存读取：get_class_in_module 直接 exec_module 后 getattr(module, class_name)；当文件被其他进程截断时，模块可执行但类未定义，getattr 抛 AttributeError。
+4) worker 节点无预热：Engine._launch_subprocesses 中 node_rank>=1 的节点直接返回、不创建 TokenizerManager（代码注释：Non-zero-rank nodes do not run tokenizer processes），16 个 scheduler 即成为该 pod 冷缓存的第一批写者。
+5) 异常未兜底：sglang 侧 _get_processor 只捕获 ValueError，AttributeError 直接杀死 scheduler，随后引发全局通信失败。
+6) 共享盘不可用的背景下，HF_MODULES_CACHE 已改为 pod 本地 /tmp/hf_modules（必须保留），因此每个 pod 的缓存独立且冷启动，竞态收敛为“pod 内 16 进程竞争”但并未消失。
+修复建议（供开发评估）：
+- 主方案：在 Engine._launch_subprocesses 中、fork scheduler 进程之前（_launch_scheduler_processes 之前），按 Scheduler.init_tokenizer 相同方式预热一次 processor/tokenizer（仅 trust_remote_code=True 且未 skip_tokenizer_init；异常仅告警不阻塞启动）。该函数每个节点都会执行，可确定性消除首次填充竞态，覆盖 sglang serve / Engine API / PD 分离等路径。
+- 加固（可选）：在 get_tokenizer/get_processor 的 from_pretrained 外层对 HF_MODULES_CACHE 加跨进程文件锁（filelock）。
+- 上游根治（并行）：向 transformers 提 issue/PR，将 shutil.copyfile 改为临时文件 + os.replace 原子替换（可加文件锁）；需 transformers 发版 + sglang 升级 pin + 镜像重建，不作为现网短期交付路径。
+
+【必填】【定位信息】：
+- 失败流水线：https://github.com/sgl-project/sglang/actions/runs/43255221761 （job: multi-node-mix-poc (kimi_k3_w4a8_32p_gpqa, 4, ...)，job id 131471889371）
+- 节点日志（CI 归档于 PVC：/root/.cache/tests/logs/log/<run_label>/test_npu_kimi_k3_w4a8_32p_gpqa/<hostname>/test_npu_kimi_k3_w4a8_32p_gpqa.log）：
+  * node-1：AttributeError ×5，L568-L604
+  * node-0：父进程 TokenizerManager 预热 L60-L75；gloo 连锁 L716-L750
+  * node-2：gloo 连锁 L696-L730
+- 失败版本代码（commit 721ef92）：
+  * python/sglang/srt/managers/scheduler.py#L961 init_tokenizer
+  * python/sglang/srt/hf_transformers/processor.py#L379 AutoProcessor.from_pretrained
+  * transformers v5.19.0 src/transformers/dynamic_module_utils.py#L622（get_class_from_dynamic_module）、#L311（getattr）
+- 最新 main 修复位置参考：
+  * python/sglang/srt/entrypoints/engine.py#L1192 _launch_subprocesses，#L1285 _launch_scheduler_processes，#L1298-L1300 worker 提前返回，#L1408 TokenizerManager
+  * python/sglang/srt/managers/scheduler.py#L972 init_tokenizer
+  * python/sglang/srt/hf_transformers/processor.py#L236 get_processor / #L272 _get_processor / #L387 仅捕获 ValueError
+  * python/sglang/srt/hf_transformers/tokenizer.py#L523 get_tokenizer
+- transformers 5.19.0 竞态代码：https://github.com/huggingface/transformers/blob/v5.19.0/src/transformers/dynamic_module_utils.py#L452-L470（本地模型 shutil.copyfile）、#L285-L311（get_class_in_module）
+- 详细根因分析与方案对比文档：https://github.com/EdwardXuy/log-doc/tree/main/sglang-hf-modules-cache-race-2026-11-23
+- 现有 CI 过渡措施（仅测试脚本预热，不可作为产品修复）：PR #52549 https://github.com/sgl-project/sglang/pull/52549
+
+ ============配置信息================
+【必填】【软件配置】：CANN 9.1.0；Python 3.12.13；sglang 721ef92c4c764bb3c2307378bf13609fc7be7e72；transformers 5.19.0；tokenizers 0.23.2；docker 镜像 sglang:main-cann9.1.0-a3；多机 k8s（volcano，镜像部署）
+【必填】【硬件配置】：Ascend 910B（A3）×4 节点 ×16 卡（tp=64，attn-dp-size=4），aarch64；k8s 多机任务节点 ascend-snt9c
