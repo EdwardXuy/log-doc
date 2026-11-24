@@ -1,0 +1,66 @@
+简要描述 :
+【测试提单】【sglang NPU nightly 流水线】【1121日构建】【功能】在 4 节点×16 卡、Kimi-K3-W4A8（--trust-remote-code、DSPARK、DeepEP、共享专家）场景下，上游 PR #51900 合入后，decode CUDA/NPU graph 捕获在 capture_end 阶段失败（EE9999 / error code 107025，task_type=3 EVENT_WAIT，capture model contains a stream that was not joined to the origin stream），导致 3 个 Kimi-K3 32P 多机用例启动失败、健康检查 3600s 超时；GLM/其他模型用例不受影响。
+
+详细描述 :
+ ============基本信息================
+【必填】【版本信息】：sgl-project/sglang main；首个失败 nightly run 44922677219（2026-11-21T16:05Z 创建，head 9b4b6b6d163c31d234e770eac9f484bd469822a3）；复现于 main nightly run 45212673268（head 见 run）及 PR 验证 run 45343894905（merge 785929c，含 PR #52758）；transformers 5.19.0；镜像 main-cann9.1.0-a3（nightly）与 cann9.2.0-a3-B050（PR 验证）
+【必填】【版本问题】：新版本问题（上游 PR #51900 / commit 8396d60a14ef03b23d2cdaa5c64adb18eba7c703 引入的回归）
+【必填】【定位人员】：xxx
+【必填】【问题时间】：2026-11-21 首次出现（PR 合入时间 2026-11-21T04:13:40Z）；2026-11-24 复现
+【必填】【初步结论】：PR #51900 在 KimiK3MoE.forward 中新增 release_shared_output()，在非 fine-grained 共享专家分支里对 alt_stream 执行 wait_stream(current_stream)。该调用位于 decode graph 捕获区间内，会在 alt stream 上排入 EVENT_WAIT 任务；ACL capture 模型只允许 capture record / event record，capture_end 因此返回 107025，导致所有 Kimi-K3 32P 用例的 decode 图捕获失败。回退/在捕获期间跳过该 wait 可规避。
+
+ ===========问题信息================
+【必填】【现象描述】：
+1) 4 机启动后，scheduler 在 decode 图捕获阶段抛异常，栈为：
+   decode_cuda_graph_runner.py:688 __init__ → :1327 capture → :1400 _capture → :1455 _capture_one_stream → :1597 capture_one_shape → npu_cudagraph_backend.py:415 capture_one → :449 _capture_one `with graph_ctx(...)` → torch_npu/npu/graphs.py:928 __exit__ → :635 capture_end
+   RuntimeError: capture_end:../torch_npu/csrc/core/npu/NPUGraph.cpp:371（cann9.1 为 :240）
+   NPU function error: endCaptureErr, error code is 107025
+2) CANN 报错：
+   EE9999: The type of the task is not event record nor capture record, stream_id=87, task_id=735, task_type=3 (EVENT_WAIT)
+   Invalid_Argument(EE1017): Capture model validity check failed ... capture model contains a stream that was not joined to the origin stream
+3) 影响面：11-21/11-22/11-23 nightly 中该用例 16/16 个 rank 在同一秒失败；11-24 PR 验证 run 中 1 个 rank（TP15）先失败、其余 rank 被连带终止。server 退出后 /health 等待 3600s 超时，用例失败。
+4) 同夜 GLM-5.3 4 机 perf 用例通过；只有 Kimi-K3 的三个 32P 多机用例（gpqa/prefill/decode-prefix）失败，与 #51900 只修改 KimiK3MoE 的范围一致。
+5) 对比：同一用例在 11-10 nightly 通过；11-16~11-20 的失败分别是其他问题（KDA kernel 属性缺失、pinned memory、sgl_kernel_npu 模块缺失等），均不是本次 capture 失败。11-24 的 PR 验证 run 已应用 PR #52758 的 HF modules 预热修复，所有 rank 均正常完成 tokenizer 加载（日志 `Applying special tokens cache patch ... TikTokenTokenizer`，无 AttributeError），随后卡在图捕获，说明预热修复有效、本问题独立存在。
+
+【必填】【测试步骤】：
+1) nightly 多机 pd-mix 用例：test/registered/npu/accuracy/kimi_k3/test_npu_kimi_k3_w4a8_32p_gpqa.py（4 节点，--tp-size 64 --attn-dp-size 4 --enable-dp-attention --enable-shared-experts-attn-tp --moe-a2a-backend deepep --speculative-algorithm DSPARK，环境变量 SGLANG_ONE_VISIBLE_DEVICE_PER_PROCESS=1）；
+2) 启动后观察 scheduler 日志中 decode graph capture 阶段；
+3) 现象：capture_end 107025 / EE9999 EVENT_WAIT，随后 server 退出、健康检查超时；
+4) 对照：11-20 nightly（不含 #51900）无该错误；11-21 nightly（含 #51900）首次出现且 16/16 复现。
+
+【选填】【影响评估】：Kimi-K3 系列（32P、共享专家 + EP a2a + DSPARK、开启 decode graph）在带 #51900 的主干上无法启动，nightly 3 个 K3 用例连续失败；若该 commit 进入发布分支，将影响所有使用 Kimi-K3 + 图捕获的部署。其他模型（GLM 等）不受影响。
+
+【选填】【原因分析】：
+1) 时间线：PR #51900（commit 8396d60a14，author date 2026-11-20 20:13 -0800，merged 2026-11-21T04:13:40Z）不在 11-20 nightly（创建于 11-20T16:06Z）中，但包含在 11-21 nightly（创建于 11-21T16:05Z）中；后者是首个出现 capture 失败的 run。11-20 → 11-21 区间内 `python/sglang/srt/models/kimi_k3.py` 的唯一改动即 #51900。
+2) 代码机制：该 PR 新增
+   def release_shared_output():
+       if shared_alt_output is not None:
+           self.alt_stream.wait_stream(torch.cuda.current_stream())
+           shared_alt_output = None
+   并在 KimiK3MoE.forward 的非 fine-grained 共享专家路径与 latent MoE 路径末尾调用（kimi_k3.py L1462-L1466，调用点 L1460/L1498 等）。MoE forward 在 decode 图捕获区间内执行，`alt_stream.wait_stream(current_stream)` 会在 alt stream 上产生 EVENT_WAIT 任务；ACL 的 capture 模型只允许 capture record / event record 任务，因此 capture_end 失败。
+3) 为什么只影响 Kimi-K3：该逻辑只存在于 kimi_k3.py；GLM 等其他模型不经过该路径。触发条件与本用例一致：_ep_a2a=True（DeepEP）、shared_experts 非空、alt_stream 非空，即 _sbo_shared_overlap=True。
+4) 排除镜像因素：11-21~11-23 使用官方 main-cann9.1.0-a3 失败；11-24 使用 cann9.2.0-a3-B050 同样失败（torch_npu 报错行号不同、错误码同为 107025），说明与镜像无关。
+5) 修复建议（供开发评估）：
+   - 首选：在 capture 期间跳过该 wait，例如
+     if shared_alt_output is not None and not torch.cuda.is_current_stream_capturing():
+         self.alt_stream.wait_stream(torch.cuda.current_stream())
+     或把 release 语义移到捕获区间之外；
+   - 或者暂时回退 #51900，待修复后重新合入；
+   - 修复后建议用 4 节点 Kimi-K3 32P gpqa 用例回归（冷启动 + decode graph 默认开启）。
+
+【必填】【定位信息】：
+- 上游 PR（根因）：https://github.com/sgl-project/sglang/pull/51900
+- 引入 commit：8396d60a14ef03b23d2cdaa5c64adb18eba7c703
+- 代码（被测 main 0e9cff9）：
+  https://github.com/sgl-project/sglang/blob/0e9cff98f5b73267f7a84a034cba2668c3011ccc/python/sglang/srt/models/kimi_k3.py#L1462-L1466
+  （release_shared_output；调用点 L1460 / L1498；wait_and_finalize_shared_experts L1443-L1460）
+- 首个失败 nightly：https://github.com/sgl-project/sglang/actions/runs/44922677219 （job 136978977457，kimi_k3_w4a8_32p_gpqa）
+- 复现 nightly：https://github.com/sgl-project/sglang/actions/runs/45212673268 （job 137954231568）
+- PR 验证 run（含 #52758 预热修复）：https://github.com/sgl-project/sglang/actions/runs/45343894905 （job 138280635172）
+- 对照 run（11-20，不含 #51900）：https://github.com/sgl-project/sglang/actions/runs/44769976087 （job 137331317859）
+- 关键日志：`Capture cuda graph failed: ... 107025`、`EE9999 ... task_type=3 (EVENT_WAIT)`、`RuntimeError: Server http://.../health failed to start in 3600s`
+- 相关分析文档：https://github.com/EdwardXuy/log-doc/tree/main/sglang-hf-modules-cache-race-2026-11-23
+
+ ============配置信息================
+【必填】【软件配置】：CANN 9.1.0（nightly 镜像）/ CANN 9.2.0（PR 验证镜像 cann9.2.0-a3-B050）；Python 3.12.13 / 3.12.15；sglang main（9b4b6b6d / 785929c merge）；transformers 5.19.0；tokenizers 0.23.2；多机 k8s（volcano）
+【必填】【硬件配置】：Ascend 910B（A3）×4 节点 ×16 卡（tp=64，attn-dp-size=4），aarch64；k8s 多机任务节点 ascend-snt9c
