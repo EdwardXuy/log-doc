@@ -1,0 +1,55 @@
+简要描述 :
+【测试提单】【sglang NPU A5】【DSPARK】B060 镜像 dflash_info_v2.py:241 NameError: num_needed_tokens，A5 DSV4-Flash-FP8 4P 的 DSPARK/accuracy 无法启动；与 PrefillCudaGraph 无关。
+
+详细描述 :
+ ============基本信息================
+【必填】【版本信息】：sgl-project/sglang main + PR #53533 测试分支（head 1eef13f9d）；A5 镜像 cann9.2.0-950-B060；对照镜像 main-cann9.2.0-950；CANN 9.2.0；Python 3.12；Ascend A5 4P。
+【必填】【版本问题】：B060 镜像代码与当前 main 不一致（变量重命名未完成）；main 已使用 num_new_tokens。
+【必填】【定位人员】：待定（DSV4/投机解码开发；如确认只是 B060 镜像陈旧，请转 B060 镜像维护者）
+【必填】【问题时间】：2026-11-28
+【必填】【初步结论】：B060 的 sglang 代码在 python/sglang/srt/speculative/dflash_info_v2.py:241 使用未定义的 num_needed_tokens；当前 main（4791be0）已改为 num_new_tokens，nightly A5 用 main-cann9.2.0-950 通过。该问题与 breakable prefill graph / ascend_ops / 测试参数无关，但会阻断 A5 accuracy。
+
+ ===========问题信息================
+【必填】【现象描述】：
+1) A5 4P，镜像 cann9.2.0-950-B060，运行 test/registered/npu/accuracy/deepseek_v4_flash/test_npu_deepseek_v4_flash_fp8_4p_gpqa_a5.py（PR1 修改版）；
+2) server 启动阶段报：
+   File "/sgl-workspace/sglang/python/sglang/srt/speculative/dflash_info_v2.py", line 241, in prepare_for_decode
+       if num_needed_tokens > 0:
+   NameError: name 'num_needed_tokens' is not defined. Did you mean: 'num_new_tokens'?
+3) 发生在 TestNPUDeepSeekV4FlashDSPARK（perf class）setUpClass，导致整个文件 exit code 5；
+4) 同一文件里的 TestNPUDeepSeekV4FlashFP84PGPQA（accuracy class）因此没有执行；
+5) 同一 A5 suite 里的 Qwen3.6 用例 PASS。
+
+【必填】【测试步骤】：
+1) A5 4P，镜像 cann9.2.0-950-B060；
+2) 运行 test/registered/npu/accuracy/deepseek_v4_flash/test_npu_deepseek_v4_flash_fp8_4p_gpqa_a5.py（PR1 修改版，含 breakable、ascend_ops allgather、DSPARK）；
+3) 观察 server 启动/首次 decode；
+4) 对照：用 main-cann9.2.0-950 跑未修改的 A5 用例（nightly 46030846888），2/2 pass，GPQA 90.4%。
+
+【选填】【影响评估】：A5 DSV4-Flash-FP8 4P 的 accuracy 在 B060 上无法验证；本地如果用 B060 也会同样失败。该问题不影响 PrefillCudaGraph 特性本身，但会阻塞 A5 场景的 SR1 验收。
+
+【选填】【原因分析】：
+1) B060 镜像内的 sglang 代码：
+   python/sglang/srt/speculative/dflash_info_v2.py:241 -> if num_needed_tokens > 0
+2) 当前 main（main-cann9.2.0-950 对应构建）已改为：
+   if num_new_tokens > 0
+3) 说明 B060 镜像的 sglang 代码落后于 main，变量重命名没有同步；
+4) 该代码路径只在 DSPARK 解码时执行，与 prefill graph / ascend_ops 无关；
+5) 为什么 perf class 先失败：unittest 先加载 TestNPUDeepSeekV4FlashDSPARK，setUpClass 失败后整个文件退出，accuracy class 不再执行。
+
+【必填】【定位信息】：
+- PR3 A5 job：https://github.com/sgl-project/sglang/actions/runs/46096195872/job/140828789572
+- nightly A5 成功（main-cann9.2.0-950）：https://github.com/sgl-project/sglang/actions/runs/46030846888/job/140613984375
+- 代码（main）：https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/speculative/dflash_info_v2.py#L241
+- 分析报告：https://github.com/EdwardXuy/log-doc/tree/main/sglang-prefill-graph-pr2-pr3-2026-11-28
+- 关键日志：NameError: name 'num_needed_tokens' is not defined. Did you mean: 'num_new_tokens'?
+
+ ============配置信息================
+【必填】【软件配置】：CANN 9.2.0；sglang main + PR #53533（1eef13f9d）；Python 3.12；镜像 cann9.2.0-950-B060（对照 main-cann9.2.0-950）；--quantization fp8；--speculative-algorithm DSPARK
+【必填】【硬件配置】：Ascend A5 ×4 卡单机，aarch64；--tp-size 4 --attn-dp-size 4
+
+【修复建议】：
+- 用当前 main 的 dflash_info_v2.py（num_new_tokens）重新构建 B060 A5 镜像；
+- 或短期直接用 main-cann9.2.0-950 跑 A5；
+- 建议顺手审计 B060 与 main 的其他变量/接口差异，避免同类 NameError；
+- 修复后单独跑 A5 accuracy class（TestNPUDeepSeekV4FlashFP84PGPQA），再跑 DSPARK perf class。
