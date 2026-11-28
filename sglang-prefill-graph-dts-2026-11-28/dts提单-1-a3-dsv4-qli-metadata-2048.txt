@@ -1,0 +1,68 @@
+简要描述 :
+【测试提单】【sglang NPU PrefillCudaGraph】【A3】DSV4-Flash-W8A8 16P 开启 breakable prefill graph 后，replay 报 aclnnQuantLightningIndexerV2 metadata shape 2048（要求 1024），A3 SR1 accuracy/perf 三个 job 全部失败。
+
+详细描述 :
+ ============基本信息================
+【必填】【版本信息】：sgl-project/sglang main + PR #53533 测试分支（head 1eef13f9d）；A3 镜像 cann9.2.0-a3-B060（B050 也复现）；CANN 9.2.0；Python 3.12；Ascend 910_93（A3）16P。
+【必填】【版本问题】：新特性问题（breakable prefill graph 首次 e2e 暴露；B050/B060 均复现）
+【必填】【定位人员】：待定（PrefillCudaGraph 特性开发；如 A3 的 2048 分配属于 DSV4 后端有意行为，请转 DSV4 后端开发）
+【必填】【问题时间】：2026-11-27 首次出现；2026-11-28 在 B060 复现
+【必填】【初步结论】：A3 上 DSV4-Flash 的 prefill graph captured metadata 由 Dsv4PrefillGraphMetadata.allocate 统一按所有 kernel_metadata 的最大 numel 分配；A3 的 win/c4a/c128a 固定 2048，导致必须为 1024 的 li_quant_metadata 被分配成 2048，QLI kernel 在 replay 时拒绝。与 MoE 后端、2048 桶、镜像版本无关。
+
+ ===========问题信息================
+【必填】【现象描述】：
+1) server 已成功 capture，日志：
+   DSV4 NPU breakable prefill graph: compressor/indexer captured, max 1 request(s) per replay.
+2) replay 阶段所有 rank 报：
+   RuntimeError: call aclnnQuantLightningIndexerV2 failed, detail:[PID: ...]
+   Invalid_Argument_Tensor_Shape_Size(EZ0015):
+   Parameter metadata of QuantLightningIndexerV2 has incorrect shape size 2048.
+   Reason: The shape size of metadata must be 1024.
+3) 影响 job：PR2 sr1-acc-16、sr1-perf-8、sr1-perf-16 全部 FAIL；PR3 A3 DSV4 FAIL。
+4) 对照：只开 decode graph（SR3 Qwen3-8B EAGLE3）正常；SR2 Qwen3-8B FIA V2 PASS。
+
+【必填】【测试步骤】：
+1) A3 16P，镜像 cann9.2.0-a3-B060；
+2) 运行 test/registered/npu/accuracy/deepseek_v4_flash/test_npu_deepseek_v4_flash_w8a8_8p_gpqa.py（PR1 修改版）：
+   --tp-size 16 --attn-dp-size 16 --chunked-prefill-size 131072
+   --moe-a2a-backend ascend_ops --moe-ascend-ops-config '{"prefill":"allgather","decode":"low_latency"}'
+   --cuda-graph-backend-prefill breakable --cuda-graph-bs-prefill 128 512 1024
+3) 观察 capture 成功后第一次 replay；
+4) 复现矩阵：B050/B060 均复现；换成 deepep 也复现；桶加/去 2048 都复现；只开 decode graph 正常。
+
+【选填】【影响评估】：A3 DSV4-Flash 的 SR1 accuracy 与纯 P perf 均无法验证；PR1（#53533）的 A3 覆盖被阻塞。A5 不走这条 captured metadata 路径（A5 的失败是另一个问题）。
+
+【选填】【原因分析】：
+1) captured metadata 分配逻辑：
+   python/sglang/srt/hardware_backend/npu/attention/dsv4_prefill_graph.py#L43-L50 / #L107-L166
+   _KERNEL_METADATA_KEYS = (c1a_metadata, c4a_metadata, c128a_metadata, li_quant_metadata)
+   _MIN_KERNEL_METADATA_INTS = 1024
+   metadata_ints = max(1024, 所有 seed.kernel_metadata 的 tensor.numel())
+   state.kernel_metadata = {key: torch.zeros(metadata_ints, int32) for key in keys}
+2) A3 的 win/c4a/c128a 固定 2048：
+   python/sglang/srt/hardware_backend/npu/attention/ascend_dsv4_backend.py#L2501-L2533
+   if not is_npu_arch35(): ... torch.zeros(2048, ...)
+3) QLI 读取 li_quant_metadata，ABI 要求 1024：
+   python/sglang/srt/hardware_backend/npu/attention/ascend_dsv4_backend.py#L1215-L1232
+4) 因此 allocate() 取最大值 2048，把 li_quant_metadata 也分成了 2048，replay 时被 kernel 拒绝。
+
+【必填】【定位信息】：
+- PR2 B060 acc：https://github.com/Ascend/sglang/actions/runs/46096421100/job/140828701063
+- PR2 B060 perf8：https://github.com/Ascend/sglang/actions/runs/46096421100/job/140828701080
+- PR2 B060 perf16：https://github.com/Ascend/sglang/actions/runs/46096421100/job/140828701045
+- PR2 B050 acc：https://github.com/Ascend/sglang/actions/runs/46000693274/job/140511491186
+- PR3 A3：https://github.com/sgl-project/sglang/actions/runs/46096195872/job/140828789662
+- 分析报告：https://github.com/EdwardXuy/log-doc/tree/main/sglang-prefill-graph-pr2-pr3-2026-11-28
+- 代码：
+  https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/hardware_backend/npu/attention/dsv4_prefill_graph.py
+  https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/hardware_backend/npu/attention/ascend_dsv4_backend.py
+
+ ============配置信息================
+【必填】【软件配置】：CANN 9.2.0；sglang main + PR #53533（1eef13f9d）；Python 3.12；镜像 cann9.2.0-a3-B060 / B050；--quantization modelslim；--speculative-algorithm DSPARK
+【必填】【硬件配置】：Ascend 910_93（A3）×16 卡单机，aarch64；--tp-size 16 --attn-dp-size 16
+
+【修复建议】：
+- li_quant_metadata 固定分配为 1024，不参与“所有 key 取最大 numel”的统一分配；
+- 或 allocate() 按 key 单独分配；
+- 或 A3 路径跳过 captured li_quant_metadata / 回退 eager；
+- 修复后建议回归 A3 16P GPQA + 纯 P 8P/16P。
