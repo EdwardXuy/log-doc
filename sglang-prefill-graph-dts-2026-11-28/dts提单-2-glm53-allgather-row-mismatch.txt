@@ -1,0 +1,56 @@
+简要描述 :
+【测试提单】【sglang NPU PrefillCudaGraph】【A3 2 节点】GLM-5.3-W8A8 32P（2×16）开启 breakable prefill graph + ascend_ops allgather 后，replay 报 Ascend AllGather rank X has 256 rows, expected 1024，GPQA 无法执行。
+
+详细描述 :
+ ============基本信息================
+【必填】【版本信息】：sgl-project/sglang main + PR #53533 测试分支（head 1eef13f9d）；A3 镜像 cann9.2.0-a3-B060；CANN 9.2.0；Python 3.12；Ascend 910_93（A3）×2 节点×16 卡（TP32）。
+【必填】【版本问题】：新特性问题（breakable prefill graph + ascend_ops allgather 首次在 GLM-5.3 上 e2e 暴露）
+【必填】【定位人员】：待定（PrefillCudaGraph 特性开发，重点看 ascend_ops allgather replay 行数/padding/fallback）
+【必填】【问题时间】：2026-11-28
+【必填】【初步结论】：capture 时按 bucket 1024 发布了 ascend_allgather_row_sizes；replay 时 GPQA 短 prompt 的实际行数只有 256，与 capture 的 1024 不一致；ascend_ops allgather 的 replay 要求 live rows 等于 capture bucket（或需要 DP padding），短 prompt/多请求场景没有回退 eager，直接报错。
+
+ ===========问题信息================
+【必填】【现象描述】：
+1) server 启动、capture 完成后，replay 阶段报：
+   ValueError: Ascend AllGather rank 10 has 256 rows, expected 1024
+   Fail when using backend: breakable for prefill runner.
+2) 用例：test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_16p_gpqa.py（PR1 修改版）；
+3) 结果：GPQA accuracy 无法执行；GLM 侧 SR1 验证被阻塞。
+4) 对照：GLM 16P mix 不在 nightly（nightly 只跑 PCP/DCP 1p1d），没有 nightly 基线；DSV4 A3 在更早的 QLI metadata 处失败，本问题发生在 GLM 的 allgather replay 行数检查。
+
+【必填】【测试步骤】：
+1) A3 2 节点×16 卡（TP32，attn-dp-size 8），镜像 cann9.2.0-a3-B060；
+2) 运行 test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_16p_gpqa.py（PR1 修改版），关键参数：
+   --tp-size 32 --nnodes 2 --attn-dp-size 8
+   --chunked-prefill-size 65536 --max-prefill-tokens 280000 --context-length 135000
+   --moe-a2a-backend ascend_ops --moe-ascend-ops-config '{"prefill":"allgather","decode":"low_latency"}'
+   --cuda-graph-backend-prefill breakable --cuda-graph-bs-prefill 128 512 1024
+   --speculative-algorithm NEXTN --quantization modelslim
+   --attention-backend ascend --disable-shared-experts-fusion --load-balance-method round_robin
+3) 观察 capture 日志中的 ascend_allgather_row_sizes；
+4) 观察 replay 阶段的行数报错。
+
+【选填】【影响评估】：GLM-5.3-W8A8 16P 2 节点 PD-mix 的 SR1 精度无法验证；PR1（#53533）的 GLM 用例无法给出绿结果。若该组合进入发布分支，短 prompt/GPQA 场景会直接失败。
+
+【选填】【原因分析】：
+1) capture 时按 bucket 1024 发布 ascend_allgather_row_sizes；
+2) replay 时 GPQA 短 prompt 的实际行数只有 256；
+3) ascend_ops allgather 的 replay 要求 live rows 等于 capture bucket，或需要 DP padding；
+4) 当前路径没有“行数不匹配时回退 eager”的保护，因此直接抛出 ValueError；
+5) GLM 使用 --attention-backend ascend（非 DSV4）、NEXTN、2 节点 TP32，不在开发 PR #49481 的验证矩阵里。
+
+【必填】【定位信息】：
+- PR3 GLM job：https://github.com/sgl-project/sglang/actions/runs/46096195872/job/140828789539
+- 分析报告：https://github.com/EdwardXuy/log-doc/tree/main/sglang-prefill-graph-pr2-pr3-2026-11-28
+- 用例：https://github.com/sgl-project/sglang/blob/main/test/registered/npu/accuracy/glm5_3/test_npu_glm_5_3_w8a8_16p_gpqa.py
+- 关键代码：ascend_ops allgather 的 row_sizes 发布/校验路径（prefill graph replay）
+
+ ============配置信息================
+【必填】【软件配置】：CANN 9.2.0；sglang main + PR #53533（1eef13f9d）；Python 3.12；镜像 cann9.2.0-a3-B060；--quantization modelslim；--speculative-algorithm NEXTN
+【必填】【硬件配置】：Ascend 910_93（A3）×2 节点×16 卡（TP32，attn-dp-size 8），aarch64
+
+【修复建议】：
+- replay 前把 live rows padding 到 capture bucket，或在行数不匹配时自动回退 eager；
+- 或对短 prompt 场景跳过 ascend_ops allgather prefill graph；
+- 若短期不支持，请在 PR1 中标记 GLM known limitation，并给出支持计划；
+- 修复后建议回归 GLM-5.3 16P 2 节点 GPQA + 短 prompt 单请求。
